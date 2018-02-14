@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/13 14:52:47 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/14 23:35:24 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,10 @@ $(NAME) : libft minilibx $(OBJ)
 	@$(CC) $(LIB) $(FRAME) $(OBJ) -o $(NAME)
 
 libft :
-	@$(MAKE) -C libft/
+	@$(MAKE) -j -C libft/
 
 minilibx :
-	@$(MAKE) -C minilibx_macos/
+	@$(MAKE) -j -C minilibx_macos/
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
