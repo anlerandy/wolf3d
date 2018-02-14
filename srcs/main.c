@@ -6,8 +6,18 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/13 14:59:23 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:02:18 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "wolf.h"
 
+int		main()
+{
+	t_data		*data;
+	int			i;
+
+	i = 0;
+	data = ft_memalloc(sizeof(t_data));
+	exit (0);
+}

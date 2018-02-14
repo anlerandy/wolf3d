@@ -6,14 +6,16 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/13 14:58:43 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/13 15:56:03 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF_H
 # define WOLF_H
 
+# include "key_codes_macos.h"
 # include "get_next_line.h"
+# include <pthread.h>
 
 # define WIN "WolfEngine 0.01  /  "
 # define BLUR 0xF0000000
