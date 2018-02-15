@@ -6,14 +6,14 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/14 23:35:24 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/15 01:57:04 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 SRC_PATH = srcs/
 OBJ_PATH = objects/
-SRC_NAME = main.c \
+SRC_NAME = main.c usage.c debug.c ft_intset.c input.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 CC = gcc $(FLAG)
@@ -27,6 +27,9 @@ all : $(NAME)
 
 $(NAME) : libft minilibx $(OBJ)
 	@$(CC) $(LIB) $(FRAME) $(OBJ) -o $(NAME)
+	@echo "\033[32m/------------------------------------\ \\033[0m"
+	@echo "\033[32m|----------- $(NAME) crée ------------| \\033[0m"
+	@echo "\033[32m\------------------------------------/ \\033[0m"
 
 libft :
 	@$(MAKE) -j -C libft/

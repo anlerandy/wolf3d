@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 15:48:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/13 15:48:24 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/15 01:50:50 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,17 +130,5 @@
 # define KEY_PAD_ADD        69
 # define KEY_PAD_ENTER      76
 # define KEY_PAD_DOT        65
-
-# define Button1Mask        (1<<8)
-# define Button2Mask        (1<<9)
-# define Button3Mask        (1<<10)
-# define Button4Mask        (1<<11)
-# define Button5Mask        (1<<12)
-# define AnyModifier        (1<<15)
-# define Button1            1
-# define Button2            2
-# define Button3            3
-# define Button4            4
-# define Button5            5
 
 #endif
