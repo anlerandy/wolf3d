@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 01:51:50 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/15 03:30:38 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ typedef struct	s_frame
 	int			ndia;
 }				t_frame;
 
+typedef struct	s_xpm
+{
+	void		*pimg;
+	int			*img;
+	int			width;
+	int			height;
+	int			bpp;
+	int			s_l;
+	int			ndia;
+}				t_xpm;
+
 typedef struct	s_data
 {
 	void		*mlx;
@@ -61,11 +72,14 @@ typedef struct	s_data
 
 void			debug(int debug, char *str);
 void			usage(int err);
+void			xpm_draw(t_data *data, t_xpm xpm);
+
 char			*ft_intset(char *tab, int i, int size);
 
 int				press(int key, void *param);
 int				release(int key, void *param);
-
 int				help();
+
+t_xpm			xpm_create(t_data *data, char *xpmname, int w, int h);
 
 #endif

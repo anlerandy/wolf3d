@@ -6,17 +6,18 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/15 01:57:04 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/15 03:31:59 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 SRC_PATH = srcs/
 OBJ_PATH = objects/
-SRC_NAME = main.c usage.c debug.c ft_intset.c input.c\
+SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-CC = gcc $(FLAG)
+##CC = gcc $(FLAG)
+CC = gcc
 FLAG = -Wall -Werror -Wextra -g
 FRAME = -framework OpenGL -framework AppKit
 LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft
@@ -56,7 +57,7 @@ fclean :
 	@rm -f minilibx_macos/libmlx.a
 
 re : fclean $(NAME)
-	@printf "\033[9A\r\033[K""\033[32mLibrairie mlx compilé avec succès.\033[0m\n"
+	@printf "\033[\r\033[K""\033[32mLibrairie mlx compilé avec succès.\033[0m\n"
 
 norm :
 	@clear

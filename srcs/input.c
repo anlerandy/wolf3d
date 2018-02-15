@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 01:51:39 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/15 02:13:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		press(int key, void *param)
 
 	data = (t_data *)param;
 	key == KEY_ESCAPE ? usage(42) : key;
-	if (key == 109)
+	if (key == KEY_F10)
 		data->debug = !data->debug ? 1 : 0;
 	return (0);
 }

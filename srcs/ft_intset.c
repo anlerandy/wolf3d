@@ -6,13 +6,13 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:36:38 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 02:04:23 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/15 03:30:18 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-char	*ft_intset(char *tab, int i, int size)
+char		*ft_intset(char *tab, int i, int size)
 {
 	int	x;
 
