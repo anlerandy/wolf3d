@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 00:19:34 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 00:21:00 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/15 04:03:52 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	debug(int debug, char *str)
 {
-	debug ? ft_putendl(str) : debug;
+	if (ft_strcmp(str + ft_strlen(str) - 2, ": ") == 0)
+		debug ? ft_putstr(str) : debug;
+	else
+		debug ? ft_putendl(str) : debug;
 }

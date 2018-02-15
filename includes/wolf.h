@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 03:30:38 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/15 08:07:53 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define YELLOW 0x00ffff00
 # define RED 0x00ff0000
 # define THREADS 32
+# define FADE 2
 
 typedef struct	s_coor
 {
@@ -34,6 +35,14 @@ typedef struct	s_coor
 	double		y;
 	double		z;
 }				t_coor;
+
+typedef struct	s_intro_list
+{
+	int			launched;
+	int			qd;
+	int			auth;
+	int			fin;
+}				t_intro;
 
 typedef struct	s_frame
 {
@@ -67,7 +76,11 @@ typedef struct	s_data
 	int			debug;
 	int			loading;
 	t_frame		frame;
+	t_frame		fade;
+	t_frame		tmp;
+	int			fade_c;
 	int			part;
+	t_intro		intro;
 }				t_data;
 
 void			debug(int debug, char *str);
@@ -75,11 +88,14 @@ void			usage(int err);
 void			xpm_draw(t_data *data, t_xpm xpm);
 
 char			*ft_intset(char *tab, int i, int size);
+char			*ft_intadd(char *tab, int i, int size);
+int				fade_to(void *param);
 
 int				press(int key, void *param);
 int				release(int key, void *param);
 int				help();
 
 t_xpm			xpm_create(t_data *data, char *xpmname, int w, int h);
+void			tmp_draw_f(t_data *data);
 
 #endif
