@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 04:04:03 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:40:37 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	intro(t_data *data)
 	t_xpm intr;
 
 //	data->intro.launched == 1 ? data->flag = 0 : data->flag;
-	sleep(1);
 	if (!data->intro.qd)
 	{
 		debug(data->debug, "Lancement de l'intro.");
 		intr = xpm_create(data, "./xpm/aea.xpm", 1400, 800);
 		data->intro.qd = 1;
 		init_menu(data);
+		sleep(2);
 	}
 	else if (!data->intro.auth)
 	{
