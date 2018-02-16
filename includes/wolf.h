@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 04:31:49 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:46:39 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,83 +29,90 @@
 # define THREADS 32
 # define FADE 2
 
-typedef struct	s_coor
+typedef struct		s_coor
 {
-	double		x;
-	double		y;
-	double		z;
-}				t_coor;
+	double			x;
+	double			y;
+	double			z;
+}					t_coor;
 
-typedef struct	s_intro_list
+typedef struct		s_intro_list
 {
-	int			launched;
-	int			qd;
-	int			auth;
-	int			fin;
-}				t_intro;
+	int				launched;
+	int				qd;
+	int				auth;
+	int				fin;
+}					t_intro;
 
-typedef struct	s_frame
+typedef struct		s_frame
 {
-	void		*pimg;
-	char		*img;
-	int			bpp;
-	int			s_l;
-	int			ndia;
-}				t_frame;
+	void			*pimg;
+	char			*img;
+	int				bpp;
+	int				s_l;
+	int				ndia;
+}					t_frame;
 
-typedef struct	s_xpm
+typedef struct		s_xpm
 {
-	void		*pimg;
-	int			*img;
-	int			width;
-	int			height;
-	int			bpp;
-	int			s_l;
-	int			ndia;
-}				t_xpm;
+	void			*pimg;
+	int				*img;
+	int				width;
+	int				height;
+	int				bpp;
+	int				s_l;
+	int				ndia;
+}					t_xpm;
 
-typedef struct	s_menu
+typedef struct		s_menu
 {
-	int			selection;
-}				t_menu;
+	int				selection;
+}					t_menu;
 
-typedef struct	s_data
+typedef enum		e_game_state
 {
-	void		*mlx;
-	void		*win;
-	int			win_h;
-	int			win_w;
-	int			flag;
-	int			flag2;
-	int			flag3;
-	int			debug;
-	int			loading;
-	t_frame		frame;
-	t_frame		fade;
-	t_frame		tmp;
-	int			fade_c;
-	int			part;
-	t_intro		intro;
-	t_menu		menu;
-}				t_data;
+	MENU,
+	GAME
+}					t_game_state;
 
-void			debug(int debug, char *str);
-void			usage(int err);
-void			xpm_draw(t_data *data, t_xpm xpm);
+typedef struct		s_data
+{
+	void			*mlx;
+	void			*win;
+	int				win_h;
+	int				win_w;
+	int				flag;
+	int				flag2;
+	int				flag3;
+	int				debug;
+	int				loading;
+	t_frame			frame;
+	t_frame			fade;
+	t_frame			tmp;
+	int				fade_c;
+	int				part;
+	t_intro			intro;
+	t_menu			menu;
+	t_game_state	game_state;
+}					t_data;
 
-char			*ft_intset(char *tab, int i, int size);
-char			*ft_intadd(char *tab, int i, int size);
-int				fade_to(void *param);
+void				debug(int debug, char *str);
+void				usage(int err);
+void				xpm_draw(t_data *data, t_xpm xpm);
 
-int				press(int key, void *param);
-int				release(int key, void *param);
-int				help();
+char				*ft_intset(char *tab, int i, int size);
+char				*ft_intadd(char *tab, int i, int size);
+int					fade_to(void *param);
 
-t_xpm			xpm_create(t_data *data, char *xpmname, int w, int h);
-void			tmp_draw_f(t_data *data);
+int					press(int key, void *param);
+int					release(int key, void *param);
+int					help();
 
-void			init_menu(t_data *data);
-void			draw_menu(t_data *data);
-void			execute_menu(t_data *data);
+t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h);
+void				tmp_draw_f(t_data *data);
+
+void				init_menu(t_data *data);
+void				draw_menu(t_data *data);
+void				execute_menu(t_data *data);
 
 #endif

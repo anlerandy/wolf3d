@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 03:40:15 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:48:41 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	set_data(t_data *data)
 	data->debug = 1;
 	data->flag = 0;
 	data->intro.launched = 0;
+	data->game_state = MENU;
 }
 
 void	set_img(t_data *data)
