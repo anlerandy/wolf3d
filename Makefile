@@ -6,14 +6,14 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/15 04:14:51 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/16 03:36:07 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 SRC_PATH = srcs/
 OBJ_PATH = objects/
-SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c
+SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 ##CC = gcc $(FLAG)

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 08:18:43 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:04:03 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ static void	intro(t_data *data)
 	if (!data->intro.qd)
 	{
 		debug(data->debug, "Lancement de l'intro.");
-		intr = xpm_create(data, "./xpm/42.xpm", 1400, 800);
+		intr = xpm_create(data, "./xpm/aea.xpm", 1400, 800);
 		data->intro.qd = 1;
+		init_menu(data);
 	}
 	else if (!data->intro.auth)
 	{
 		sleep(2);
-		intr = xpm_create(data, "./xpm/aea.xpm", 1400, 800);
+		intr = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
 		data->intro.auth = 1;
 	}
 	else if (!data->intro.fin)
@@ -62,5 +63,7 @@ int			fade_to(void *param)
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 	if (data->flag < 255 / FADE)
 		mlx_put_image_to_window(data->mlx, data->win, data->fade.pimg, 0, 0);
+	if (data->intro.fin == 1)
+		draw_menu(data);
 	return (0);
 }

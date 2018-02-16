@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 08:07:53 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:31:49 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ typedef struct	s_xpm
 	int			ndia;
 }				t_xpm;
 
+typedef struct	s_menu
+{
+	int			selection;
+}				t_menu;
+
 typedef struct	s_data
 {
 	void		*mlx;
@@ -81,6 +86,7 @@ typedef struct	s_data
 	int			fade_c;
 	int			part;
 	t_intro		intro;
+	t_menu		menu;
 }				t_data;
 
 void			debug(int debug, char *str);
@@ -97,5 +103,9 @@ int				help();
 
 t_xpm			xpm_create(t_data *data, char *xpmname, int w, int h);
 void			tmp_draw_f(t_data *data);
+
+void			init_menu(t_data *data);
+void			draw_menu(t_data *data);
+void			execute_menu(t_data *data);
 
 #endif

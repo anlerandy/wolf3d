@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/15 08:12:54 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/16 04:30:49 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int		press(int key, void *param)
 
 	data = (t_data *)param;
 	key == KEY_ESCAPE ? usage(42) : key;
-	if (key == KEY_F10)
+	if ((key == KEY_UP || key == KEY_DOWN) && data->intro.fin == 1)
+		data->menu.selection = -data->menu.selection;
+	else if (key == KEY_ENTER && data->intro.fin == 1)
+		execute_menu(data);
+	else if (key == KEY_F10)
 	{
 		data->debug = !data->debug ? 1 : 0;
 		data->debug ? ft_putendl("Debug Activé.") :
