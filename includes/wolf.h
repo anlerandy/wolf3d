@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 04:46:39 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/16 07:30:11 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct		s_data
 
 void				debug(int debug, char *str);
 void				usage(int err);
-void				xpm_draw(t_data *data, t_xpm xpm);
+int					wolf_exit(void);
 
 char				*ft_intset(char *tab, int i, int size);
 char				*ft_intadd(char *tab, int i, int size);
@@ -109,6 +109,7 @@ int					release(int key, void *param);
 int					help();
 
 t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h);
+void				xpm_draw(t_data *data, t_xpm xpm, int x, int y);
 void				tmp_draw_f(t_data *data);
 
 void				init_menu(t_data *data);

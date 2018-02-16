@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 04:56:43 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/16 07:25:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	intro(t_data *data)
 		data->intro.fin = 1;
 	}
 	if (data->intro.launched == 1)
-		xpm_draw(data, intr);
+		xpm_draw(data, intr, 0, 0);
 }
 
 static void	fade_to2(t_data *data)
