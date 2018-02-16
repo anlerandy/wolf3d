@@ -35,6 +35,7 @@ int		press(int key, void *param)
 			ft_putendl("Debug désactivé");
 	}
 	key ? data->flag = 255 + 1 : key;
+	key && !data->intro.auth ? skip_to_menu(data) : key;
 	return (0);
 }
 

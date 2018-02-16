@@ -115,5 +115,6 @@ void				tmp_draw_f(t_data *data);
 void				init_menu(t_data *data);
 void				draw_menu(t_data *data);
 void				execute_menu(t_data *data);
+void				skip_to_menu(t_data *data);
 
 #endif

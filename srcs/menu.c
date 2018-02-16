@@ -40,3 +40,16 @@ void			execute_menu(t_data *data)
 	if (data->menu.selection == 8)
 		usage(42);
 }
+
+void			skip_to_menu(t_data *data)
+{
+	t_xpm intr;
+
+	intr = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
+	xpm_draw(data, intr, 0, 0);
+	data->intro.launched = 2;
+	data->intro.qd = 1;
+	data->intro.auth = 1;
+	data->intro.fin = 1;
+	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
+}
