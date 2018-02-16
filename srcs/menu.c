@@ -51,5 +51,4 @@ void			skip_to_menu(t_data *data)
 	data->intro.qd = 1;
 	data->intro.auth = 1;
 	data->intro.fin = 1;
-	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 }
