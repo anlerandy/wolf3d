@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/17 15:35:46 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:38:20 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		press(int key, void *param)
 		execute_menu(data);
 	if (key == KEY_F10)
 		data->debug = !data->debug ? 1 : 0;
-	if (key == KEY_P)
+	if ((data->game_state == GAME || data->game_state == PAUSE) && key == KEY_P)
 		data->game_state = (data->game_state == GAME ? PAUSE : GAME);
 	key ? data->flag = 255 + 1 : key;
 	key && !data->intro.auth ? skip_to_menu(data) : key;
