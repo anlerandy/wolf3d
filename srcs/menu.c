@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/16 06:20:45 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/17 14:52:35 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void			execute_menu(t_data *data)
 {
 	if (data->menu.selection == 8)
 		usage(42);
+	else if (data->menu.selection == 0)
+		data->game_state = GAME;
+	else if (data->menu.selection == 1)
+		data->game_state = GAME;
 }
 
 void			skip_to_menu(t_data *data)
