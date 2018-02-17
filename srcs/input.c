@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 06:20:15 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:35:46 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,18 @@ int		press(int key, void *param)
 
 	data = (t_data *)param;
 	key == KEY_ESCAPE ? usage(42) : key;
-	if ((key == KEY_UP || key == KEY_DOWN) && data->intro.fin == 1)
+	if (data->game_state == MENU)
 	{
-		data->menu.selection += (key == KEY_UP) * -1 + (key == KEY_DOWN) * 1;
-		if (data->menu.selection < 0)
-			data->menu.selection = 8;
-		else if (data->menu.selection > 8)
-			data->menu.selection = 0;
+		data->menu.selection += -(key == KEY_UP) + (key == KEY_DOWN);
+		data->menu.selection == 9 ? data->menu.selection = 0 : key;
+		data->menu.selection == -1 ? data->menu.selection = 8 : key;
 	}
-	else if (key == KEY_ENTER && data->intro.fin == 1)
+	if (key == KEY_ENTER && data->intro.fin == 1)
 		execute_menu(data);
-	else if (key == KEY_F10)
-	{
+	if (key == KEY_F10)
 		data->debug = !data->debug ? 1 : 0;
-		data->debug ? ft_putendl("Debug Activé.") :
-			ft_putendl("Debug désactivé");
-	}
+	if (key == KEY_P)
+		data->game_state = (data->game_state == GAME ? PAUSE : GAME);
 	key ? data->flag = 255 + 1 : key;
 	key && !data->intro.auth ? skip_to_menu(data) : key;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 07:30:11 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:11:30 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ typedef struct		s_menu
 typedef enum		e_game_state
 {
 	MENU,
-	GAME
+	GAME,
+	PAUSE
 }					t_game_state;
 
 typedef struct		s_data
@@ -116,5 +117,7 @@ void				init_menu(t_data *data);
 void				draw_menu(t_data *data);
 void				execute_menu(t_data *data);
 void				skip_to_menu(t_data *data);
+
+void				draw_pause(t_data *data);
 
 #endif
