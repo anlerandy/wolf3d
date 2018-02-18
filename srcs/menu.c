@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 15:02:14 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:21:41 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			rebuild_menu(t_data *data)
 	static t_xpm	menu;
 	static int		x = 0;
 
+	map_clear(data);
 	debug(data->debug, "Refonte du menu.");
 	data->game_state = MENU;
 	data->menu.selection = 0;
