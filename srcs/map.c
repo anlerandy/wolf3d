@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 14:20:36 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 14:40:05 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@ static int		verify_file(t_data *data, char *filename)
 {
 	int		fd;
 	int		count;
+	int		count_j;
 	char	*line;
 
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
 		count = 0;
+		count_j = 0;
 		while (get_next_line(fd, &line) == 1)
 		{
 			if (ft_strlen(line) > 64)
 				return (0);
+			if (ft_strchr(line, 'J'))
+				count_j++;
 			ft_strdel(&line);
 			count++;
 		}
 		ft_strdel(&line);
 		close(fd);
-		if (count > 64)
+		if (count > 64 || count_j != 1)
 			return (0);
 	}
 	else

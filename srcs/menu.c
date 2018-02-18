@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 03:41:31 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 15:02:14 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			rebuild_menu(t_data *data)
 	if (!x)
 		menu = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
 	x = 1;
-	xpm_draw(data, menu, 0, 0);
+	xpm_draw(data, menu);
 }
 
 void			init_menu(t_data *data)
@@ -72,7 +72,7 @@ void			skip_to_menu(t_data *data)
 	t_xpm intr;
 
 	intr = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
-	xpm_draw(data, intr, 0, 0);
+	xpm_draw(data, intr);
 	data->intro.launched = 2;
 	data->intro.qd = 1;
 	data->intro.auth = 1;

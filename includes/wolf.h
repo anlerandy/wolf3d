@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 13:38:31 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 15:00:38 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int					release(int key, void *param);
 int					help();
 
 t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h);
-void				xpm_draw(t_data *data, t_xpm xpm, int x, int y);
+void				xpm_draw(t_data *data, t_xpm xpm);
 void				tmp_draw_f(t_data *data);
 void				xpm_draw_img(t_frame *tmp, t_xpm xpm, int x, int y);
 void				loading(t_data *data);

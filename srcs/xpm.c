@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 02:14:11 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 03:22:06 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 14:59:55 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h)
 	return (xpm);
 }
 
-void				xpm_draw(t_data *data, t_xpm xpm, int x, int y)
+void				xpm_draw(t_data *data, t_xpm xpm)
 {
 	int i;
 	int j;
@@ -41,9 +41,9 @@ void				xpm_draw(t_data *data, t_xpm xpm, int x, int y)
 		i = 0;
 		while (i < xpm.width && i < data->win_w)
 		{
-			if ((i + x) + (((j + y) * data->win_w) < \
-					data->win_w * data->win_h) && i < xpm.width - x)
-				((int*)(data->frame.img))[(i + x) + ((j + y) \
+			if (i + ((j * data->win_w) < \
+					data->win_w * data->win_h) && i < xpm.width)
+				((int*)(data->frame.img))[i + (j \
 					* data->win_w)] = xpm.img[i + (j * data->win_w)];
 			i++;
 		}

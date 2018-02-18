@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 03:30:08 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 15:01:14 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	mlx_launcher(t_data *data)
 	t_xpm menu;
 
 	menu = xpm_create(data, "./xpm/42.xpm", 1400, 800);
-	xpm_draw(data, menu, 0, 0);
+	xpm_draw(data, menu);
 	debug(data->debug, "Lancement MLX.");
 	mlx_loop_hook(data->mlx, fade_to, (void*)data);
 	mlx_hook(data->win, 2, 0, press, (void*)data);

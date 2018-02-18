@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 15:05:12 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 04:35:09 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 15:02:34 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			draw_pause(t_data *data)
 	if (!x)
 		pause = xpm_create(data, "./xpm/pause.xpm", 1400, 800);
 	x = 1;
-	xpm_draw(data, pause, 0, 0);
+	xpm_draw(data, pause);
 	draw_select(data, data->menu.selection);
 }
 
