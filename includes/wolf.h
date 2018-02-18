@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 03:57:32 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 13:33:23 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "get_next_line.h"
 # include <pthread.h>
 # include "mlx.h"
+# include "maps.h"
 # include <math.h>
 
 # define WIN "WolfEngine 0.02"
@@ -99,6 +100,7 @@ typedef struct		s_data
 	t_intro			intro;
 	t_menu			menu;
 	t_game_state	game_state;
+	t_map			map;
 }					t_data;
 
 void				debug(int debug, char *str);
