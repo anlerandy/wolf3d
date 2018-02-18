@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 19:46:57 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 21:40:16 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 	int		stop;
 
 	stop = 0;
+	debug(data->debug, "Vérification de la map.");
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
 		step = 0;
@@ -42,10 +43,9 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 		}
 		ft_strdel(&line);
 		close(fd);
+		return (1);
 	}
-	else
-		return (0);
-	return (1);
+	return (0);
 }
 
 static int		detect_step(char *line, int *i, int *step)
@@ -124,5 +124,7 @@ void			map(t_data *data, int map)
 	while (++i < h)
 		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);
 	fill_tiles(data, data->map.name);
+	init_player(data);
+	draw_map(data);
 	data->loading = 0;
 }

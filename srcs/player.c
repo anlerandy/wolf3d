@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 21:30:51 by alerandy         ###   ########.fr       */
+/*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
+/*   Updated: 2018/02/18 21:32:27 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#include "wolf.h"
 
-typedef struct			s_pos
+void		init_player(t_data *data)
 {
-	double				x;
-	double				y;
-	double				z;
-}						t_pos;
-
-typedef struct			s_player
-{
-	int					hp;
-	int					end;
-	double				rot;
-	t_pos				pos;
-}						t_player;
-
-#endif
+	debug(data->debug, "Initialisation de PLAYER.");
+	data->player.hp = 100;
+	data->player.end = 100;
+	data->player.rot = 0;
+}

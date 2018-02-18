@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 21:09:57 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 21:44:30 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,8 @@ void				step_three(t_data *data, char *line, int i);
 
 void				draw_pause(t_data *data);
 void				map_clear(t_data *data);
+
+void				init_player(t_data *data);
+void				draw_map(t_data *data);
 
 #endif

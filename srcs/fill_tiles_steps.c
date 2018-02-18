@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 19:34:31 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 21:37:51 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ void		step_three(t_data *data, char *line, int i)
 	while (line[j])
 	{
 		if (line[j] == 'J')
+		{
 			ent = PLAYER_START;
+			data->player.pos.x = j;
+			data->player.pos.y = i;
+		}
 		else
 			ent = NONE;
 		data->map.tiles[i][j].entity = ent;
