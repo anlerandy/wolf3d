@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 17:30:53 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:12:01 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@
 # define THREADS 32
 # define FADE 1
 # define DOORSPEED 30
-
-typedef struct		s_coor
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_coor;
 
 typedef struct		s_intro_list
 {
@@ -135,5 +128,6 @@ void				step_two(t_data *data, char *line, int i);
 void				step_three(t_data *data, char *line, int i);
 
 void				draw_pause(t_data *data);
+void				map_clear(t_data *data);
 
 #endif
