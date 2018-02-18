@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 18:57:27 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:22:11 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static	void	fill_tiles(t_data *data, char *filename)
 		step = 0;
 		while (get_next_line(fd, &line) == 1)
 		{
-			if (detect_step(line, &i, &step))
+			if (detect_step(line, &i, &step) == 0)
 			{
 				if (step == 1)
 					step_one(data, line, i);
@@ -123,4 +123,7 @@ void			map(t_data *data, int map)
 		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);
 	fill_tiles(data, data->map.name);
 	data->loading = 0;
+	i = -1;
+	if (data->map.tiles[1][1].texture == BOIS)
+		ft_putendl("ya");
 }

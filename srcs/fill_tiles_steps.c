@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 18:37:02 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:13:10 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		step_two(t_data *data, char *line, int i)
 	j = 0;
 	while (line[j])
 	{
-		if (ft_isdigit(line[j]))
+		if (line[j] != ' ')
 			hgt = line[j] - 48;
 		else
 			hgt = 0;
