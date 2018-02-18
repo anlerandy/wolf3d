@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 14:07:18 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 14:09:09 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int		verify_file(t_data *data, char *filename)
 	{
 		close(fd);
 	}
+	return (1);
 }
 
 void			map(t_data *data, int map)
