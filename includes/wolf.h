@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 13:33:23 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 13:38:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "get_next_line.h"
 # include <pthread.h>
 # include "mlx.h"
-# include "maps.h"
+# include "map.h"
 # include <math.h>
 
 # define WIN "WolfEngine 0.02"
