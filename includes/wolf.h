@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 02:49:17 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 03:57:32 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "mlx.h"
 # include <math.h>
 
-# define WIN "WolfEngine 0.01"
+# define WIN "WolfEngine 0.02"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff
@@ -27,7 +27,7 @@
 # define YELLOW 0x00ffff00
 # define RED 0x00ff0000
 # define THREADS 32
-# define FADE 2
+# define FADE 1
 # define DOORSPEED 30
 
 typedef struct		s_coor

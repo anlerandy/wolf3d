@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 15:05:12 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 02:28:15 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 04:35:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		draw_select(t_data *data, int x)
 		while (i < 462)
 		{
 			((int*)(data->tmp.img))[(i + 468) + ((y + 345) * data->win_w) +
-				(x * 55) * data->win_w] = 0xA5000000;
+				(x * 55) * data->win_w] = 0xD04c0000;
 			i++;
 		}
 		y++;
