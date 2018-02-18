@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/16 07:32:26 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 03:30:08 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	set_data(t_data *data)
 	data->win_h = 800;
 	data->debug = 1;
 	data->flag = 0;
+	data->load_ani = 0;
 	data->intro.launched = 0;
 	data->game_state = MENU;
 }
@@ -53,7 +54,8 @@ void	set_img(t_data *data)
 	data->tmp.pimg = mlx_new_image(data->mlx, data->win_w, data->win_h);
 	data->tmp.img = mlx_get_data_addr(data->tmp.pimg, &(data->tmp.bpp),
 			&(data->tmp.s_l), &(data->tmp.ndia));
-	data->tmp.img = ft_intset(data->tmp.img, 0, data->win_w * data->win_h);
+	data->tmp.img = ft_intset(data->tmp.img, 0xff000000, data->win_w *
+			data->win_h);
 	if (!data->frame.img || !data->frame.pimg)
 		usage(2);
 }

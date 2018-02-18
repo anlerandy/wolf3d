@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/17 15:23:47 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 03:27:13 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	intro(t_data *data)
 {
 	t_xpm intr;
 
-//	data->intro.launched == 1 ? data->flag = 0 : data->flag;
 	data->intro.qd && !data->intro.auth ? sleep(2) : sleep(0);
 	if (!data->intro.qd)
 	{
@@ -37,6 +36,24 @@ static void	intro(t_data *data)
 	}
 	if (data->intro.launched == 1 && !data->intro.fin)
 		xpm_draw(data, intr, 0, 0);
+}
+
+static void	ingame(t_data *data)
+{
+	if (data->game_state == GAME)
+	{
+		data->frame.img = ft_intset(data->frame.img, 0x00000000, data->win_w *
+				data->win_h);
+		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
+	}
+	if (data->game_state == PAUSE)
+	{
+		data->frame.img = ft_intset(data->frame.img, 0x00000000, data->win_w *
+				data->win_h);
+		draw_pause(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
+		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+	}
 }
 
 static void	fade_to2(t_data *data)
@@ -64,26 +81,23 @@ int			fade_to(void *param)
 	t_data	*data;
 
 	data = (t_data*)param;
-	if (data->game_state == MENU)
+	if (data->loading == 2)
+		map(data, data->menu.selection);
+	if (data->game_state == MENU && (!data->loading || data->loading == 3))
 	{
-		fade_to2(data);
+		data->intro.fin ? 0 : fade_to2(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-		if (data->flag < 255 / FADE)
-			mlx_put_image_to_window(data->mlx, \
-				data->win, data->fade.pimg, 0, 0);
+		if (data->flag < 255 / FADE && !data->intro.fin)
+			mlx_put_image_to_window(data->mlx, data->win, data->fade.pimg,
+					0, 0);
 		if (data->intro.fin == 1)
 			draw_menu(data);
 	}
-	else if (data->game_state == GAME)
-	{
-		ft_intset(data->frame.img, 0x00000000, data->win_w * data->win_h);
-		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-	}
-	else if (data->game_state == PAUSE)
-	{
-		ft_intset(data->frame.img, 0x00000000, data->win_w * data->win_h);
-		draw_pause(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-	}
+	if (data->game_state == GAME || data->game_state == PAUSE)
+		ingame(data);
+	if (data->loading == 3)
+		loading2(data);
+	else if (data->loading == 1 || data->load_ani > 0)
+		loading(data);
 	return (0);
 }

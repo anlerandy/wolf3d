@@ -6,11 +6,25 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/17 14:52:35 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 03:33:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+
+void			rebuild_menu(t_data *data)
+{
+	static t_xpm	menu;
+	static int		x = 0;
+
+	debug(data->debug, "Refonte du menu.");
+	data->game_state = MENU;
+	data->menu.selection = 0;
+	if (!x)
+		menu = xpm_create(data, "./xpm/menu2.xpm", 1400, 800);
+	x = 1;
+	xpm_draw(data, menu, 0, 0);
+}
 
 void			init_menu(t_data *data)
 {
@@ -20,18 +34,25 @@ void			init_menu(t_data *data)
 
 void			draw_menu(t_data *data)
 {
-	mlx_string_put(data->mlx, data->win, 625, 200, 0x00FFFFFF, \
-		"/// NOM DU JEU \\\\\\");
-	mlx_string_put(data->mlx, data->win, 675, 250, 0x00FFFFFF, "MAP1");
-	mlx_string_put(data->mlx, data->win, 675, 275, 0x00FFFFFF, "MAP2");
-	mlx_string_put(data->mlx, data->win, 675, 300, 0x00FFFFFF, "MAP3");
-	mlx_string_put(data->mlx, data->win, 675, 325, 0x00FFFFFF, "MAP4");
-	mlx_string_put(data->mlx, data->win, 675, 350, 0x00FFFFFF, "MAP5");
-	mlx_string_put(data->mlx, data->win, 675, 375, 0x00FFFFFF, "MAP6");
-	mlx_string_put(data->mlx, data->win, 675, 400, 0x00FFFFFF, "MAP7");
-	mlx_string_put(data->mlx, data->win, 675, 425, 0x00FFFFFF, "MAP8");
-	mlx_string_put(data->mlx, data->win, 675, 450, 0x00FFFFFF, "QUIT");
-	mlx_string_put(data->mlx, data->win, 650, 250 + 25 * data->menu.selection, \
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 0)), 300, 0x00FFFFFF, "MAP1");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 1)), 325, 0x00FFFFFF, "MAP2");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 2)), 350, 0x00FFFFFF, "MAP3");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 3)), 375, 0x00FFFFFF, "MAP4");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 4)), 400, 0x00FFFFFF, "MAP5");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 5)), 425, 0x00FFFFFF, "MAP6");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 6)), 450, 0x00FFFFFF, "MAP7");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 7)), 475, 0x00FFFFFF, "MAP8");
+	mlx_string_put(data->mlx, data->win, 675 + (25 *
+				(data->menu.selection == 8)), 500, 0x00FFFFFF, "QUIT");
+	mlx_string_put(data->mlx, data->win, 650, 300 + 25 * data->menu.selection, \
 		0x00FF0A0A, ">>");
 }
 
@@ -39,10 +60,11 @@ void			execute_menu(t_data *data)
 {
 	if (data->menu.selection == 8)
 		usage(42);
-	else if (data->menu.selection == 0)
-		data->game_state = GAME;
-	else if (data->menu.selection == 1)
-		data->game_state = GAME;
+	else
+	{
+		data->loading = 1;
+		loading(data);
+	}
 }
 
 void			skip_to_menu(t_data *data)

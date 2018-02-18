@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/17 15:11:30 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 02:49:17 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define RED 0x00ff0000
 # define THREADS 32
 # define FADE 2
+# define DOORSPEED 30
 
 typedef struct		s_coor
 {
@@ -46,6 +47,8 @@ typedef struct		s_intro_list
 
 typedef struct		s_frame
 {
+	int				width;
+	int				height;
 	void			*pimg;
 	char			*img;
 	int				bpp;
@@ -87,6 +90,7 @@ typedef struct		s_data
 	int				flag3;
 	int				debug;
 	int				loading;
+	int				load_ani;
 	t_frame			frame;
 	t_frame			fade;
 	t_frame			tmp;
@@ -112,11 +116,17 @@ int					help();
 t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h);
 void				xpm_draw(t_data *data, t_xpm xpm, int x, int y);
 void				tmp_draw_f(t_data *data);
+void				xpm_draw_img(t_frame *tmp, t_xpm xpm, int x, int y);
+void				loading(t_data *data);
+void				loading2(t_data *data);
 
 void				init_menu(t_data *data);
 void				draw_menu(t_data *data);
+void				rebuild_menu(t_data *data);
 void				execute_menu(t_data *data);
+void				execute_pause(t_data *data);
 void				skip_to_menu(t_data *data);
+void				map(t_data *data, int map);
 
 void				draw_pause(t_data *data);
 
