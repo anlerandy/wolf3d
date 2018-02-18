@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 18:44:43 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:57:27 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,20 @@ static	void	fill_tiles(t_data *data, char *filename)
 
 void			map(t_data *data, int map)
 {
-	int i;
-	int h;
-	int w;
+	int		i;
+	int		h;
+	int		w;
+	char	*mapid;
 
 	i = -1;
 	h = 0;
 	w = 0;
+	mapid = ft_itoa(map + 1);
 	debug(data->debug, "Chargement de la map : ");
-	debug(data->debug, ft_itoa(map + 1));
+	debug(data->debug, mapid);
 	data->game_state = GAME;
-	data->map.name = ft_strjoin("maps/map", ft_itoa(map + 1));
+	data->map.name = ft_strjoin("maps/map", mapid);
+	free(mapid);
 	if (verify_file(data, data->map.name, &w, &h) == 0)
 		usage(4);
 	data->map.width = w;
