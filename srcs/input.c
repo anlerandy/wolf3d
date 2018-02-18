@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 02:23:59 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/18 03:43:06 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		press(int key, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
+	data->intro.fin ? menu_choice(key, data) : key;
 	key == KEY_ESCAPE ? usage(42) : key;
 	if (key == KEY_ENTER && data->intro.fin == 1 && data->game_state == MENU)
 		execute_menu(data);
@@ -49,7 +50,6 @@ int		press(int key, void *param)
 		data->debug = !data->debug ? 1 : 0;
 	key ? data->flag = 255 + 1 : key;
 	key && !data->intro.auth ? skip_to_menu(data) : key;
-	menu_choice(key, data);
 	return (0);
 }
 
