@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 15:00:38 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 17:30:53 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,11 @@ void				rebuild_menu(t_data *data);
 void				execute_menu(t_data *data);
 void				execute_pause(t_data *data);
 void				skip_to_menu(t_data *data);
+
 void				map(t_data *data, int map);
+void				step_one(t_data *data, char *line, int i);
+void				step_two(t_data *data, char *line, int i);
+void				step_three(t_data *data, char *line, int i);
 
 void				draw_pause(t_data *data);
 
