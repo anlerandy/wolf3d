@@ -6,14 +6,20 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 13:56:13 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 14:07:18 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void		read_file(t_data *data, char *filename)
+static int		verify_file(t_data *data, char *filename)
 {
+	int fd;
+
+	if ((fd = open(filename, O_RDONLY)) > 0)
+	{
+		close(fd);
+	}
 }
 
 void			map(t_data *data, int map)
@@ -26,12 +32,11 @@ void			map(t_data *data, int map)
 	sleep(1);
 	data->loading = 0;
 	data->game_state = GAME;
-	data->map.name = ft_strjoin("map", ft_itoa(map + 1));
-	printf("%s\n", data->map.name);
+	data->map.name = ft_strjoin("maps/map", ft_itoa(map + 1));
 	while (++i <= 64 * 64)
 	{
-		data->map.tiles[i % 64][i / 64].type = FLOOR;
-		data->map.tiles[i % 64][i / 64].collision = 0;
+		data->map.tiles[i / 64][i % 64].type = FLOOR;
+		data->map.tiles[i / 64][i % 64].collision = 0;
 	}
-	read_file(data, data->map.name);
+	verify_file(data, data->map.name);
 }
