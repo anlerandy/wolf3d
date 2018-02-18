@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 19:22:11 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:46:57 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,19 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 	int		fd;
 	char	*line;
 	int		step;
+	int		stop;
 
+	stop = 0;
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
 		step = 0;
 		while (get_next_line(fd, &line) == 1)
 		{
-			if (ft_strcmp(line, "TEXTURE:") == 0)
+			if (ft_strcmp(line, "TEXTURE:") == 0 && stop == 0)
 				step = 1;
 			else if (ft_strcmp(line, "HEIGHT:") == 0)
-				break ;
-			else if (step == 1)
+				stop = 1;
+			else if (step == 1 && stop == 0)
 				get_size(data, line, w, h);
 			ft_strdel(&line);
 		}
@@ -123,7 +125,4 @@ void			map(t_data *data, int map)
 		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);
 	fill_tiles(data, data->map.name);
 	data->loading = 0;
-	i = -1;
-	if (data->map.tiles[1][1].texture == BOIS)
-		ft_putendl("ya");
 }
