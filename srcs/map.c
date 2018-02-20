@@ -56,23 +56,25 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 		return (0);
 }
 
-static int		detect_step(char *line, int *i, int *step)
+static int		detect_step(t_data *data, char *line, int *i, int *step)
 {
-	if (ft_strcmp(line, "TEXTURE:") == 0)
+	if (ft_strcmp(line, "TEXTURE:") == 0 || ft_strcmp(line, "HEIGHT:") == 0
+	|| ft_strcmp(line, "OBJ:") == 0)
 	{
-		*step = 1;
-		*i = 0;
-		return (1);
-	}
-	else if (ft_strcmp(line, "HEIGHT:") == 0)
-	{
-		*step = 2;
-		*i = 0;
-		return (1);
-	}
-	else if (ft_strcmp(line, "OBJ:") == 0)
-	{
-		*step = 3;
+		debug(data->debug, "Recuperation des : ");
+		debug(data->debug, line);
+		ft_strcmp(line, "TEXTURE:") == 0 ? *step = 1 : 0;
+		ft_strcmp(line, "HEIGHT:") == 0 ? *step = 2 : 0;
+		ft_strcmp(line, "OBJ:") == 0 ? *step = 3 : 0;
+		if (*step == 2)
+			data->map.h = *i;
+		if (*step == 3)
+			if (*i != data->map.h)
+			{
+				debug(data->debug, "Hauteur incorrecte de HEIGHT : ");
+				debug(data->debug, "Plus petite.");
+				usage(4);
+			}
 		*i = 0;
 		return (1);
 	}
@@ -92,7 +94,7 @@ static	void	fill_tiles(t_data *data, char *filename)
 		init_tiles(data);
 		while (get_next_line(fd, &line) == 1)
 		{
-			if (detect_step(line, &i, &step) == 0)
+			if (detect_step(data, line, &i, &step) == 0)
 			{
 				if (step == 1)
 					step_one(data, line, i);

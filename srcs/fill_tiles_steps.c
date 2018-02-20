@@ -35,6 +35,11 @@ void		step_two(t_data *data, char *line, int i)
 	int hgt;
 
 	j = 0;
+	if (i >= data->map.h)
+	{
+		debug(data->debug, "Hauteur incorrecte de HEIGHT : Trop grande.");
+		usage(4);
+	}
 	if (data->map.w != ft_strlen(line))
 	{
 		debug(data->debug, "Largeur incorrecte dans HEIGHT, ligne : ");
