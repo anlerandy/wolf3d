@@ -24,28 +24,30 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 	int		fd;
 	char	*line;
 	int		step;
-	int		stop;
 
-	stop = 0;
+	step = 0;
 	debug(data->debug, "Vérification de la map.");
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
-		step = 0;
 		while (get_next_line(fd, &line) == 1)
 		{
-			if (ft_strcmp(line, "TEXTURE:") == 0 && stop == 0)
+			if (ft_strcmp(line, "TEXTURE:") == 0 && step == 0)
 				step = 1;
-			else if (ft_strcmp(line, "HEIGHT:") == 0)
-				stop = 1;
-			else if (step == 1 && stop == 0)
+			else if (ft_strcmp(line, "HEIGHT:") == 0 && step == 1)
+				step = 2;
+			else if (ft_strcmp(line, "OBJ:") == 0 && step == 2)
+				step = 3;
+			else if (step == 1)
 				get_size(data, line, w, h);
 			ft_strdel(&line);
 		}
 		ft_strdel(&line);
 		close(fd);
-		return (1);
 	}
-	return (0);
+	if (step == 3)
+		return (1);
+	else
+		return (0);
 }
 
 static int		detect_step(char *line, int *i, int *step)
