@@ -22,7 +22,8 @@ void	menu_choice(int key, t_data *data)
 		data->menu.selection == 9 ? data->menu.selection = 0 : key;
 		data->menu.selection == -1 ? data->menu.selection = 8 : key;
 	}
-	if ((data->game_state == GAME || data->game_state == PAUSE) && key == KEY_P)
+	if ((data->game_state == GAME || data->game_state == PAUSE) && key == KEY_P
+	&& data->loading != 3)
 	{
 		data->game_state = (data->game_state == GAME ? PAUSE : GAME);
 		data->game_state == PAUSE ? data->menu.selection = 0 : key;
