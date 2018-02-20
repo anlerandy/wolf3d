@@ -81,6 +81,7 @@ static	void	fill_tiles(t_data *data, char *filename)
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
 		step = 0;
+		init_tiles(data);
 		while (get_next_line(fd, &line) == 1)
 		{
 			if (detect_step(line, &i, &step) == 0)
@@ -118,8 +119,8 @@ void			map(t_data *data, int map)
 	free(mapid);
 	if (verify_file(data, data->map.name, &w, &h) == 0)
 		usage(4);
-	data->map.width = w;
-	data->map.height = h;
+	data->map.w = w;
+	data->map.h = h;
 	data->map.tiles = ft_memalloc(sizeof(t_tile*) * h);
 	while (++i < h)
 		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);

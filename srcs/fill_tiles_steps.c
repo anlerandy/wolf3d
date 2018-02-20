@@ -21,7 +21,7 @@ void		step_one(t_data *data, char *line, int i)
 	while (line[j])
 	{
 		if (line[j] == '+')
-			tex = BOIS;
+			tex = WOOD;
 		else
 			tex = METAL;
 		data->map.tiles[i][j].texture = tex;
@@ -41,7 +41,7 @@ void		step_two(t_data *data, char *line, int i)
 			hgt = line[j] - 48;
 		else
 			hgt = 0;
-		data->map.tiles[i][j].height = hgt;
+		data->map.tiles[i][j].z = hgt;
 		j++;
 	}
 }

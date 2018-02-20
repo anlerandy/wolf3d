@@ -21,12 +21,12 @@ void		map_clear(t_data *data)
 	debug(data->debug, "Supression de la map : ");
 	debug(data->debug, data->map.name);
 	ft_strdel(&(data->map.name));
-	while (i < data->map.height)
+	while (i < data->map.h)
 	{
 		ft_memdel((void**)&(data->map.tiles[i]));
 		i++;
 	}
 	ft_memdel((void**)&(data->map.tiles));
-	data->map.width = 0;
-	data->map.height = 0;
+	data->map.w = 0;
+	data->map.h = 0;
 }

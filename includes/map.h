@@ -15,8 +15,8 @@
 
 typedef enum		e_texture
 {
-	BOIS,
-	PIERRE,
+	WOOD,
+	STONE,
 	METAL
 }					t_texture;
 
@@ -28,7 +28,7 @@ typedef enum		e_entity
 
 typedef struct		s_tile
 {
-	int				height;
+	int				z;
 	t_texture		texture;
 	t_entity		entity;
 }					t_tile;
@@ -37,8 +37,8 @@ typedef struct		s_map
 {
 	char			*name;
 	t_tile			**tiles;
-	int				width;
-	int				height;
+	int				w;
+	int				h;
 }					t_map;
 
 #endif

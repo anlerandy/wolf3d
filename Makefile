@@ -15,7 +15,7 @@ SRC_PATH = srcs/
 OBJ_PATH = objects/
 SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   pause.c ft_loading.c map.c fill_tiles_steps.c map_clear.c \
-		   player.c game.c
+		   player.c game.c init_tiles.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 ##CC = gcc $(FLAG)

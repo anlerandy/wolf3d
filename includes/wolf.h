@@ -133,6 +133,7 @@ void				draw_pause(t_data *data);
 void				map_clear(t_data *data);
 
 void				init_player(t_data *data);
+void				init_tiles(t_data *data);
 void				draw_map(t_data *data);
 
 #endif
