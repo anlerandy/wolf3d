@@ -35,6 +35,12 @@ void		step_two(t_data *data, char *line, int i)
 	int hgt;
 
 	j = 0;
+	if (data->map.w != ft_strlen(line))
+	{
+		debug(data->debug, "Largeur incorrecte dans HEIGHT, ligne : ");
+		debug(data->debug, ft_itoa(i));
+		usage(4);
+	}
 	while (line[j])
 	{
 		if (line[j] != ' ')

@@ -15,8 +15,14 @@
 static void		get_size(t_data *data, char *line, int *w, int *h)
 {
 	*h += 1;
-	if (*w < ft_strlen(line))
+	if (!*w)
 		*w = ft_strlen(line);
+	if (*w != ft_strlen(line))
+	{
+		debug(data->debug, "Largeur incorrecte dans TEXTURE, ligne : ");
+		debug(data->debug, ft_itoa(*h));
+		usage(4);
+	}
 }
 
 static int		verify_file(t_data *data, char *filename, int *w, int *h)
