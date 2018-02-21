@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 21:44:30 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/21 11:04:13 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ typedef struct		s_intro_list
 	int				auth;
 	int				fin;
 }					t_intro;
+
+typedef struct		s_verifyfile
+{
+	int				fd;
+	char			*line;
+	int				step;
+}					t_verifyfile;
 
 typedef struct		s_frame
 {
@@ -89,6 +96,7 @@ typedef struct		s_data
 	t_frame			frame;
 	t_frame			fade;
 	t_frame			tmp;
+	t_frame			minimap;
 	int				fade_c;
 	int				part;
 	t_intro			intro;
@@ -133,7 +141,9 @@ void				draw_pause(t_data *data);
 void				map_clear(t_data *data);
 
 void				init_player(t_data *data);
-void				init_tiles(t_data *data);
+void				init_tiles(t_data *data, int *step);
 void				draw_map(t_data *data);
+
+void				draw_minimap(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 21:40:16 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/21 11:06:24 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,28 @@ static void		get_size(t_data *data, char *line, int *w, int *h)
 
 static int		verify_file(t_data *data, char *filename, int *w, int *h)
 {
-	int		fd;
-	char	*line;
-	int		step;
+	t_verifyfile v;
 
-	step = 0;
+	v.step = 0;
 	debug(data->debug, "Vérification de la map.");
-	if ((fd = open(filename, O_RDONLY)) > 0)
+	if ((v.fd = open(filename, O_RDONLY)) > 0)
 	{
-		while (get_next_line(fd, &line) == 1)
+		while (get_next_line(v.fd, &v.line) == 1)
 		{
-			if (ft_strcmp(line, "TEXTURE:") == 0 && step == 0)
-				step = 1;
-			else if (ft_strcmp(line, "HEIGHT:") == 0 && step == 1)
-				step = 2;
-			else if (ft_strcmp(line, "OBJ:") == 0 && step == 2)
-				step = 3;
-			else if (step == 1)
-				get_size(data, line, w, h);
-			ft_strdel(&line);
+			if (ft_strcmp(v.line, "TEXTURE:") == 0 && v.step == 0)
+				v.step = 1;
+			else if (ft_strcmp(v.line, "HEIGHT:") == 0 && v.step == 1)
+				v.step = 2;
+			else if (ft_strcmp(v.line, "OBJ:") == 0 && v.step == 2)
+				v.step = 3;
+			else if (v.step == 1)
+				get_size(data, v.line, w, h);
+			ft_strdel(&v.line);
 		}
-		ft_strdel(&line);
-		close(fd);
+		ft_strdel(&v.line);
+		close(v.fd);
 	}
-	if (step == 3)
+	if (v.step == 3)
 		return (1);
 	else
 		return (0);
@@ -90,8 +88,7 @@ static	void	fill_tiles(t_data *data, char *filename)
 
 	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
-		step = 0;
-		init_tiles(data);
+		init_tiles(data, &step);
 		while (get_next_line(fd, &line) == 1)
 		{
 			if (detect_step(data, line, &i, &step) == 0)

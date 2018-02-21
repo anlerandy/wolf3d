@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tiles.c                                       :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 09:48:45 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/21 10:59:33 by acourtin         ###   ########.fr       */
+/*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
+/*   Updated: 2018/02/21 10:56:46 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void			init_tiles(t_data *data, int *step)
+void			draw_minimap(t_data *data)
 {
-	int i;
-
-	i = 0;
-	*step = 0;
-	while (i < data->map.w * data->map.h)
-	{
-		data->map.tiles[i / data->map.w][i % data->map.w].z = 0;
-		data->map.tiles[i / data->map.w][i % data->map.w].texture = WOOD;
-		data->map.tiles[i / data->map.w][i % data->map.w].entity = NONE;
-		i++;
-	}
+	data->minimap.img = ft_intset(data->minimap.img, 0x00000000, 300 * 300);
+	((int*)data->minimap.img)[310] = 0x00FF0000;
 }

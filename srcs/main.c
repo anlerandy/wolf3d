@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 15:01:14 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/21 10:57:22 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	set_img(t_data *data)
 			&(data->tmp.s_l), &(data->tmp.ndia));
 	data->tmp.img = ft_intset(data->tmp.img, 0xff000000, data->win_w *
 			data->win_h);
+	data->minimap.pimg = mlx_new_image(data->mlx, 300, 300);
+	data->minimap.img = mlx_get_data_addr(data->minimap.pimg, \
+			&(data->minimap.bpp),
+			&(data->minimap.s_l), &(data->minimap.ndia));
+	data->minimap.img = ft_intset(data->minimap.img, 0x00000000, 300 * 300);
 	if (!data->frame.img || !data->frame.pimg)
 		usage(2);
 }
