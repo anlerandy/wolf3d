@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 21:37:51 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/21 12:07:10 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void		step_three(t_data *data, char *line, int i)
 		if (line[j] == 'J')
 		{
 			ent = PLAYER_START;
-			data->player.pos.x = j;
-			data->player.pos.y = i;
+			data->player.pos.x = j + 0.5;
+			data->player.pos.y = i + 0.5;
 		}
 		else
 			ent = NONE;
