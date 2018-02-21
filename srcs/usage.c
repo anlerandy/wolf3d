@@ -18,6 +18,7 @@ void	usage(int c)
 	c == 2 ? ft_putendl("Initialisation MLX échoué.") : c;
 	c == 3 ? ft_putendl("Texture invalide. Échec de chargement texture.") : c;
 	c == 4 ? ft_putendl("Map invalide. La map n'est pas compatible.") : c;
+	c == 5 ? ft_putendl("Map invalide. Aucune entitee PLAYER_START.") : c;
 	c == 42 ? ft_putendl("WolfEngine a correctement fermé.") : c;
 	exit(0);
 }

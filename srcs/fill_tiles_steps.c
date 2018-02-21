@@ -70,6 +70,7 @@ void		step_three(t_data *data, char *line, int i)
 			ent = PLAYER_START;
 			data->player.pos.x = j + 0.5;
 			data->player.pos.y = i + 0.5;
+			data->player.pos.z = 0;
 		}
 		else
 			ent = NONE;

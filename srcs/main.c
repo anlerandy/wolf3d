@@ -34,6 +34,7 @@ void	set_data(t_data *data)
 	data->flag = 0;
 	data->load_ani = 0;
 	data->intro.launched = 0;
+	data->player.pos.z = -42;
 	data->game_state = MENU;
 }
 

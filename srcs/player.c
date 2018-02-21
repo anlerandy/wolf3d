@@ -15,6 +15,8 @@
 void		init_player(t_data *data)
 {
 	debug(data->debug, "Initialisation de PLAYER.");
+	if (data->player.pos.z == -42)
+		usage(5);
 	data->player.hp = 100;
 	data->player.end = 100;
 	data->player.rot = 0;
