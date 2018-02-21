@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/21 13:28:28 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/21 14:05:47 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ void		init_player(t_data *data)
 
 void		loop_player(t_data *data)
 {
+	if (data->player.pos.x < 0)
+		data->player.pos.x = 0;
+	if (data->player.pos.y < 0)
+		data->player.pos.y = 0;
+	if (data->player.pos.x > 95)
+		data->player.pos.x = 95;
+	if (data->player.pos.y > 95)
+		data->player.pos.y = 95;
 	data->player.rotx = sin((data->player.rot / 180) * M_PI);
 	data->player.roty = cos((data->player.rot / 180) * M_PI);
+}
+
+void		move_player(t_data *data, int d)
+{
+	data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
+	data->player.pos.y += data->player.roty * PLAYER_SPEED * d;
 }
