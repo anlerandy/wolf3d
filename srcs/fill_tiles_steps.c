@@ -63,6 +63,13 @@ void		step_three(t_data *data, char *line, int i)
 	t_entity	ent;
 
 	j = 0;
+	if (i >= data->map.h || data->map.w < ft_strlen(line))
+	{
+		i >= data->map.h ? debug(data->debug, "Hauteur incorrecte de OBJ") :
+		debug(data->debug, "Largeur incorrecte dans OBJ, ligne : ");
+		data->map.w < ft_strlen(line) ? debug(data->debug, ft_itoa(i)) : i;
+		usage(4);
+	}
 	while (line[j])
 	{
 		if (line[j] == 'J')

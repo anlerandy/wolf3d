@@ -48,10 +48,9 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 		ft_strdel(&v.line);
 		close(v.fd);
 	}
-	if (v.step == 3)
-		return (1);
 	else
-		return (0);
+		usage(6);
+	return (v.step == 3);
 }
 
 static int		detect_step(t_data *data, char *line, int *i, int *step)

@@ -19,7 +19,10 @@ void	usage(int c)
 	c == 3 ? ft_putendl("Texture invalide. Échec de chargement texture.") : c;
 	c == 4 ? ft_putendl("Map invalide. La map n'est pas compatible.") : c;
 	c == 5 ? ft_putendl("Map invalide. Aucune entitee PLAYER_START.") : c;
+	c == 6 ? ft_putendl("Map introuvable.") : c;
 	c == 42 ? ft_putendl("WolfEngine a correctement fermé.") : c;
+	c != 42 ? ft_putstr("WolfEngine a fermé. ERREUR") : c;
+	c != 42 ? ft_putendl(ft_itoa(c)) : c;
 	exit(0);
 }
 
