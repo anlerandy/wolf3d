@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/21 12:10:04 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/21 13:35:02 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,35 @@
 static void		draw_player(t_data *data, double x, double y)
 {
 	int i;
-	int j;
 
-	j = -1;
-	x += 1;
-	y += 1;
-	while (++j < 3)
-	{
-		i = -1;
-		while (++i < 3)
-		{
-			((int*)data->minimap.img)[((int)x * 3 + i) + (((int)y * 3 + j) \
-				* 300)] = 0x00FF0000;
-		}
-	}
+	i = -1;
+	while (++i < 3 * 3)
+		((int*)data->minimap.img)[((int)x * 3 + (i % 3)) + (((int)y * 3 \
+				+ (i / 3)) * 300)] = 0x00FF0000;
+	i = -1;
+	while (++i < 3 * 3)
+		((int*)data->minimap.img)[((int)x * 3 + (i % 3) \
+			+ (int)(data->player.rotx * 3)) + (((int)y * 3 + (i / 3) \
+			+ (int)(data->player.roty * 3)) * 300)] = 0x0000FF00;
 }
 
 static void		draw_cube(t_data *data, int x, int y)
 {
 	int i;
-	int j;
 
-	j = -1;
-	while (++j < 4)
-	{
-		i = -1;
-		while (++i < 4)
-		{
-			((int*)data->minimap.img)[x * 4 + i + ((y * 4 + j) \
-				* 300)] = (data->map.tiles[y][x].z * 0x00111111) + 0x00555555;
-		}
-	}
+	i = -1;
+	while (++i < 4 * 4)
+		((int*)data->minimap.img)[x * 4 + (i % 4) + ((y * 4 + (i / 4)) \
+			* 300)] = (data->map.tiles[y][x].z * 0x00111111) + 0x00555555;
 }
 
 void			draw_minimap(t_data *data)
 {
 	int i;
-	int j;
 
-	j = -1;
-	data->minimap.img = ft_intset(data->minimap.img, 0x00000000, 300 * 300);
-	while (++j < data->map.h)
-	{
-		i = -1;
-		while (++i < data->map.w)
-		{
-			draw_cube(data, i, j);
-		}
-	}
-	draw_player(data, data->player.pos.x, data->player.pos.y);
+	i = -1;
+	data->minimap.img = ft_intset(data->minimap.img, 0xFF000000, 300 * 300);
+	while (++i < data->map.h * data->map.w)
+		draw_cube(data, i % data->map.w, i / data->map.w);
+	draw_player(data, data->player.pos.x + 1.0, data->player.pos.y + 1.0);
 }
