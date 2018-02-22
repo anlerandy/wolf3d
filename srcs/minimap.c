@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/22 19:25:59 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:54:54 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,14 @@ void			draw_minimap(t_data *data)
 	data->minimap.img = ft_intset(data->minimap.img, 0xFF000000, 300 * 300);
 	while (++i < data->map.h * data->map.w)
 		draw_cube(data, i % data->map.w, i / data->map.w);
+	if (data->debug == 1)
+	{
+		i = -1;
+		while (++i < 300 * 300)
+		{
+			if ((i / 300) % 4 == 0 || (i % 300) % 4 == 0)
+				((int*)data->minimap.img)[i] = 0x00000000;
+		}
+	}
 	draw_player(data, data->player.pos.x + 1.0, data->player.pos.y + 1.0);
 }
