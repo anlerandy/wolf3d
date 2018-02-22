@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/22 18:44:28 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/22 21:08:30 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int			fade_to(void *param)
 					0, 0);
 		if (data->intro.fin == 1)
 			draw_menu(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 	}
 	if (data->game_state == GAME || data->game_state == PAUSE)
 		ingame(data);

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 19:21:41 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/22 23:38:03 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,18 @@ void			init_menu(t_data *data)
 
 void			draw_menu(t_data *data)
 {
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 0)), 300, 0x00FFFFFF, "MAP1");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 1)), 325, 0x00FFFFFF, "MAP2");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 2)), 350, 0x00FFFFFF, "MAP3");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 3)), 375, 0x00FFFFFF, "MAP4");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 4)), 400, 0x00FFFFFF, "MAP5");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 5)), 425, 0x00FFFFFF, "MAP6");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 6)), 450, 0x00FFFFFF, "MAP7");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 7)), 475, 0x00FFFFFF, "MAP8");
-	mlx_string_put(data->mlx, data->win, 675 + (25 *
-				(data->menu.selection == 8)), 500, 0x00FFFFFF, "QUIT");
-	mlx_string_put(data->mlx, data->win, 650, 300 + 25 * data->menu.selection, \
-		0x00FF0A0A, ">>");
+	ft_intset(data->tmp.img, 0xff000000, data->win_h * data->win_w);
+	ft_type(data, " ", 650, 300 + 50 * data->menu.selection);
+	ft_type(data, "MAP1", 615 + (25 * (data->menu.selection == 0)), 300);
+	ft_type(data, "MAP2", 615 + (25 * (data->menu.selection == 1)), 350);
+	ft_type(data, "MAP3", 615 + (25 * (data->menu.selection == 2)), 400);
+	ft_type(data, "MAP4", 615 + (25 * (data->menu.selection == 3)), 450);
+	ft_type(data, "MAP5", 615 + (25 * (data->menu.selection == 4)), 500);
+	ft_type(data, "MAP6", 615 + (25 * (data->menu.selection == 5)), 550);
+	ft_type(data, "MAP7", 615 + (25 * (data->menu.selection == 6)), 600);
+	ft_type(data, "MAP8", 615 + (25 * (data->menu.selection == 7)), 650);
+	ft_type(data, "MAP9", 615 + (25 * (data->menu.selection == 8)), 700);
+	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 }
 
 void			execute_menu(t_data *data)

@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_typo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/22 20:41:47 by alerandy          #+#    #+#             */
+/*   Updated: 2018/02/22 23:34:05 by alerandy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "wolf.h"
+
+static void	draw_type(t_data *data, char c, int x, int y)
+{
+	static t_xpm	font;
+	static int		s = 0;
+	int				i;
+	int				j;
+	int				b;
+
+	b = (c - 31) / 10;
+	j = -1;
+	if (!s)
+		font = xpm_create(data, "./xpm/typo01.xpm", 450, 450);
+	s = 1;
+	while (++j < 45)
+	{
+		i = -1;
+		while (++i < 45)
+		{
+			((int*)(data->tmp.img))[x + i + ((y + j) * data->win_w)] =
+				font.img[(((c - 31) % 10) * 45 + i) + ((b * 45) + j + 3) * 450];
+		}
+	}
+}
+
+void		ft_type(t_data *data, char *str, int x, int y)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		draw_type(data, str[i], x + (i * 45), y);
+		i++;
+	}
+}
