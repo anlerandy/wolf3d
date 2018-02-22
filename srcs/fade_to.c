@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/21 10:39:48 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:53:55 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	ingame(t_data *data)
 	if (data->game_state == GAME)
 	{
 		draw_map(data);
+		draw_minimap(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->minimap.pimg, \
 				10, 10);

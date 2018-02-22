@@ -6,13 +6,13 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 16:20:48 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 03:33:41 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:55:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	set_load(t_data *data, t_frame *right, t_frame *left)
+void		set_load(t_data *data, t_frame *right, t_frame *left)
 {
 	static t_xpm	load;
 	static int		x = 0;
@@ -34,7 +34,16 @@ void	set_load(t_data *data, t_frame *right, t_frame *left)
 	xpm_draw_img(left, load, 0, 0);
 }
 
-void	loading(t_data *data)
+static void	put_all(t_data *data, int i, t_frame right, t_frame left)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->minimap.pimg, \
+				10, 10);
+	mlx_put_image_to_window(data->mlx, data->win, right.pimg, 1400 - i, 0);
+	mlx_put_image_to_window(data->mlx, data->win, left.pimg, -700 + i, 0);
+}
+
+void		loading(t_data *data)
 {
 	t_frame	right;
 	t_frame	left;
@@ -54,15 +63,13 @@ void	loading(t_data *data)
 	{
 		data->load_ani -= DOORSPEED;
 		i = data->load_ani < 0 ? 0 : data->load_ani;
-		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-		mlx_put_image_to_window(data->mlx, data->win, right.pimg, 1400 - i, 0);
-		mlx_put_image_to_window(data->mlx, data->win, left.pimg, -700 + i, 0);
+		put_all(data, i, right, left);
 	}
 	mlx_destroy_image(data->mlx, left.pimg);
 	mlx_destroy_image(data->mlx, right.pimg);
 }
 
-void	loading2(t_data *data)
+void		loading2(t_data *data)
 {
 	t_frame	right;
 	t_frame	left;
@@ -82,9 +89,7 @@ void	loading2(t_data *data)
 	{
 		data->load_ani -= DOORSPEED;
 		i = data->load_ani < 0 ? 0 : data->load_ani;
-		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-		mlx_put_image_to_window(data->mlx, data->win, right.pimg, 1400 - i, 0);
-		mlx_put_image_to_window(data->mlx, data->win, left.pimg, -700 + i, 0);
+		put_all(data, i, right, left);
 		i == 0 ? data->loading = 0 : i;
 	}
 	mlx_destroy_image(data->mlx, left.pimg);
