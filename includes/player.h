@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/21 14:01:16 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:36:20 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct			s_pos
 	double				z;
 }						t_pos;
 
+typedef struct			s_ray
+{
+	double				x;
+	double				y;
+}						t_ray;
+
 typedef struct			s_player
 {
 	int					hp;
@@ -31,6 +37,7 @@ typedef struct			s_player
 	double				rotx;
 	double				roty;
 	t_pos				pos;
+	t_ray				r[1400];
 }						t_player;
 
 #endif
