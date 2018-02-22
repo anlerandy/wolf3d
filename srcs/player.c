@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/22 20:33:34 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/22 22:58:04 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,16 @@ void		loop_player(t_data *data)
 		data->player.pos.x = 0;
 	if (data->player.pos.y < 0)
 		data->player.pos.y = 0;
-	if (data->player.pos.x > 95)
-		data->player.pos.x = 95;
-	if (data->player.pos.y > 95)
-		data->player.pos.y = 95;
+	if (data->player.pos.x > 97.5)
+		data->player.pos.x = 97.5;
+	if (data->player.pos.y > 97.5)
+		data->player.pos.y = 97.5;
 	data->player.rotx = sin((data->player.rot / 180) * M_PI);
 	data->player.roty = cos((data->player.rot / 180) * M_PI);
 	while (++i < data->win_w)
-	{
-		rotx = sin(((data->player.rot + (i * 0.06) - 45) / 180) * M_PI);
-		roty = cos(((data->player.rot + (i * 0.06) - 45) / 180) * M_PI);
-		data->player.r[i].x = data->player.pos.x + (rotx * 4);
-		data->player.r[i].y = data->player.pos.y + (roty * 4);
-	}
+		send_ray(data, &data->player.r[i], sin(((data->player.rot + (i * 0.06) \
+			- 45) / 180) * M_PI), cos(((data->player.rot + (i * 0.06) - 45) \
+			/ 180) * M_PI));
 }
 
 void		move_player(t_data *data, int d)
