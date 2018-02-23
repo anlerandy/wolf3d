@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 05:21:48 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 18:13:46 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,7 @@ int		press(int key, void *param)
 	data = (t_data *)param;
 	data->intro.fin ? menu_choice(key, data) : key;
 	key == KEY_ESCAPE ? usage(42) : key;
-	if (data->game_state == GAME)
-	{
-		key == KEY_LEFT ? data->player.rot += PLAYER_ROT : key;
-		key == KEY_RIGHT ? data->player.rot -= PLAYER_ROT : key;
-		key == KEY_UP ? move_player(data, 1) : key;
-		key == KEY_DOWN ? move_player(data, -1) : key;
-	}
+	ft_player_input(data, key, 1);
 	if (key == KEY_ENTER && data->intro.fin == 1 && data->game_state == MENU)
 		execute_menu(data);
 	if (key == KEY_F10 || key == KEY_TILDE)
@@ -69,6 +63,7 @@ int		release(int key, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	(void)key;
+	if (data->game_state == GAME)
+		ft_player_input(data, key, 0);
 	return (0);
 }
