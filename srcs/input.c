@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 19:22:36 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 21:26:02 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	menu_choice(int key, t_data *data)
 	if (data->game_state == MENU)
 	{
 		data->menu.selection += -(key == KEY_UP) + (key == KEY_DOWN);
-		data->menu.selection == 9 ? data->menu.selection = 0 : key;
-		data->menu.selection == -1 ? data->menu.selection = 8 : key;
+		data->menu.selection == 4 ? data->menu.selection = 0 : key;
+		data->menu.selection == -1 ? data->menu.selection = 3 : key;
 	}
 	if ((data->game_state == GAME || data->game_state == PAUSE) && key == KEY_P
 	&& data->loading != 3)

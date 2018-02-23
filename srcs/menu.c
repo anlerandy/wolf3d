@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 03:37:03 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 21:26:45 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void			draw_menu(t_data *data)
 	data->tmp.img = ft_intset(data->tmp.img, 0xff000000,
 			data->win_h * data->win_w);
 	ft_type(data, ">", 560, 300 + 50 * data->menu.selection);
-	ft_type(data, "MAP1", 600 + (25 * (data->menu.selection == 0)), 300);
+	ft_type(data, "map1", 600 + (25 * (data->menu.selection == 0)), 300);
 	ft_type(data, "MAP2", 600 + (25 * (data->menu.selection == 1)), 350);
-	ft_type(data, "MAP3", 600 + (25 * (data->menu.selection == 2)), 400);
+	ft_type(data, "Map3", 600 + (25 * (data->menu.selection == 2)), 400);
 	ft_type(data, "MAP4", 600 + (25 * (data->menu.selection == 3)), 450);
-	ft_type(data, "MAP5", 600 + (25 * (data->menu.selection == 4)), 500);
-	ft_type(data, "MAP6", 600 + (25 * (data->menu.selection == 5)), 550);
-	ft_type(data, "MAP7", 600 + (25 * (data->menu.selection == 6)), 600);
-	ft_type(data, "MAP8", 600 + (25 * (data->menu.selection == 7)), 650);
-	ft_type(data, "MAP9", 600 + (25 * (data->menu.selection == 8)), 700);
+//	ft_type(data, "MAP5", 600 + (25 * (data->menu.selection == 4)), 500);
+//	ft_type(data, "MAP6", 600 + (25 * (data->menu.selection == 5)), 550);
+//	ft_type(data, "MAP7", 600 + (25 * (data->menu.selection == 6)), 600);
+//	ft_type(data, "MAP8", 600 + (25 * (data->menu.selection == 7)), 650);
+//	ft_type(data, "MAP9", 600 + (25 * (data->menu.selection == 8)), 700);
 	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 }
 
