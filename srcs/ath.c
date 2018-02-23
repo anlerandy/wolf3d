@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 18:30:22 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 18:46:37 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ void		draw_ath(t_data *data)
 {
 	char *amo;
 
-	amo = ft_itoa(data->player.amo / 10);
 	data->tmp.img = ft_intset(data->tmp.img, 0xff000000,
 			data->win_h * data->win_w);
 	ath_xpm(data);
 	draw_pv(data);
 	draw_end(data);
+	amo = ft_itoa(data->player.amo / 10);
 	ft_type(data, amo, 1260, 713);
-	free(amo);
+	ft_strdel(&amo);
 	amo = ft_itoa(data->player.amo % 10);
 	ft_type(data, amo, 1285, 713);
-	amo = ft_itoa(data->player.amo % 10);
+	ft_strdel(&amo);
 }

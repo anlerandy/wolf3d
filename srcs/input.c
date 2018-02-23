@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 18:13:46 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 18:51:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		press(int key, void *param)
 		data->debug = !data->debug ? 1 : 0;
 	key ? data->flag = 255 + 1 : key;
 	key && !data->intro.auth ? skip_to_menu(data) : key;
+	key == KEY_R ? data->player.amo = 10 : key;
 	return (0);
 }
 

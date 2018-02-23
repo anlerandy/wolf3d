@@ -6,15 +6,17 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 18:18:40 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 18:40:01 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define PLAYER_SPEED 0.25
-# define PLAYER_ROT 10
+# define PLAYER_SPEED 0.10
+# define PLAYER_ROT 2
+# define END_DECR 1
+# define END_INCR 1
 
 typedef struct			s_pos
 {
@@ -27,6 +29,7 @@ typedef struct			s_ray
 {
 	double				x;
 	double				y;
+	double				depth;
 }						t_ray;
 
 typedef struct			s_input
