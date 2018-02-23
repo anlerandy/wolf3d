@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/23 02:54:51 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/23 17:19:16 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRC_PATH = srcs/
 OBJ_PATH = objects/
 SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   pause.c ft_loading.c map.c fill_tiles_steps.c map_clear.c \
-		   player.c game.c init_tiles.c minimap.c ft_typo.c raycast.c ath.c
+		   player.c game.c init_tiles.c minimap.c ft_typo.c raycast.c ath.c \
+		   world.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 ##CC = gcc $(FLAG)

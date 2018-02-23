@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 06:41:10 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 17:19:53 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void				draw_map(t_data *data);
 
 void				draw_minimap(t_data *data);
 void				draw_ath(t_data *data);
+void				draw_wall(t_data *data, t_ray ray, int slice);
 
 void				send_ray(t_data *data, t_ray *r, double rotx, double roty);
 

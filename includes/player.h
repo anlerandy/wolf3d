@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 03:45:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 18:04:41 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PLAYER_H
 
 # define PLAYER_SPEED 0.5
-# define PLAYER_ROT 10
+# define PLAYER_ROT 4
 
 typedef struct			s_pos
 {
@@ -27,6 +27,7 @@ typedef struct			s_ray
 {
 	double				x;
 	double				y;
+	double				depth;
 }						t_ray;
 
 typedef struct			s_player
