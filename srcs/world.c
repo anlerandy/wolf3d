@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 18:17:38 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/23 19:29:27 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	h = 0;
 	h2 = 1;
 	d = (100 - ray.depth) * 4;
-	color = 0x00010101 * (d / 2);
+	color = 0x00010000 * (d / 2);
 	while (h < d * 0.8)
 	{
 		((int*)data->frame.img)[1400 - slice + (((int)(data->win_h / 2) \

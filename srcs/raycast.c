@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 18:17:39 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/23 19:28:51 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static void		loop_ray(t_data *data, t_ray *r, double rotx, double roty)
 {
-	((int*)data->minimap.img)[(int)((r->x * 4)) + ((int)((r->y * 4)) * 300)] = 0x0000FF00;
-	r->x += rotx;
-	r->y += roty;
+	((int*)data->minimap.img)[(int)((r->x * 4)) \
+		+ ((int)((r->y * 4)) * 300)] = 0x0000FF00;
+	r->x += rotx / 1.5;
+	r->y += roty / 1.5;
 	r->depth += 1.0;
 	//r->x = floor(r->x);
 	//r->y = floor(r->y);
@@ -34,7 +35,8 @@ void			send_ray(t_data *data, t_ray *r, double rotx, double roty)
 	r->x = data->player.pos.x;
 	r->y = data->player.pos.y;
 	r->depth = 0;
-	while ((r->x > 0 && r->x < 99 && r->y > 0 && r->y < 99) && check_z(data, r, rotx, roty) == 0)
+	while ((r->x > 0 && r->x < 99 && r->y > 0 && r->y < 99) \
+			&& check_z(data, r, rotx, roty) == 0)
 	//while (r->x > 0 && r->x < 100 && r->y > 0 && r->y < 100)
 		loop_ray(data, r, rotx, roty);
 	if (r->x < 0)
