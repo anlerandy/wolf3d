@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 01:37:02 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/21 13:58:40 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/23 05:21:48 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	menu_choice(int key, t_data *data)
 {
-	if (!data->intro.fin)
-		return ;
 	if (data->game_state == MENU)
 	{
 		data->menu.selection += -(key == KEY_UP) + (key == KEY_DOWN);
@@ -36,6 +34,11 @@ void	menu_choice(int key, t_data *data)
 	}
 	if (key == KEY_ENTER && data->game_state == PAUSE)
 		execute_pause(data);
+	key == KEY_PAD_ADD && data->player.hp < 100 ? data->player.hp++ : key;
+	key == KEY_PAD_MULTIPLY && data->player.hp < 91 ? data->player.hp += 10 :
+		key;
+	key == KEY_PAD_SUB && data->player.hp > 0 ? data->player.hp-- : key;
+	key == KEY_PAD_DIVIDE && data->player.hp > 10 ? data->player.hp -= 10 : key;
 }
 
 int		press(int key, void *param)
@@ -54,7 +57,7 @@ int		press(int key, void *param)
 	}
 	if (key == KEY_ENTER && data->intro.fin == 1 && data->game_state == MENU)
 		execute_menu(data);
-	if (key == KEY_F10)
+	if (key == KEY_F10 || key == KEY_TILDE)
 		data->debug = !data->debug ? 1 : 0;
 	key ? data->flag = 255 + 1 : key;
 	key && !data->intro.auth ? skip_to_menu(data) : key;

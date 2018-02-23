@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:41:47 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/22 23:34:05 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 02:15:32 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@ static void	draw_type(t_data *data, char c, int x, int y)
 	int				j;
 	int				b;
 
-	b = (c - 31) / 10;
 	j = -1;
 	if (!s)
-		font = xpm_create(data, "./xpm/typo01.xpm", 450, 450);
+		font = xpm_create(data, "./xpm/typo01.xpm", 550, 550);
 	s = 1;
-	while (++j < 45)
+	while (++j < 55)
 	{
 		i = -1;
-		while (++i < 45)
+		while (++i < 55)
 		{
-			((int*)(data->tmp.img))[x + i + ((y + j) * data->win_w)] =
-				font.img[(((c - 31) % 10) * 45 + i) + ((b * 45) + j + 3) * 450];
+			b = (((c - 31) % 10) * 55 + i) + ((((c - 31) / 10) * 55) + j) * 550;
+			if (font.img[b] != 0xff00ffff)
+				((int*)(data->tmp.img))[x + i + ((y + j) * data->win_w)] =
+					font.img[b];
 		}
 	}
 }
@@ -43,7 +44,8 @@ void		ft_type(t_data *data, char *str, int x, int y)
 	i = 0;
 	while (str[i])
 	{
-		draw_type(data, str[i], x + (i * 45), y);
+		str[i] < 32 || str[i] > 125 ? (str[i] = (char)131) : str[i];
+		draw_type(data, str[i], x + (i * 55), y);
 		i++;
 	}
 }

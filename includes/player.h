@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/22 19:36:20 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/23 03:45:57 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct			s_ray
 typedef struct			s_player
 {
 	int					hp;
+	int					amo;
 	int					end;
 	double				rot;
 	double				rotx;
