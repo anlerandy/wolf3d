@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 18:33:55 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/23 19:18:49 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void				map_clear(t_data *data);
 
 void				init_player(t_data *data);
 void				loop_player(t_data *data);
-void				move_player(t_data *data, int d);
+int					move_player(t_data *data, int d);
 void				ft_player_input(t_data *data, int key, int pressing);
 void				init_tiles(t_data *data, int *step);
 void				draw_map(t_data *data);

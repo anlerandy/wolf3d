@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 15:05:12 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 15:02:34 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/23 19:24:25 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void			draw_pause(t_data *data)
 	static t_xpm	pause;
 	static int		x = 0;
 
+	data->player.k_val.walk = 0;
+	data->player.k_val.rot = 0;
+	data->player.k_val.run = 0;
+	data->player.k_val.fire = 0;
 	if (!x)
 		pause = xpm_create(data, "./xpm/pause.xpm", 1400, 800);
 	x = 1;
