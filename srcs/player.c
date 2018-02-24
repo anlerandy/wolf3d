@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 19:18:32 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/24 13:41:41 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ int		move_player(t_data *data, int d)
 	x = floor(data->player.pos.x + data->player.rotx * PLAYER_SPEED * d);
 	y = floor(data->player.pos.y + data->player.roty * PLAYER_SPEED * d);
 //	La minimap fonctionne en case de 3 : Cette protection semble fonctionner.
-	if (data->map.tiles[y][x].z != 9)
+	if (data->map.tiles[y][x].z != 9 \
+			&& data->map.tiles[y][x - 1].z != 9 \
+			&& data->map.tiles[y][x + 1].z != 9 \
+			&& data->map.tiles[y - 1][x].z != 9 \
+			&& data->map.tiles[y + 1][x].z != 9)
 	{
 		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
 		data->player.pos.y += data->player.roty * PLAYER_SPEED * d;

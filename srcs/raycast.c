@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 20:18:43 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/24 13:20:11 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ static void		loop_ray(t_data *data, t_ray *r, double rotx, double roty)
 	r->x += rotx / 1.5;
 	r->y += roty / 1.5;
 	r->depth += 1.0;
-	//r->x = floor(r->x);
-	//r->y = floor(r->y);
 }
 
 static int		check_z(t_data *data, t_ray *r, double rotx, double roty)
 {
-	if (data->map.tiles[(int)(r->y)][(int)(r->x)].z > 0)
+	if (data->map.tiles[(int)(r->y)][(int)(r->x)].z > 0 \
+			|| data->map.tiles[(int)(r->y)][(int)(r->x - 0.5)].z > 0 \
+			|| data->map.tiles[(int)(r->y)][(int)(r->x + 0.5)].z > 0 \
+			|| data->map.tiles[(int)(r->y - 0.5)][(int)r->x].z > 0 \
+			|| data->map.tiles[(int)(r->y + 0.5)][(int)r->x].z > 0)
 		return (1);
 	return (0);
 }
@@ -39,6 +41,8 @@ void			send_ray(t_data *data, t_ray *r, double rotx, double roty)
 			&& check_z(data, r, rotx, roty) == 0)
 	//while (r->x > 0 && r->x < 100 && r->y > 0 && r->y < 100)
 		loop_ray(data, r, rotx, roty);
+	//r->x = floor(r->x);
+	//r->y = floor(r->y);
 	if (r->x < 0)
 		r->x = 0;
 	if (r->y < 0)
