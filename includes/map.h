@@ -6,12 +6,14 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 16:44:45 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:30:06 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
+
+# define DPI_FAC 60
 
 typedef enum		e_texture
 {

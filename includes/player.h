@@ -6,17 +6,18 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 20:18:56 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/24 19:15:29 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define PLAYER_SPEED 0.10
+# define PLAYER_SPEED 0.06
 # define PLAYER_ROT 2
-# define END_DECR 1
+# define END_DECR 0.3
 # define END_INCR 1
+# define RECO_INCR 0.8
 
 typedef struct			s_pos
 {
@@ -45,7 +46,8 @@ typedef struct			s_player
 {
 	int					hp;
 	int					amo;
-	int					end;
+	double				end;
+	double				recover;
 	double				rot;
 	double				rotx;
 	double				roty;

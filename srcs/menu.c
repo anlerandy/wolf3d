@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 21:26:45 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:06:51 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void			draw_menu(t_data *data)
 	ft_type(data, "MAP2", 600 + (25 * (data->menu.selection == 1)), 350);
 	ft_type(data, "MAP3", 600 + (25 * (data->menu.selection == 2)), 400);
 	ft_type(data, "MAP4", 600 + (25 * (data->menu.selection == 3)), 450);
-//	ft_type(data, "MAP5", 600 + (25 * (data->menu.selection == 4)), 500);
+	ft_type(data, "MAP5", 600 + (25 * (data->menu.selection == 4)), 500);
+	ft_type(data, "QUIT", 600 + (25 * (data->menu.selection == 5)), 550);
 //	ft_type(data, "MAP6", 600 + (25 * (data->menu.selection == 5)), 550);
 //	ft_type(data, "MAP7", 600 + (25 * (data->menu.selection == 6)), 600);
 //	ft_type(data, "MAP8", 600 + (25 * (data->menu.selection == 7)), 650);
@@ -52,7 +53,7 @@ void			draw_menu(t_data *data)
 
 void			execute_menu(t_data *data)
 {
-	if (data->menu.selection == 8)
+	if (data->menu.selection == 5)
 		usage(42);
 	else
 	{

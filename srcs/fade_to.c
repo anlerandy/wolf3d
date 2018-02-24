@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 19:21:29 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:23:32 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ static void	input_loop(t_data *data)
 			data->player.k_val.walk == 1 ? mov = move_player(data, 2) : 0;
 			data->player.k_val.walk == 1 && mov ? data->player.end -=
 				END_DECR : 0;
-			data->player.end == 0 ? data->player.end = -200 : 0;
+			mov ? data->player.recover = -100 : 0;
 		}
-		if (!mov && data->player.end < 100)
+		if (!mov && data->player.end < 100 && data->player.recover >= 0)
 			data->player.end += END_INCR;
 		data->player.k_val.fire == 1 && data->player.amo > 0 ?
 			data->player.amo-- : 0;
+		data->player.recover += data->player.recover < 0 ? RECO_INCR : 0;
 	}
 }
 
@@ -69,7 +70,8 @@ static void	ingame(t_data *data)
 	if (data->game_state == GAME)
 	{
 		input_loop(data);
-		draw_map(data);
+		if (data->player.k_val.walk || data->player.k_val.rot || data->player.k_val.fire)
+			draw_map(data);
 		draw_ath(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);

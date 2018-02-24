@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 13:41:41 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:50:49 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void		loop_player(t_data *data)
 	data->player.roty = cos((data->player.rot / 180) * M_PI);
 	while (++i < data->win_w)
 	{
-		send_ray(data, &data->player.r[i], sin(((data->player.rot + (i * 0.06) \
-			- 45) / 180) * M_PI), cos(((data->player.rot + (i * 0.06) - 45) \
-			/ 180) * M_PI));
+		send_ray(data, &data->player.r[i], sin(((data->player.rot +
+							(i * 60.0 / 1400) - 30) / 180) * M_PI),
+				cos(((data->player.rot + (i * 60. / 1400) - 30) / 180) * M_PI));
 		draw_wall(data, data->player.r[i], i);
 	}
 }
@@ -67,8 +67,8 @@ int		move_player(t_data *data, int d)
 	x = floor(data->player.pos.x + data->player.rotx * PLAYER_SPEED * d);
 	y = floor(data->player.pos.y + data->player.roty * PLAYER_SPEED * d);
 //	La minimap fonctionne en case de 3 : Cette protection semble fonctionner.
-	if (data->map.tiles[y][x].z != 9 \
-			&& data->map.tiles[y][x - 1].z != 9 \
+	if (data->map.tiles[y][x].z != 9)
+		//	&& data->map.tiles[y][x - 1].z != 9 \
 			&& data->map.tiles[y][x + 1].z != 9 \
 			&& data->map.tiles[y - 1][x].z != 9 \
 			&& data->map.tiles[y + 1][x].z != 9)
