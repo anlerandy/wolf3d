@@ -45,7 +45,7 @@ void		ft_type(t_data *data, char *str, int x, int y)
 	while (str[i])
 	{
 		str[i] < 32 || str[i] > 125 ? (str[i] = (char)131) : str[i];
-		draw_type(data, str[i], x + (i * 55), y);
+		draw_type(data, str[i], x + (i * 40), y);
 		i++;
 	}
 }
