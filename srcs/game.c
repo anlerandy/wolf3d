@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 19:24:52 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/24 20:56:12 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void		draw_map(t_data *data)
 		(data->win_h / 2));
 	draw_minimap(data);
 	loop_player(data);
+	loop_fps(data);
 }

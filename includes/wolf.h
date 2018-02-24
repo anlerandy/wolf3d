@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 20:39:21 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/24 21:12:24 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "map.h"
 # include "player.h"
 # include <math.h>
+# include <time.h>
 
 # define WIN "WolfEngine 0.04"
 # define BLUR 0xF0000000
@@ -99,6 +100,9 @@ typedef struct		s_data
 	t_frame			minimap;
 	int				fade_c;
 	int				part;
+	int				actual_time;
+	int				last_time;
+	int				fps;
 	t_intro			intro;
 	t_menu			menu;
 	t_game_state	game_state;
@@ -154,5 +158,7 @@ void				draw_ath(t_data *data);
 void				draw_wall(t_data *data, t_ray ray, int slice);
 
 void				send_ray(t_data *data, t_ray *r, double rotx, double roty);
+void				loop_fps(t_data *data);
+int					get_actual_time(t_data *data);
 
 #endif

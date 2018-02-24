@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/02/23 18:35:12 by alerandy         ###   ########.fr        #
+#    Updated: 2018/02/24 21:17:21 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ OBJ_PATH = objects/
 SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   pause.c ft_loading.c map.c fill_tiles_steps.c map_clear.c \
 		   player.c game.c init_tiles.c minimap.c ft_typo.c raycast.c ath.c \
-		   player_input.c world.c
+		   player_input.c world.c time.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 ##CC = gcc $(FLAG)
-CC = gcc
-FLAG = -Wall -Werror -Wextra -g
+CC = gcc -O3
+FLAG = -Wall -Werror -Wextra -O3
 FRAME = -framework OpenGL -framework AppKit
 LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/23 18:46:37 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/24 21:19:10 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		ath_xpm(t_data *data)
 void		draw_ath(t_data *data)
 {
 	char *amo;
+	char *fps;
 
 	data->tmp.img = ft_intset(data->tmp.img, 0xff000000,
 			data->win_h * data->win_w);
@@ -95,5 +96,12 @@ void		draw_ath(t_data *data)
 	ft_strdel(&amo);
 	amo = ft_itoa(data->player.amo % 10);
 	ft_type(data, amo, 1285, 713);
+	if (data->debug)
+	{
+		ft_type(data, "FPS", 1000, 10);
+		fps = ft_itoa(data->fps);
+		ft_type(data, fps, 1150, 10);
+		ft_strdel(&fps);
+	}
 	ft_strdel(&amo);
 }
