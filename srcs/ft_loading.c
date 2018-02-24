@@ -40,6 +40,7 @@ static void	put_all(t_data *data, int i, t_frame right, t_frame left)
 	if (data->loading != 3)
 		mlx_put_image_to_window(data->mlx, data->win, data->minimap.pimg, \
 				10, 10);
+	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, right.pimg, 1400 - i, 0);
 	mlx_put_image_to_window(data->mlx, data->win, left.pimg, -700 + i, 0);
 }
