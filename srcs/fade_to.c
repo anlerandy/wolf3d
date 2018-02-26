@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 21:07:40 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 16:47:44 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static void	input_loop(t_data *data)
 		}
 		if (!mov && data->player.end < 100 && data->player.recover >= 0)
 			data->player.end += END_INCR;
-		data->player.k_val.fire == 1 && data->player.amo > 0 ?
-			data->player.amo-- : 0;
 		data->player.recover += data->player.recover < 0 ? RECO_INCR : 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 21:19:10 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:39:17 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,15 @@ void		ath_xpm(t_data *data)
 {
 	static t_xpm	ath;
 	static int		s;
-	int				y;
-	int				x;
+	int				i;
 
 	if (!s)
 		ath = xpm_create(data, "./xpm/ath.xpm", 1225, 75);
 	s = 1;
-	y = -1;
-	while (++y < 75)
-	{
-		x = -1;
-		while (++x < 1225)
-		{
-			((int*)(data->tmp.img))[x + 43 + ((y + 685) * data->win_w)] =
-				ath.img[x + (y * 1225)];
-		}
-	}
+	i = -1;
+	while (++i < 1225 * 75)
+		((int*)(data->tmp.img))[(i % 1225) + 43 + (((i / 1225) + 685) \
+			* data->win_w)] = ath.img[(i % 1225) + ((i / 1225) * 1225)];
 }
 
 void		draw_ath(t_data *data)
@@ -89,6 +82,7 @@ void		draw_ath(t_data *data)
 	data->tmp.img = ft_intset(data->tmp.img, 0xff000000,
 			data->win_h * data->win_w);
 	ath_xpm(data);
+	draw_gun_mod(data, data->player.gun_frame);
 	draw_pv(data);
 	draw_end(data);
 	amo = ft_itoa(data->player.amo / 10);

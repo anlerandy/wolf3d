@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/24 19:15:29 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:07:48 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define END_DECR 0.3
 # define END_INCR 1
 # define RECO_INCR 0.8
+# define GUN_ANIM 3
 
 typedef struct			s_pos
 {
@@ -46,6 +47,8 @@ typedef struct			s_player
 {
 	int					hp;
 	int					amo;
+	int					fired;
+	int					gun_frame;
 	double				end;
 	double				recover;
 	double				rot;

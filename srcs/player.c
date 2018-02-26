@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 18:50:49 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:36:10 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void		init_player(t_data *data)
 	data->player.hp = 100;
 	data->player.end = 100;
 	data->player.amo = 10;
+	data->player.fired = 0;
+	data->player.gun_frame = 0;
 	data->player.rot = 90.0;
 	data->player.rotx = 0.0;
 	data->player.roty = 0.0;
@@ -30,6 +32,33 @@ void		init_player(t_data *data)
 	{
 		data->player.r[i].x = 0;
 		data->player.r[i].y = 0;
+	}
+}
+
+static void	loop_gun(t_data *data)
+{
+	static float	timer = 0;
+
+
+	if (data->player.k_val.fire == 1 && data->player.amo > 0 && data->player.fired == 0)
+	{
+		data->player.amo--;
+		data->player.fired = 1;
+		data->player.gun_frame++;
+	}
+	else if (data->player.fired == 1 && data->player.gun_frame <= 12)
+	{
+		timer += GUN_ANIM;
+		if (timer >= 10)
+		{
+			timer = 0;
+			data->player.gun_frame++;
+			if (data->player.gun_frame == 13)
+			{
+				data->player.gun_frame = 0;
+				data->player.fired = 0;
+			}
+		}
 	}
 }
 
@@ -55,8 +84,9 @@ void		loop_player(t_data *data)
 		send_ray(data, &data->player.r[i], sin(((data->player.rot +
 							(i * 60.0 / 1400) - 30) / 180) * M_PI),
 				cos(((data->player.rot + (i * 60. / 1400) - 30) / 180) * M_PI));
-		draw_wall(data, data->player.r[i], i);
+		draw_wall(data, data->player.r[i], i + 1);
 	}
+	loop_gun(data);
 }
 
 int		move_player(t_data *data, int d)

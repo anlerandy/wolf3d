@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 21:12:24 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 16:25:03 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,7 @@ void				draw_wall(t_data *data, t_ray ray, int slice);
 void				send_ray(t_data *data, t_ray *r, double rotx, double roty);
 void				loop_fps(t_data *data);
 int					get_actual_time(t_data *data);
+
+void				draw_gun_mod(t_data *data, int frame);
 
 #endif

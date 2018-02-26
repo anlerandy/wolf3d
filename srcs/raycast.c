@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/24 20:37:10 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:47:21 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static void		loop_ray(t_data *data, t_ray *r, double rotx, double roty)
 	if (data->debug)
 		((int*)data->minimap.img)[(int)((r->x * 4)) \
 			+ ((int)((r->y * 4)) * 300)] = 0x0000FF00;
-	if (!i)
+//	if (!i)
 		r->x += (rotx) / DPI_FAC;
-	else if (i == 1)
+//	else if (i == 1)
 		r->y += (roty) / DPI_FAC;
 	i += 1;
 	i = i % 2;
-	r->depth += 0.5 / DPI_FAC;
+	r->depth += 1 / DPI_FAC;
 }
 
 static int		check_z(t_data *data, t_ray *r, double rotx, double roty)

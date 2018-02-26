@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/24 20:19:45 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:35:37 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	color =  0x000001 + ((int)(((100 - ray.depth) * 4) / 2));
 	d = sqrt(dist.x * dist.x + dist.y * dist.y);
 	d < 1 ? d = 1 : 0;
-	d = (398 / d);
+	d = (400 / d);
 	while (h < d)
 	{
 //		if (1400 - slice + (((int)(data->win_h / 2) + (int)h) * data->win_w) <
