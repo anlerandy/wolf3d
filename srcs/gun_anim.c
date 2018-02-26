@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 17:44:19 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 19:36:17 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 static void		draw_gun(t_data *data, int framex, int framey)
 {
+	static double	movx = 0.0;
+	static double	movy = 0.0;
 	static t_xpm	gun;
 	static int		s = 0;
 	int				i;
 
+	movx += data->player.k_val.walk * 0.3 + (data->player.k_val.run * 0.2) \
+		* (data->player.end > 0.0);
+	movy += data->player.k_val.walk * 0.2 + (data->player.k_val.run * 0.1) \
+		* (data->player.end > 0.0);
 	if (!s)
 		gun = xpm_create(data, "./xpm/doublebarrel.xpm", 2500, 1500);
 	s = 1;
@@ -25,8 +31,10 @@ static void		draw_gun(t_data *data, int framex, int framey)
 	while (++i < 500 * 500)
 	{
 		if (gun.img[(i % 500) + (framex * 500) + (((i / 500) + (framey * 500)) \
-			* 2500)] != 0x0000FFFF)
-			((int*)(data->tmp.img))[(i % 500) + 600 + (((i / 500) + 300) \
+			* 2500)] != 0x0000FFFF && (i / 500) + 300 - sin(movy) * 10 \
+			+ 10 < 800)
+			((int*)(data->tmp.img))[(int)((i % 500) + cos(movx) * 10 + 600) \
+				+ ((int)((i / 500) + 300 - sin(movy) * 10 + 10) \
 				* data->win_w)] = gun.img[(i % 500) + (framex * 500) \
 				+ (((i / 500) + (framey * 500)) * 2500)];
 	}
