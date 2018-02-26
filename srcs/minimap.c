@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 18:17:26 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/26 20:51:43 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void		draw_player(t_data *data, double x, double y)
 		((int*)data->minimap.img)[((int)((x - 1.25) * 4 + (i % 3))) \
 			+ (((int)((y - 1.25) * 4 + (i / 3))) * 300)] = 0x00FF0000;
 		if (!data->debug)
-			((int*)data->minimap.img)[((int)((x - 1.25) * 4 + (i % 3))) + (((int)((y - 1.25) * 4 + (i / 3))) * 300)] += MINI_OPAC & 0xFF000000;
+			((int*)data->minimap.img)[((int)((x - 1.25) * 4 + (i % 3))) +
+				(((int)((y - 1.25) * 4 + (i / 3))) * 300)] +=
+				MINI_OPAC & 0xFF000000;
 	}
 	/*i = -1;
 	while (++i < 3 * 3)
