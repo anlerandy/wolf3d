@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/26 17:36:10 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 20:44:42 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,10 @@ void		loop_player(t_data *data)
 	double	roty;
 
 	i = -1;
-	if (data->player.pos.x < 0)
-		data->player.pos.x = 0;
-	if (data->player.pos.y < 0)
-		data->player.pos.y = 0;
-	if (data->player.pos.x > 97.5)
-		data->player.pos.x = 97.5;
-	if (data->player.pos.y > 97.5)
-		data->player.pos.y = 97.5;
+	data->player.pos.x < 0 ? data->player.pos.x = 0 : 0;
+	data->player.pos.y < 0 ? data->player.pos.y = 0 : 0;
+	data->player.pos.x > 97.5 ? data->player.pos.x = 97.5 : 0;
+	data->player.pos.y > 97.5 ? data->player.pos.y = 97.5 : 0;
 	data->player.rotx = sin((data->player.rot / 180) * M_PI);
 	data->player.roty = cos((data->player.rot / 180) * M_PI);
 	while (++i < data->win_w)
@@ -96,12 +92,9 @@ int		move_player(t_data *data, int d)
 
 	x = floor(data->player.pos.x + data->player.rotx * PLAYER_SPEED * d);
 	y = floor(data->player.pos.y + data->player.roty * PLAYER_SPEED * d);
-//	La minimap fonctionne en case de 3 : Cette protection semble fonctionner.
-	if (data->map.tiles[y][x].z != 9)
-		//	&& data->map.tiles[y][x - 1].z != 9 \
-			&& data->map.tiles[y][x + 1].z != 9 \
-			&& data->map.tiles[y - 1][x].z != 9 \
-			&& data->map.tiles[y + 1][x].z != 9)
+	if (data->map.tiles[y][x].z != 9
+			&& data->map.tiles[y][(int)(data->player.pos.x)].z != 9 \
+			&& data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
 	{
 		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
 		data->player.pos.y += data->player.roty * PLAYER_SPEED * d;

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/23 17:16:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/26 18:17:26 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ static void		draw_player(t_data *data, double x, double y)
 
 	i = -1;
 	while (++i < 3 * 3)
+	{
 		((int*)data->minimap.img)[((int)((x - 1.25) * 4 + (i % 3))) \
 			+ (((int)((y - 1.25) * 4 + (i / 3))) * 300)] = 0x00FF0000;
+		if (!data->debug)
+			((int*)data->minimap.img)[((int)((x - 1.25) * 4 + (i % 3))) + (((int)((y - 1.25) * 4 + (i / 3))) * 300)] += MINI_OPAC & 0xFF000000;
+	}
 	/*i = -1;
 	while (++i < 3 * 3)
 		((int*)data->minimap.img)[((int)x * 3 + (i % 3) \
@@ -33,8 +37,13 @@ static void		draw_cube(t_data *data, int x, int y)
 
 	i = -1;
 	while (++i < 4 * 4)
+	{
 		((int*)data->minimap.img)[x * 4 + (i % 4) + ((y * 4 + (i / 4)) \
 			* 300)] = (data->map.tiles[y][x].z * 0x00111111) + 0x00555555;
+		if (!data->debug)
+			((int*)data->minimap.img)[x * 4 + (i % 4) + ((y * 4 + (i / 4)) \
+			* 300)]  += MINI_OPAC & 0xFF000000;
+	}
 }
 
 void			draw_minimap(t_data *data)
