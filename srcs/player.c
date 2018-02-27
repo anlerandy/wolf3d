@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/26 20:44:42 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:13:01 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static void	loop_gun(t_data *data)
 		data->player.fired = 1;
 		data->player.gun_frame++;
 	}
-	else if (data->player.fired == 1 && data->player.gun_frame <= 12)
+	else if (data->player.fired == 1 && data->player.gun_frame <= 13)
 	{
 		timer += GUN_ANIM;
 		if (timer >= 10)
 		{
 			timer = 0;
 			data->player.gun_frame++;
-			if (data->player.gun_frame == 13)
+			if (data->player.gun_frame == 14)
 			{
 				data->player.gun_frame = 0;
 				data->player.fired = 0;

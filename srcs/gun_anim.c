@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 19:36:17 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:10:11 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void			draw_gun_mod(t_data *data, int frame)
 	int framex;
 	int framey;
 
-	if (frame >= 2)
-		frame++;
 	if (frame >= 7)
 		frame++;
 	if (frame > 9)

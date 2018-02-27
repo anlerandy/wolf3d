@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 17:07:48 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:14:25 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define END_DECR 0.3
 # define END_INCR 1
 # define RECO_INCR 0.8
-# define GUN_ANIM 3
+# define GUN_ANIM 2
 
 typedef struct			s_pos
 {
