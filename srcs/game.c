@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 16:38:42 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:33:44 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void		draw_skybox(t_data *data)
 	if (!s)
 	{
 		data->player.rot = 90;
-		sky = xpm_create(data, "./xpm/skybox.xpm", 2800, 400);
+		sky = xpm_create(data, "./xpm/skybox2.xpm", 1400, 400);
 	}
 	i = -1;
 	while (++i < 1400 * 400)
 		((int*)(data->frame.img))[(i % 1400) + ((i / 1400) \
 			* data->win_w)] = sky.img[(int)((i % 1400) - data->player.rot \
-			* 7.77) + ((i / 1400) * 2800)];
+			* 7.77) + ((i / 700) * 1400)];
 	if (!s)
 		debug(data->debug, "Premier dessin effectue.");
 	s = 1;

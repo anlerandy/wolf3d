@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/27 17:14:25 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:51:21 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct			s_input
 	int					run;
 	int					rot;
 	int					fire;
+	int					reload;
 	int					side;
 }						t_input;
 
@@ -47,7 +48,9 @@ typedef struct			s_player
 {
 	int					hp;
 	int					amo;
+	int					amo_chamber;
 	int					fired;
+	int					reloading;
 	int					gun_frame;
 	double				end;
 	double				recover;

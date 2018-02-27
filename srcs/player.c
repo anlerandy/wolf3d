@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 17:13:01 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 18:01:40 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void		init_player(t_data *data)
 		usage(5);
 	data->player.hp = 100;
 	data->player.end = 100;
-	data->player.amo = 10;
+	data->player.amo = 60;
+	data->player.amo_chamber = 1;
 	data->player.fired = 0;
+	data->player.reloading = 0;
 	data->player.gun_frame = 0;
 	data->player.rot = 90.0;
 	data->player.rotx = 0.0;
@@ -35,31 +37,45 @@ void		init_player(t_data *data)
 	}
 }
 
+static void	begin_anim(t_data *data, int maxframe, float *timer)
+{
+	*timer += GUN_ANIM;
+	if (*timer >= 10)
+	{
+		*timer = 0;
+		data->player.gun_frame++;
+		if (data->player.gun_frame == maxframe)
+		{
+			data->player.gun_frame = 0;
+			data->player.fired = 0;
+			data->player.reloading = 0;
+		}
+	}
+}
+
 static void	loop_gun(t_data *data)
 {
 	static float	timer = 0;
 
-
-	if (data->player.k_val.fire == 1 && data->player.amo > 0 && data->player.fired == 0)
+	if (data->player.k_val.fire == 1 && data->player.fired == 0 \
+			&& data->player.reloading == 0 && data->player.amo_chamber == 1)
 	{
-		data->player.amo--;
 		data->player.fired = 1;
 		data->player.gun_frame++;
+		data->player.amo_chamber = 0;
 	}
-	else if (data->player.fired == 1 && data->player.gun_frame <= 13)
+	else if (data->player.fired == 1 && data->player.gun_frame <= 3)
+		begin_anim(data, 4, &timer);
+	else if (data->player.k_val.reload == 1 && data->player.fired == 0 \
+			&& data->player.reloading == 0 && data->player.amo >= 2 \
+			&& data->player.amo_chamber == 0)
 	{
-		timer += GUN_ANIM;
-		if (timer >= 10)
-		{
-			timer = 0;
-			data->player.gun_frame++;
-			if (data->player.gun_frame == 14)
-			{
-				data->player.gun_frame = 0;
-				data->player.fired = 0;
-			}
-		}
+		data->player.reloading = 1;
+		data->player.gun_frame = 4;
+		data->player.amo_chamber = 1;
 	}
+	else if (data->player.reloading == 1 && data->player.gun_frame <= 13)
+		begin_anim(data, 14, &timer);
 }
 
 void		loop_player(t_data *data)
@@ -85,7 +101,7 @@ void		loop_player(t_data *data)
 	loop_gun(data);
 }
 
-int		move_player(t_data *data, int d)
+int			move_player(t_data *data, int d)
 {
 	int		x;
 	int		y;

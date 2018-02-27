@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/27 17:10:11 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:49:56 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ static void		draw_gun(t_data *data, int framex, int framey)
 
 void			draw_gun_mod(t_data *data, int frame)
 {
-	int framex;
-	int framey;
+	static int	takeammo = 0;
+	int			framex;
+	int			framey;
 
 	if (frame >= 7)
 		frame++;
@@ -53,6 +54,13 @@ void			draw_gun_mod(t_data *data, int frame)
 		framey = 1;
 	else
 		framey = 0;
+	if ((frame == 9 || frame == 12) && takeammo == 0)
+	{
+		data->player.amo--;
+		takeammo = 1;
+	}
+	else if (frame != 9 && frame != 12 && takeammo == 1)
+		takeammo = 0;
 	framex = frame % 5;
 	draw_gun(data, framex, framey);
 }
