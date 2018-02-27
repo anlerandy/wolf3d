@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 17:33:44 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 18:40:40 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			draw_map(t_data *data)
 	data->loading ? debug(data->debug, "Dessin de la map.") : 0;
 	data->frame.img = ft_intset(data->frame.img, 0x00999999, data->win_w * \
 		data->win_h);
-	draw_skybox(data);
+	//draw_skybox(data);
 	draw_minimap(data);
 	loop_player(data);
 	loop_fps(data);
