@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 18:01:40 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 19:09:03 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void	loop_gun(t_data *data)
 		data->player.gun_frame++;
 		data->player.amo_chamber = 0;
 	}
-	else if (data->player.fired == 1 && data->player.gun_frame <= 3)
-		begin_anim(data, 4, &timer);
+	else if (data->player.fired == 1 && data->player.gun_frame <= 4)
+		begin_anim(data, 3, &timer);
 	else if (data->player.k_val.reload == 1 && data->player.fired == 0 \
 			&& data->player.reloading == 0 && data->player.amo >= 2 \
 			&& data->player.amo_chamber == 0)
