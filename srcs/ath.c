@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/26 17:39:17 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:16:30 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ void		draw_pv(t_data *data)
 	int			pv_scale;
 	int			c;
 
+	data->player.hp > 100 ? data->player.hp = 100 : 0;
 	data->player.hp <= 100 ? c = 0x28f57f37 : 0;
 	data->player.hp <= 75 ? c = 0x28f2673a : 0;
 	data->player.hp <= 50 ? c = 0x28ff3333 : 0;
 	data->player.hp <= 25 ? c = 0x28ff0000 : 0;
-	data->player.hp == 100 ? c = 0x28ff9933 : 0;
+	data->player.hp >= 100 ? c = 0x28ff9933 : 0;
 	ani_pv > data->player.hp ? ani_pv-- : 0;
 	ani_pv < data->player.hp ? ani_pv++ : 0;
 	pv_scale = floor(ani_pv * 294 / 100);
@@ -44,6 +45,7 @@ void		draw_end(t_data *data)
 	int			end_scale;
 	int			c;
 
+	data->player.end > 100 ? data->player.end = 100 : 0;
 	data->player.end <= 100 ? c = 0x2ff57f37 : 0;
 	data->player.end <= 75 ? c = 0x2ff2673a : 0;
 	data->player.end <= 50 ? c = 0x2fff3333 : 0;
