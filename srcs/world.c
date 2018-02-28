@@ -12,32 +12,32 @@
 
 #include "wolf.h"
 
-static void	color_walls(t_data *data, t_ray ray, int *color)
+static void	dir_walls(t_data *data, t_ray *ray)
 {
-	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z == 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)(ray.y - 0.04)][(int)(ray.x \
-			- 0.04)].z != 0 && data->map.tiles[(int)(ray.y \
-			- 0.04)][(int)(ray.x + 0.04)].z != 0)
-			*color = 0x00FF0000;
-	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z == 0 \
-			&& data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x \
-			- 0.04)].z != 0 && data->map.tiles[(int)(ray.y \
-			+ 0.04)][(int)(ray.x + 0.04)].z != 0)
-			*color = 0x000000FF;
-	if (data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z == 0 \
-			&& data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x \
-			+ 0.04)].z != 0 && data->map.tiles[(int)(ray.y \
-			- 0.04)][(int)(ray.x + 0.04)].z != 0)
-			*color = 0x0000FF00;
-	if (data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z == 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z != 0 \
-			&& data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x \
-			- 0.04)].z != 0 && data->map.tiles[(int)(ray.y \
-			- 0.04)][(int)(ray.x - 0.04)].z != 0)
-			*color = 0x00FFFF00;
+	if (data->map.tiles[(int)(ray->y + 0.02)][(int)ray->x].z == 0 \
+			&& data->map.tiles[(int)(ray->y - 0.02)][(int)ray->x].z != 0 \
+			&& data->map.tiles[(int)(ray->y - 0.04)][(int)(ray->x \
+			- 0.04)].z != 0 && data->map.tiles[(int)(ray->y \
+			- 0.04)][(int)(ray->x + 0.04)].z != 0)
+			ray->dir = NORTH;
+	if (data->map.tiles[(int)(ray->y + 0.02)][(int)ray->x].z != 0 \
+			&& data->map.tiles[(int)(ray->y - 0.02)][(int)ray->x].z == 0 \
+			&& data->map.tiles[(int)(ray->y + 0.04)][(int)(ray->x \
+			- 0.04)].z != 0 && data->map.tiles[(int)(ray->y \
+			+ 0.04)][(int)(ray->x + 0.04)].z != 0)
+			ray->dir = SOUTH;
+	if (data->map.tiles[(int)ray->y][(int)(ray->x + 0.02)].z != 0 \
+			&& data->map.tiles[(int)ray->y][(int)(ray->x - 0.02)].z == 0 \
+			&& data->map.tiles[(int)(ray->y + 0.04)][(int)(ray->x \
+			+ 0.04)].z != 0 && data->map.tiles[(int)(ray->y \
+			- 0.04)][(int)(ray->x + 0.04)].z != 0)
+			ray->dir = EAST;
+	if (data->map.tiles[(int)ray->y][(int)(ray->x + 0.02)].z == 0 \
+			&& data->map.tiles[(int)ray->y][(int)(ray->x - 0.02)].z != 0 \
+			&& data->map.tiles[(int)(ray->y + 0.04)][(int)(ray->x \
+			- 0.04)].z != 0 && data->map.tiles[(int)(ray->y \
+			- 0.04)][(int)(ray->x - 0.04)].z != 0)
+			ray->dir = WEST;
 }
 
 void		draw_wall(t_data *data, t_ray ray, int slice)
@@ -56,17 +56,18 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	d < 1 ? d = 1 : 0;
 	d = (400 / d);
 	color =  0x00000000;
-	color_walls(data, ray, &color);
+	ray.dir = VOID;
+	dir_walls(data, &ray);
+	ray.dir == WEST ? color = 0x00FF0000 : color;
+	ray.dir == EAST ? color = 0x0000FF00 : color;
+	ray.dir == NORTH ? color = 0x000000FF : color;
+	ray.dir == SOUTH ? color = 0x00FFFF00 : color;
 	while (h < d)
 	{
-//		if (1400 - slice + (((int)(data->win_h / 2) + (int)h) * data->win_w) <
-//				1400 * 800)
-//		{
 			((int*)data->frame.img)[1400 - slice + (((int)(data->win_h / 2) \
 				+ (int)h) * data->win_w)] = color;
 			((int*)data->frame.img)[1400 - slice + (((int)(data->win_h / 2) \
 				- (int)h2) * data->win_w)] = color;
-//		}
 		h += 1;
 		h2 += 1;
 	}
