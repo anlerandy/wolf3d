@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/28 16:18:52 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:38:22 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,41 @@
 static void	color_walls(t_data *data, t_ray ray, int *color)
 {
 	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z == 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z != 0)
-		*color =  0x00FF0000;
+			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z != 0)
+	{
+		if (data->map.tiles[(int)(ray.y - 0.04)][(int)(ray.x - 0.04)].z == 0 \
+				|| data->map.tiles[(int)(ray.y - 0.04)][(int)(ray.x + 0.04)].z == 0)
+			*color = 0x00000000;
+		else
+			*color = 0x00FF0000;
+	}
 	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z == 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z != 0)
-		*color =  0x000000FF;
-	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z == 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z != 0)
-		*color =  0x0000FF00;
-	if (data->map.tiles[(int)(ray.y + 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z != 0 \
-			&& data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z != 0 \
+			&& data->map.tiles[(int)(ray.y - 0.02)][(int)ray.x].z == 0)
+	{
+		if (data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x - 0.04)].z == 0 \
+				|| data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x + 0.04)].z == 0)
+			*color = 0x00000000;
+		else
+			*color = 0x000000FF;
+	}
+	if (data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z != 0 \
 			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z == 0)
-		*color =  0x00FFFF00;
+	{
+		if (data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x + 0.04)].z == 0 \
+				|| data->map.tiles[(int)(ray.y - 0.04)][(int)(ray.x + 0.04)].z == 0)
+			*color = 0x00000000;
+		else
+			*color = 0x0000FF00;
+	}
+	if (data->map.tiles[(int)ray.y][(int)(ray.x + 0.02)].z == 0 \
+			&& data->map.tiles[(int)ray.y][(int)(ray.x - 0.02)].z != 0)
+	{
+		if (data->map.tiles[(int)(ray.y + 0.04)][(int)(ray.x - 0.04)].z == 0 \
+				|| data->map.tiles[(int)(ray.y - 0.04)][(int)(ray.x - 0.04)].z == 0)
+			*color = 0x00000000;
+		else
+			*color = 0x00FFFF00;
+	}
 }
 
 void		draw_wall(t_data *data, t_ray ray, int slice)

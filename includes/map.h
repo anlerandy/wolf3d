@@ -6,14 +6,14 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 18:18:50 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/28 16:59:51 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# define DPI_FAC 60
+# define DPI_FAC 30
 # define MINI_OPAC 0x4F000000
 
 typedef enum		e_texture

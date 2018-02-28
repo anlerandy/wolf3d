@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 20:45:54 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:10:03 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ static void		loop_ray(t_data *data, t_ray *r, double rotx, double roty)
 
 static int		check_z(t_data *data, t_ray *r, double rotx, double roty)
 {
-	if (data->map.tiles[(int)(r->y)][(int)(r->x)].z > 0)
+	if (data->map.tiles[(int)(r->y)][(int)(r->x)].z > 0 \
+		|| data->map.tiles[(int)(r->y - 0.02)][(int)(r->x)].z > 0 \
+		|| data->map.tiles[(int)(r->y + 0.02)][(int)(r->x)].z > 0 \
+		|| data->map.tiles[(int)(r->y)][(int)(r->x - 0.02)].z > 0 \
+		|| data->map.tiles[(int)(r->y)][(int)(r->x + 0.02)].z > 0)
 		return (1);
 	return (0);
 }
