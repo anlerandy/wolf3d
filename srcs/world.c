@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/26 17:35:37 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 20:24:26 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	h2 = 1;
 	dist.x = data->player.pos.x - ray.x;
 	dist.y = data->player.pos.y - ray.y;
-	color =  0x000001 + ((int)(((100 - ray.depth) * 4) / 2));
 	d = sqrt(dist.x * dist.x + dist.y * dist.y);
 	d < 1 ? d = 1 : 0;
 	d = (400 / d);
+	color =  0x000000FF;
+	if (data->map.tiles[(int)(ray.y + 0.1)][(int)ray.x].z == 0)
+		color =  0x00FF0000;
+	if (data->map.tiles[(int)(ray.y - 0.1)][(int)ray.x].z == 0)
+		color =  0x00FFFF00;
+	if (data->map.tiles[(int)ray.y][(int)(ray.x - 0.1)].z == 0)
+		color =  0x0000FF00;
+	color += ray.depth * 4;
 	while (h < d)
 	{
 //		if (1400 - slice + (((int)(data->win_h / 2) + (int)h) * data->win_w) <
