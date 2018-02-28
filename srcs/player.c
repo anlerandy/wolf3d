@@ -106,8 +106,8 @@ int			move_player(t_data *data, int d)
 	int		x;
 	int		y;
 
-	x = floor(data->player.pos.x + data->player.rotx * PLAYER_SPEED * d);
-	y = floor(data->player.pos.y + data->player.roty * PLAYER_SPEED * d);
+	x = floor(data->player.pos.x + (data->player.rotx * 10) * PLAYER_SPEED * d);
+	y = floor(data->player.pos.y + (data->player.roty * 10) * PLAYER_SPEED * d);
 	if (data->map.tiles[y][x].z != 9
 			&& data->map.tiles[y][(int)(data->player.pos.x)].z != 9 \
 			&& data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
