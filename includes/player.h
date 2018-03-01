@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/27 17:51:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/01 05:06:05 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ typedef struct			s_pos
 
 typedef enum			e_dir
 {
-	VOID,
-	WEST,
-	EAST,
 	NORTH,
-	SOUTH
+	SOUTH,
+	EAST,
+	WEST
 }						t_dir;
 
 typedef struct			s_ray

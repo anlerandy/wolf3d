@@ -42,8 +42,12 @@ void			draw_map(t_data *data)
 	data->loading ? debug(data->debug, "Dessin de la map.") : 0;
 	data->frame.img = ft_intset(data->frame.img, 0x00999999, data->win_w * \
 		data->win_h);
+	data->loading ? debug(data->debug, "Reset to 0") : 0;
 	draw_skybox(data);
 	draw_minimap(data);
+	data->loading ? debug(data->debug, "Dessin de la minimap.") : 0;
 	loop_player(data);
+	data->loading ? debug(data->debug, "Premier affichage vue.") : 0;
 	loop_fps(data);
+	data->loading ? debug(data->debug, "Initialisation affichage tête haute.") : 0;
 }

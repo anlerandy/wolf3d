@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 00:13:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/18 14:20:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:16:49 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	usage(int c)
 	c == 4 ? ft_putendl("Map invalide. La map n'est pas compatible.") : c;
 	c == 5 ? ft_putendl("Map invalide. Aucune entitee PLAYER_START.") : c;
 	c == 6 ? ft_putendl("Map introuvable.") : c;
+	c == 7 ? ft_putendl("Erreur durant le Raycasting.") : c;
 	c == 42 ? ft_putendl("WolfEngine a correctement fermé.") : c;
 	c != 42 ? ft_putstr("WolfEngine a fermé. ERREUR") : c;
 	c != 42 ? ft_putendl(ft_itoa(c)) : c;

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 15:34:14 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/01 06:28:14 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void	input_loop(t_data *data)
 	mov = 0;
 	if (data->game_state == GAME)
 	{
-		data->player.k_val.rot == 1 ? data->player.rot += PLAYER_ROT : 0;
-		data->player.k_val.rot == -1 ? data->player.rot -= PLAYER_ROT : 0;
+		data->player.k_val.rot == 1 ? data->player.rot -= PLAYER_ROT : 0;
+		data->player.k_val.rot == -1 ? data->player.rot += PLAYER_ROT : 0;
 		data->player.rot = (int)data->player.rot % 360;
-		data->player.rot < 0 ? data->player.rot = 360 + data->player.rot : 0;
+		data->player.rot < 0 ? data->player.rot += 360 : 0;
 		data->player.k_val.walk == 1 ? move_player(data, 1) : 0;
 		data->player.k_val.walk == -1 ? move_player(data, -1) : 0;
 		if (data->player.k_val.run && data->player.end > 0 &&
@@ -70,7 +70,7 @@ static void	ingame(t_data *data)
 	if (data->game_state == GAME)
 	{
 		input_loop(data);
-//		if (data->player.k_val.walk || data->player.k_val.rot || data->player.k_val.fire)
+	//	if (data->player.k_val.walk || data->player.k_val.rot || data->player.k_val.fire)
 			draw_map(data);
 		draw_ath(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
