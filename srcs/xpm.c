@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 02:14:11 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/18 14:59:55 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:53:46 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h)
 	xpm.img = (int*)mlx_get_data_addr(xpm.pimg, &xpm.bpp, &xpm.s_l, &xpm.ndia);
 	if (!xpm.img)
 		usage(3);
+	debug(data->debug, "Réussi.");
 	return (xpm);
 }
 

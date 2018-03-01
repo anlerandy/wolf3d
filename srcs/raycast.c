@@ -35,19 +35,6 @@ static int		check_z(t_data *data, t_ray *ray, int dir, int i)
 	return (0);
 }
 
-static void		loop_rax2(t_data *data, t_ray *r, t_ray info, int i)
-{
-	int			c;
-
-	while ((c = check_z(data, r, (info.x == 0), 1)) == 0)
-	{
-		info.x == 0 ? r->x++ : r->x--;
-		r->depth = r->x - data->player.pos.x;
-;
-	}
-	c == -1 ? r->depth = -42 : 0;
-}
-
 static void		loop_rax(t_data *data, t_ray *r, t_ray info, int i)
 {
 	double		b;
@@ -74,18 +61,6 @@ static void		loop_rax(t_data *data, t_ray *r, t_ray info, int i)
 	r->depth *= r->depth;
 	r->depth += ((r->y - data->player.pos.y) * (r->y - data->player.pos.y));
 	r->depth = sqrt(r->depth);
-}
-
-static void		loop_ray2(t_data *data, t_ray *r, t_ray info, int i)
-{
-	int			c;
-
-	while ((c = check_z(data, r, (info.x == 270), 2)) == 0)
-	{
-		info.x == 90 ? r->y++ : r->y--;
-		r->depth = r->y - data->player.pos.y;
-	}
-	c == -1 ? r->depth = -42 : 0;
 }
 
 static void		loop_ray(t_data *data, t_ray *r, t_ray info, int i)

@@ -18,7 +18,7 @@
 # define END_DECR 0.3
 # define END_INCR 1
 # define RECO_INCR 0.8
-# define GUN_ANIM 3
+# define GUN_ANIM 2
 
 typedef struct			s_pos
 {
@@ -49,6 +49,7 @@ typedef struct			s_input
 	int					run;
 	int					rot;
 	int					fire;
+	int					reload;
 	int					side;
 }						t_input;
 
@@ -56,7 +57,9 @@ typedef struct			s_player
 {
 	int					hp;
 	int					amo;
+	int					amo_chamber;
 	int					fired;
+	int					reloading;
 	int					gun_frame;
 	double				end;
 	double				recover;

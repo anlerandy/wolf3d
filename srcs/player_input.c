@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:19:45 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/24 18:24:10 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:41:52 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void		ft_player_input(t_data *data, int key, int pressing)
 	key == KEY_D && !pressing ? data->player.k_val.rot = 0 : 0;
 	key == KEY_SPACEBAR && pressing ? data->player.k_val.fire = 1 : 0;
 	key == KEY_SPACEBAR && !pressing ? data->player.k_val.fire = 0 : 0;
+	key == KEY_R && pressing ? data->player.k_val.reload = 1 : 0;
+	key == KEY_R && !pressing ? data->player.k_val.reload = 0 : 0;
 	data->player.k_val.side = 0;
 }

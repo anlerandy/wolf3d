@@ -22,8 +22,10 @@ void		init_player(t_data *data)
 		usage(5);
 	data->player.hp = 100;
 	data->player.end = 100;
-	data->player.amo = 10;
+	data->player.amo = 60;
+	data->player.amo_chamber = 1;
 	data->player.fired = 0;
+	data->player.reloading = 0;
 	data->player.gun_frame = 0;
 	data->player.rot = 0;
 	data->player.rotx = 0.0;
@@ -35,31 +37,45 @@ void		init_player(t_data *data)
 	}
 }
 
+static void	begin_anim(t_data *data, int maxframe, float *timer)
+{
+	*timer += GUN_ANIM;
+	if (*timer >= 10)
+	{
+		*timer = 0;
+		data->player.gun_frame++;
+		if (data->player.gun_frame == maxframe)
+		{
+			data->player.gun_frame = 0;
+			data->player.fired = 0;
+			data->player.reloading = 0;
+		}
+	}
+}
+
 static void	loop_gun(t_data *data)
 {
 	static float	timer = 0;
 
-
-	if (data->player.k_val.fire == 1 && data->player.amo > 0 && data->player.fired == 0)
+	if (data->player.k_val.fire == 1 && data->player.fired == 0 \
+			&& data->player.reloading == 0 && data->player.amo_chamber == 1)
 	{
-		data->player.amo--;
 		data->player.fired = 1;
 		data->player.gun_frame++;
+		data->player.amo_chamber = 0;
 	}
-	else if (data->player.fired == 1 && data->player.gun_frame <= 12)
+	else if (data->player.fired == 1 && data->player.gun_frame <= 4)
+		begin_anim(data, 3, &timer);
+	else if (data->player.k_val.reload == 1 && data->player.fired == 0 \
+			&& data->player.reloading == 0 && data->player.amo >= 2 \
+			&& data->player.amo_chamber == 0)
 	{
-		timer += GUN_ANIM;
-		if (timer >= 10)
-		{
-			timer = 0;
-			data->player.gun_frame++;
-			if (data->player.gun_frame == 13)
-			{
-				data->player.gun_frame = 0;
-				data->player.fired = 0;
-			}
-		}
+		data->player.reloading = 1;
+		data->player.gun_frame = 4;
+		data->player.amo_chamber = 1;
 	}
+	else if (data->player.reloading == 1 && data->player.gun_frame <= 13)
+		begin_anim(data, 14, &timer);
 }
 
 void		loop_player(t_data *data)
@@ -81,13 +97,13 @@ void		loop_player(t_data *data)
 	loop_gun(data);
 }
 
-int		move_player(t_data *data, int d)
+int			move_player(t_data *data, int d)
 {
 	int		x;
 	int		y;
 
-	x = floor(data->player.pos.x + data->player.rotx * PLAYER_SPEED * d);
-	y = floor(data->player.pos.y + data->player.roty * PLAYER_SPEED * d);
+	x = floor(data->player.pos.x + (data->player.rotx * 10) * PLAYER_SPEED * d);
+	y = floor(data->player.pos.y + (data->player.roty * 10) * PLAYER_SPEED * d);
 	if (data->map.tiles[y][x].z != 9
 			&& data->map.tiles[y][(int)(data->player.pos.x)].z != 9 \
 			&& data->map.tiles[(int)(data->player.pos.y)][x].z != 9)

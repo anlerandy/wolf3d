@@ -76,6 +76,23 @@ void		ath_xpm(t_data *data)
 			* data->win_w)] = ath.img[(i % 1225) + ((i / 1225) * 1225)];
 }
 
+static void	draw_reload(t_data *data)
+{
+	static t_xpm	rld;
+	static int		s = 0;
+	int i;
+
+	if (!s)
+		rld = xpm_create(data, "./xpm/reload.xpm", 120, 25);
+	s = 1;
+	i = -1;
+	while (++i < 120 * 25)
+		if (rld.img[(i % 120) + ((i / 120) * 120)] != 0x00FEFFFF)
+			((int*)(data->tmp.img))[(i % 120) + 1200 + (((i / 120) + 665) \
+			* data->win_w)] = rld.img[(i % 120) + ((i / 120) * 120)] \
+			* 0x00999999;
+}
+
 void		draw_ath(t_data *data)
 {
 	char *amo;
@@ -87,6 +104,8 @@ void		draw_ath(t_data *data)
 	draw_gun_mod(data, data->player.gun_frame);
 	draw_pv(data);
 	draw_end(data);
+	if (data->player.amo_chamber == 0 && data->actual_time % 2 == 0)
+		draw_reload(data);
 	amo = ft_itoa(data->player.amo / 10);
 	ft_type(data, amo, 1260, 713);
 	ft_strdel(&amo);

@@ -12,6 +12,7 @@
 
 #include "wolf.h"
 
+
 void		draw_wall(t_data *data, t_ray ray, int slice)
 {
 	double	h;
@@ -22,9 +23,6 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 
 	h = 0;
 	h2 = 1;
-//	dist.x = data->player.pos.x - ray.x;
-//	dist.y = data->player.pos.y - ray.y;
-//	d = sqrt(dist.x * dist.x + dist.y * dist.y);
 	d = ray.depth;
 	color = 0;
 	if (ray.dir == NORTH || ray.dir == SOUTH)
