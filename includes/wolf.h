@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 13:43:10 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 06:59:46 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN "WolfEngine 0.04"
+# define WIN "WolfEngine 0.05"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff

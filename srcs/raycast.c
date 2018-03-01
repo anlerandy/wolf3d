@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 06:27:26 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 06:50:12 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,20 +112,8 @@ void			send_ray(t_data *data, int i)
 	r2.y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y + 1);
 	r.depth = -1;
 	r2.depth = -1;
-//	printf("\nPOSX : %f ; POSY : %f\n", data->player.pos.x, data->player.pos.y);
-//	printf("verefX : %f ; verefY : %f\n", r.x, r.y);
-//	if (rot == 0 || rot == 180)
-//		loop_rax2(data, &r, info, i);
-//	else if ((rot != 90 && rot != 270))
-		loop_rax(data, &r, info, i);
-//	else
-//		r.depth = -42;
-//	if (rot == 90 || rot == 270)
-//		loop_ray2(data, &r2, info, i);
-//	else if (rot != 0 && rot != 180)
-		loop_ray(data, &r2, info, i);
-//	else
-//		r2.depth = -42;
+	loop_rax(data, &r, info, i);
+	loop_ray(data, &r2, info, i);
 	if (r2.depth > -42 && r.depth > -42)
 	{
 		r.depth < r2.depth ? r2.depth = -42 : 0;
