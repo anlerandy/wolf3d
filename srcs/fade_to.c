@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 18:28:04 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:40:07 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	input_loop(t_data *data)
 	mov = 0;
 	if (data->game_state == GAME)
 	{
-		data->player.k_val.rot == 1 ? data->player.rot += PLAYER_ROT : 0;
-		data->player.k_val.rot == -1 ? data->player.rot -= PLAYER_ROT : 0;
+		data->player.k_val.rot == 1 ? data->player.rot -= PLAYER_ROT : 0;
+		data->player.k_val.rot == -1 ? data->player.rot += PLAYER_ROT : 0;
 		data->player.rot = (int)data->player.rot % 360;
 		data->player.rot < 0 ? data->player.rot += 360 : 0;
 		data->player.k_val.walk == 1 ? move_player(data, 1) : 0;
