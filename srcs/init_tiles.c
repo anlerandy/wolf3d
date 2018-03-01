@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 09:48:45 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/21 10:59:33 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/28 16:12:53 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void			init_tiles(t_data *data, int *step)
 {
+	debug(data->debug, "Initialisation des tiles.");
 	int i;
 
 	i = 0;

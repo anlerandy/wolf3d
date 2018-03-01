@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 18:54:59 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:14:57 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		draw_pv(t_data *data)
 	int			pv_scale;
 	int			c;
 
-	data->player.hp <= 100 ? c = 0x28f57f37 : 0;
+	data->player.hp < 100 ? c = 0x28f57f37 : 0;
 	data->player.hp <= 75 ? c = 0x28f2673a : 0;
 	data->player.hp <= 50 ? c = 0x28ff3333 : 0;
 	data->player.hp <= 25 ? c = 0x28ff0000 : 0;
@@ -85,11 +85,10 @@ static void	draw_reload(t_data *data)
 	s = 1;
 	i = -1;
 	while (++i < 120 * 25)
-	{
 		if (rld.img[(i % 120) + ((i / 120) * 120)] != 0x00FEFFFF)
 			((int*)(data->tmp.img))[(i % 120) + 1200 + (((i / 120) + 665) \
-			* data->win_w)] = rld.img[(i % 120) + ((i / 120) * 120)];
-	}
+			* data->win_w)] = rld.img[(i % 120) + ((i / 120) * 120)] \
+			* 0x00999999;
 }
 
 void		draw_ath(t_data *data)

@@ -27,11 +27,21 @@ typedef struct			s_pos
 	double				z;
 }						t_pos;
 
+typedef enum			e_dir
+{
+	VOID,
+	WEST,
+	EAST,
+	NORTH,
+	SOUTH
+}						t_dir;
+
 typedef struct			s_ray
 {
 	double				x;
 	double				y;
 	double				depth;
+	t_dir				dir;
 }						t_ray;
 
 typedef struct			s_input
