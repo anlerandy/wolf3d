@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/28 20:40:07 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 06:28:14 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	ingame(t_data *data)
 	if (data->game_state == GAME)
 	{
 		input_loop(data);
-		if (data->player.k_val.walk || data->player.k_val.rot || data->player.k_val.fire)
+	//	if (data->player.k_val.walk || data->player.k_val.rot || data->player.k_val.fire)
 			draw_map(data);
 		draw_ath(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
