@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/28 16:13:57 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/01 07:52:18 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		step_two(t_data *data, char *line, int i)
 		debug(data->debug, "Hauteur incorrecte de HEIGHT : Trop grande.");
 		usage(4);
 	}
-	if (data->map.w != ft_strlen(line))
+	if (data->map.w != (int)ft_strlen(line))
 	{
 		debug(data->debug, "Largeur incorrecte dans HEIGHT, ligne : ");
 		debug(data->debug, ft_itoa(i));
@@ -63,11 +63,11 @@ void		step_three(t_data *data, char *line, int i)
 	t_entity	ent;
 
 	j = 0;
-	if (i >= data->map.h || data->map.w < ft_strlen(line))
+	if (i >= data->map.h || data->map.w < (int)ft_strlen(line))
 	{
 		i >= data->map.h ? debug(data->debug, "Hauteur incorrecte de OBJ") :
 		debug(data->debug, "Largeur incorrecte dans OBJ, ligne : ");
-		data->map.w < ft_strlen(line) ? debug(data->debug, ft_itoa(i)) : i;
+		data->map.w < (int)ft_strlen(line) ? debug(data->debug, ft_itoa(i)) : i;
 		usage(4);
 	}
 	while (line[j])

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 17:20:53 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 07:51:35 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void		get_size(t_data *data, char *line, int *w, int *h)
 {
 	*h += 1;
 	if (!*w)
-		*w = ft_strlen(line);
-	if (*w != ft_strlen(line))
+		*w = (int)ft_strlen(line);
+	if (*w != (int)ft_strlen(line))
 	{
 		debug(data->debug, "Largeur incorrecte dans TEXTURE, ligne : ");
 		debug(data->debug, ft_itoa(*h));

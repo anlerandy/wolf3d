@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 13:16:30 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 07:38:06 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	draw_reload(t_data *data)
 {
 	static t_xpm	rld;
 	static int		s = 0;
-	int i;
+	int				i;
 
 	if (!s)
 		rld = xpm_create(data, "./xpm/reload.xpm", 120, 25);

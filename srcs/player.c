@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 06:13:43 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/01 07:06:12 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		loop_player(t_data *data)
 	while (++i < data->win_w)
 	{
 		send_ray(data, i);
-		draw_wall(data, data->player.r[i], i + 1);
+		draw_wall(data, data->player.r[i], i);
 	}
 	loop_gun(data);
 }
