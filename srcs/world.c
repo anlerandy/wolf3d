@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:53:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/02 18:59:22 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void		draw_wall(t_data *data, t_ray ray, int slice)
 {
-	double	h;
-	double	d;
-	int		color;
+	static t_xpm	tex;
+	static int		s = 0;
+	double			h;
+	double			d;
+	int				color;
 
+	if (!s)
+		tex = xpm_create(data, "./xpm/stone.xpm", 1400, 800);
+	s = 1;
 	h = -1;
 	d = ray.depth < 1 ? 1 : ray.depth;
 	color = 0;
@@ -30,7 +35,14 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	d = (400 / d);
 	while (++h < d)
 	{
-		if (slice + (((data->win_h / 2) + h) * data->win_w) < 1400 * 800)
+		if (ray.dir == NORTH)
+		{
+			((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
+				+ (int)h) * data->win_w)] = tex.img[(int)((((int)ray.x * 100) % 1400) + ((h / 2) * 1400))];
+			((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
+				- (int)(h + 1)) * data->win_w)] = tex.img[(int)((((int)ray.x * 100) % 1400) + ((h + 1) * 1400))];
+		}
+		else
 		{
 			((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
 				+ (int)h) * data->win_w)] = color;
