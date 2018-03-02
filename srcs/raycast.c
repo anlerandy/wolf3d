@@ -91,34 +91,40 @@ static void		loop_ray(t_data *data, t_ray *r, t_ray info)
 	r->depth = sqrt(r->depth);
 }
 
+static void		set_ray(t_data *data, t_ray *r, t_ray *r2, t_ray *info)
+{
+	t_ray	dir;
+
+	info->x = ((data->player.rot - 30) + (info->depth * 60.0 / 1400.0));
+	info->x < 0 ? info->x += 360.0 : 0;
+	info->y = tan(info->x / 180.0 * M_PI);
+	dir.x = cos(info->x / 180.0 * M_PI);
+	dir.y = sin(info->x / 180.0 * M_PI);
+	r->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x + 1);
+	r2->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x);
+	r->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y);
+	r2->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y + 1);
+	r->depth = -1;
+	r2->depth = -1;
+	data->player.r[(int)(info->depth)].depth = -1;
+	loop_rax(data, r, *info);
+	loop_ray(data, r2, *info);
+	if (r2->depth > -42 && r->depth > -42)
+	{
+		r->depth < r2->depth ? r2->depth = -42 : 0;
+		r->depth > r2->depth && r2->depth > -42 ? r->depth = -42 : 0;
+	}
+}
+
 void			send_ray(t_data *data, int i)
 {
 	t_ray	r;
 	t_ray	r2;
 	double	rot;
 	t_ray	info;
-	t_ray	dir;
 
-	data->player.r[i].depth = -1;
-	rot = ((data->player.rot - 30) + (i * 60.0 / 1400.0));
-	rot < 0 ? rot += 360.0 : 0;
-	info.y = tan(rot / 180.0 * M_PI);
-	info.x = rot;
-	dir.x = cos(info.x / 180.0 * M_PI);
-	dir.y = sin(info.x / 180.0 * M_PI);
-	r.x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x + 1);
-	r2.x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x);
-	r.y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y);
-	r2.y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y + 1);
-	r.depth = -1;
-	r2.depth = -1;
-	loop_rax(data, &r, info);
-	loop_ray(data, &r2, info);
-	if (r2.depth > -42 && r.depth > -42)
-	{
-		r.depth < r2.depth ? r2.depth = -42 : 0;
-		r.depth > r2.depth && r2.depth > -42 ? r.depth = -42 : 0;
-	}
+	info.depth = i;
+	set_ray(data, &r, &r2, &info);
 	if (r2.depth == -42 && r.depth == -42)
 		usage(7);
 	if (r.depth == -42)
