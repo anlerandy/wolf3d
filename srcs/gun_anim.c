@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:37:21 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:51:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void		draw_gun(t_data *data, int framex, int framey)
 	static int		s = 0;
 	int				i;
 
-	movx += data->player.k_val.walk * 0.3 + (data->player.k_val.run * 0.2) \
-		* (data->player.end > 0.0);
-	movy += data->player.k_val.walk * 0.2 + (data->player.k_val.run * 0.1) \
-		* (data->player.end > 0.0);
+	movx += data->player.k_val.walk * 0.3 + 0.2 * (data->player.k_val.run == 1 \
+		&& data->player.end > 0 && data->player.k_val.walk == 1);
+	movy += data->player.k_val.walk * 0.2 + 0.1 * (data->player.k_val.run == 1 \
+		&& data->player.end > 0 && data->player.k_val.walk == 1);
 	if (!s)
 		gun = xpm_create(data, "./xpm/doublebarrel.xpm", 2500, 1500);
 	s = 1;
