@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:59:50 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:58:30 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,12 @@ static void		set_ray(t_data *data, t_ray *r, t_ray *r2, t_ray *info)
 	info->y = tan(info->x / 180.0 * M_PI);
 	dir.x = cos(info->x / 180.0 * M_PI);
 	dir.y = sin(info->x / 180.0 * M_PI);
-	r->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x + 1);
+	r->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x \
+		+ 1);
 	r2->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x);
 	r->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y);
-	r2->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y + 1);
+	r2->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y \
+		+ 1);
 	r->depth = -1;
 	r2->depth = -1;
 	data->player.r[(int)(info->depth)].depth = -1;

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/02 16:36:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:27:43 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		draw_player(t_data *data, double x, double y)
 		while (++i < 3 * 3)
 			((int*)data->minimap.img)[((int)((x - 1.25 + data->player.rotx) \
 				* 4 + (i % 3))) + (((int)((y - 1.25 + data->player.roty) * 4 \
-				+ (i / 3))) * 300)] = 0x0000FF00;
+				+ (i / 3))) * 300)] = 0x0000FF00 + MINI_OPAC;
 }
 
 static void		draw_cube(t_data *data, int x, int y)
