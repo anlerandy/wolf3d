@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 05:06:05 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:36:02 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct			s_player
 	int					fired;
 	int					reloading;
 	int					gun_frame;
+	int					is_moving;
 	double				end;
 	double				recover;
 	double				rot;

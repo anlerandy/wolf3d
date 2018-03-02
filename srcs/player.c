@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:06:12 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:37:49 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		init_player(t_data *data)
 	data->player.amo_chamber = 1;
 	data->player.fired = 0;
 	data->player.reloading = 0;
+	data->player.is_moving = 0;
 	data->player.gun_frame = 0;
 	data->player.rot = 0;
 	data->player.rotx = 0.0;
@@ -110,7 +111,9 @@ int			move_player(t_data *data, int d)
 	{
 		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
 		data->player.pos.y += data->player.roty * PLAYER_SPEED * d;
+		data->player.is_moving = 1;
 		return (1);
 	}
+	data->player.is_moving = 0;
 	return (0);
 }
