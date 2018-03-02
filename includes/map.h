@@ -18,6 +18,7 @@
 
 typedef enum		e_texture
 {
+	BRICK,
 	WOOD,
 	STONE,
 	METAL

@@ -13,6 +13,8 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 
+# include "map.h"
+
 # define PLAYER_SPEED 0.06
 # define PLAYER_ROT 2
 # define END_DECR 0.3
@@ -41,6 +43,7 @@ typedef struct			s_ray
 	double				y;
 	double				depth;
 	t_dir				dir;
+	t_texture			wall;
 }						t_ray;
 
 typedef struct			s_input

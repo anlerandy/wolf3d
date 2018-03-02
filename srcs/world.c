@@ -12,11 +12,20 @@
 
 #include "wolf.h"
 
+void		sel_texture(t_data *data, t_ray ray, t_xpm *wall, int *s)
+{
+	(void)*s;
+	(void)ray;
+	(void)*wall;
+}
+
 void		draw_wall(t_data *data, t_ray ray, int slice)
 {
-	double	h;
-	double	d;
-	int		color;
+	double			h;
+	double			d;
+	int				color;
+	static int		s;
+	static t_xpm	texture[4];
 
 	h = -1;
 	d = ray.depth < 1 ? 1 : ray.depth;
