@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 05:06:05 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:54:39 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct			s_ray
 	double				y;
 	double				depth;
 	t_dir				dir;
-	t_texture			wall;
+	t_texture			tx;
 }						t_ray;
 
 typedef struct			s_input

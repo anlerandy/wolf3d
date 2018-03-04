@@ -6,20 +6,31 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:53:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/04 21:08:14 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void		sel_texture(t_data *data, t_ray ray, t_xpm *wall, int *s)
+static void	load_texture(t_data *data, t_xpm texture[4])
 {
-	(void)*s;
-	(void)ray;
-	(void)*wall;
+	texture[BRICK] = xpm_create(data, "./xpm/brick.xpm", 1400, 800);
+	texture[WOOD] = xpm_create(data, "./xpm/wood.xpm", 1400, 800);
+	texture[STONE] = xpm_create(data, "./xpm/stone.xpm", 1400, 800);
+	texture[METAL] = xpm_create(data, "./xpm/metal.xpm", 1400, 800);
 }
 
-void		draw_wall(t_data *data, t_ray ray, int slice)
+static void	determine_colors(t_ray r, int *color)
+{
+	if (r.dir == NORTH || r.dir == SOUTH)
+		color = r.dir == NORTH ? 0x0000FF : 0x00FF00;
+	else
+		color = r.dir == EAST ? 0xFF0000 : 0xFF00FF;
+	color -= ((int)(((1 + r.depth) * 4)));
+	color += 0x0000000 & 0xFF000000;
+}
+
+void		draw_wall(t_data *data, t_ray r, int slice)
 {
 	double			h;
 	double			d;
@@ -27,24 +38,21 @@ void		draw_wall(t_data *data, t_ray ray, int slice)
 	static int		s;
 	static t_xpm	texture[4];
 
+	if (!s)
+		load_texture(data, texture);
+	s = 1;
 	h = -1;
-	d = ray.depth < 1 ? 1 : ray.depth;
+	d = r.depth < 1 ? 1 : r.depth;
 	color = 0;
-	if (ray.dir == NORTH || ray.dir == SOUTH)
-		color = ray.dir == NORTH ? 0x0000FF : 0x00FF00;
-	else
-		color = ray.dir == EAST ? 0xFF0000 : 0xFF00FF;
-	color -= ((int)(((1 + ray.depth) * 4)));
-	color += 0x0000000 & 0xFF000000;
+	determine_colors(r, &color);
 	d = (400 / d);
 	while (++h < d)
 	{
-		if (slice + (((data->win_h / 2) + h) * data->win_w) < 1400 * 800)
-		{
-			((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
-				+ (int)h) * data->win_w)] = color;
-			((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
-				- (int)(h + 1)) * data->win_w)] = color;
-		}
+		if (r.tx == WOOD || r.tx == STONE || r.tx == METAL || r.tx == BRICK)
+			color = texture[r.tx].img[(int)(slice + (h * 1400))];
+		((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
+			+ (int)h) * data->win_w)] = color;
+		((int*)data->frame.img)[slice + (((int)(data->win_h / 2) \
+			- (int)(h + 1)) * data->win_w)] = color;
 	}
 }

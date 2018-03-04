@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/02/27 13:13:10 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:56:19 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef enum		e_texture
 {
+	COLORS,
 	BRICK,
 	WOOD,
 	STONE,

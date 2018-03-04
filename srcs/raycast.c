@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:59:50 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/04 19:23:03 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int		check_z(t_data *data, t_ray *ray, int dir, int i)
 		i == 2 && dir == 1 ? ray->dir = SOUTH : 0;
 		i == 1 && dir == 0 ? ray->dir = EAST : 0;
 		i == 1 && dir == 1 ? ray->dir = WEST : 0;
+		ray->tx = data->map.tiles[(int)(r.y)][(int)(r.x)].texture;
 		return (1);
 	}
 	return (0);
@@ -100,10 +101,12 @@ static void		set_ray(t_data *data, t_ray *r, t_ray *r2, t_ray *info)
 	info->y = tan(info->x / 180.0 * M_PI);
 	dir.x = cos(info->x / 180.0 * M_PI);
 	dir.y = sin(info->x / 180.0 * M_PI);
-	r->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x + 1);
+	r->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x \
+		+ 1);
 	r2->x = dir.x >= 0 ? (int)(data->player.pos.x) : (int)(data->player.pos.x);
 	r->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y);
-	r2->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y + 1);
+	r2->y = dir.y >= 0 ? (int)(data->player.pos.y) : (int)(data->player.pos.y \
+		+ 1);
 	r->depth = -1;
 	r2->depth = -1;
 	data->player.r[(int)(info->depth)].depth = -1;
@@ -133,6 +136,7 @@ void			send_ray(t_data *data, int i)
 		data->player.r[i].x = r2.x;
 		data->player.r[i].y = r2.y;
 		data->player.r[i].dir = r2.dir;
+		data->player.r[i].tx = r2.tx;
 	}
 	else if (r2.depth == -42)
 	{
@@ -140,5 +144,6 @@ void			send_ray(t_data *data, int i)
 		data->player.r[i].x = r.x;
 		data->player.r[i].y = r.y;
 		data->player.r[i].dir = r.dir;
+		data->player.r[i].tx = r.tx;
 	}
 }
