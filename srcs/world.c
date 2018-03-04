@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 21:11:08 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/04 22:36:58 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		draw_wall(t_data *data, t_ray r, int slice)
 	double			d;
 	int				color;
 	static int		s;
-	static t_xpm	texture[4];
+	static t_xpm	texture[5];
 
 	if (!s)
 		load_texture(data, texture);
