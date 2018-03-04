@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 06:54:44 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/04 21:10:33 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void			draw_map(t_data *data)
 	loop_player(data);
 	data->loading ? debug(data->debug, "Premier affichage vue.") : 0;
 	loop_fps(data);
-	data->loading ? debug(data->debug, "Initialisation affichage tête haute.") : 0;
+	data->loading ? debug(data->debug, "Initialisation de l'ATH.") : 0;
 }

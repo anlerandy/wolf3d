@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 21:08:14 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/04 21:11:08 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static void	load_texture(t_data *data, t_xpm texture[4])
 static void	determine_colors(t_ray r, int *color)
 {
 	if (r.dir == NORTH || r.dir == SOUTH)
-		color = r.dir == NORTH ? 0x0000FF : 0x00FF00;
+		*color = r.dir == NORTH ? 0x0000FF : 0x00FF00;
 	else
-		color = r.dir == EAST ? 0xFF0000 : 0xFF00FF;
-	color -= ((int)(((1 + r.depth) * 4)));
-	color += 0x0000000 & 0xFF000000;
+		*color = r.dir == EAST ? 0xFF0000 : 0xFF00FF;
+	*color -= ((int)(((1 + r.depth) * 4)));
+	*color += 0x0000000 & 0xFF000000;
 }
 
 void		draw_wall(t_data *data, t_ray r, int slice)
