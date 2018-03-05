@@ -6,12 +6,14 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/02 17:36:02 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:54:39 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
+
+# include "map.h"
 
 # define PLAYER_SPEED 0.06
 # define PLAYER_ROT 2
@@ -41,6 +43,7 @@ typedef struct			s_ray
 	double				y;
 	double				depth;
 	t_dir				dir;
+	t_texture			tx;
 }						t_ray;
 
 typedef struct			s_input

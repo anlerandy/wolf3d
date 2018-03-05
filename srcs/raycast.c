@@ -30,6 +30,7 @@ static int		check_z(t_data *data, t_ray *ray, int dir, int i)
 		i == 2 && dir == 1 ? ray->dir = SOUTH : 0;
 		i == 1 && dir == 0 ? ray->dir = EAST : 0;
 		i == 1 && dir == 1 ? ray->dir = WEST : 0;
+		ray->tx = data->map.tiles[(int)(r.y)][(int)(r.x)].texture;
 		return (1);
 	}
 	return (0);
