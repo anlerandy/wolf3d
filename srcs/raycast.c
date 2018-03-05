@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 19:23:03 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 03:30:17 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,20 +130,12 @@ void			send_ray(t_data *data, int i)
 	set_ray(data, &r, &r2, &info);
 	if (r2.depth == -42 && r.depth == -42)
 		usage(7);
-	if (r.depth == -42)
-	{
-		data->player.r[i].depth = r2.depth;
-		data->player.r[i].x = r2.x;
-		data->player.r[i].y = r2.y;
-		data->player.r[i].dir = r2.dir;
-		data->player.r[i].tx = r2.tx;
-	}
-	else if (r2.depth == -42)
-	{
-		data->player.r[i].depth = r.depth;
-		data->player.r[i].x = r.x;
-		data->player.r[i].y = r.y;
-		data->player.r[i].dir = r.dir;
-		data->player.r[i].tx = r.tx;
-	}
+	data->player.r[i].x = r.depth == -42 ? r2.x : r.x;
+	data->player.r[i].y = r.depth == -42 ? r2.y : r.y;
+	data->player.r[i].dir = r.depth == -42 ? r2.dir : r.dir;
+	info.x = info.x - data->player.rot;
+	info.x < 0 ? info.x += 360.0 : 0;
+	data->player.r[i].depth = r.depth == -42 ? r2.depth * \
+							  cos(info.x / 180 * M_PI) : r.depth * \
+							  cos(info.x / 180 * M_PI);
 }

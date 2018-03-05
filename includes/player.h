@@ -64,6 +64,7 @@ typedef struct			s_player
 	int					fired;
 	int					reloading;
 	int					gun_frame;
+	int					is_moving;
 	double				end;
 	double				recover;
 	double				rot;
