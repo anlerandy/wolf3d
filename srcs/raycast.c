@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 03:30:17 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 03:58:12 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void			send_ray(t_data *data, int i)
 	info.x = info.x - data->player.rot;
 	info.x < 0 ? info.x += 360.0 : 0;
 	data->player.r[i].depth = r.depth == -42 ? r2.depth * \
-							  cos(info.x / 180 * M_PI) : r.depth * \
-							  cos(info.x / 180 * M_PI);
+							cos(info.x / 180 * M_PI) : r.depth * \
+							cos(info.x / 180 * M_PI);
+	data->player.r[i].tx = r.depth == -42 ? r2.tx : r.tx;
 }

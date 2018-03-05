@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 22:36:58 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 03:58:00 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,15 @@ void		draw_wall(t_data *data, t_ray r, int slice)
 	if (!s)
 		load_texture(data, texture);
 	s = 1;
-  d = ray.depth < 1 ? 1 : ray.depth;
-	if (ray.dir == NORTH || ray.dir == SOUTH)
-		color = ray.dir == NORTH ? 0x0000FF : 0x00FF00;
-	else
-		color = ray.dir == EAST ? 0xFF0000 : 0xFF00FF;
-	color -= ((int)(((1 + ray.depth) * 4)));
-	color = color & 0x00FFFFFF;
+	d = r.depth < 1 ? 1 : r.depth;
+	determine_colors(r, &color);
 	d = (800 / d);
-	i = 1;
 	h = (d + ((800 - d) / 2));
-	ray.x = ray.x - (int)ray.x;
-	while (++h < d)
+	r.x = r.x - (int)r.x;
+	while (--h > (800 - d) / 2)
 	{
 		if (r.tx == WOOD || r.tx == STONE || r.tx == METAL || r.tx == BRICK)
 			color = texture[r.tx].img[(int)(slice + (h * 1400))];
 		((int*)data->frame.img)[slice + (int)h * data->win_w] = color;
-		i++;
-  }
+	}
 }
