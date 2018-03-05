@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 16:26:58 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:30:23 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,11 @@ int			move_player(t_data *data, int d)
 {
 	int		x;
 	int		y;
+	double	speed;
 
-	x = floor(data->player.pos.x + (data->player.rotx * 10) * PLAYER_SPEED * d);
-	y = floor(data->player.pos.y + (data->player.roty * 10) * PLAYER_SPEED * d);
+	speed = PLAYER_SPEED;
+	x = floor(data->player.pos.x + (data->player.rotx * 10) * speed * d);
+	y = floor(data->player.pos.y + (data->player.roty * 10) * speed * d);
 	if (data->map.tiles[y][x].z != 9
 			&& data->map.tiles[y][(int)(data->player.pos.x)].z != 9 \
 			&& data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
