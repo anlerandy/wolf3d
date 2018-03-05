@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 19:30:23 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 20:01:53 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,7 @@ void		loop_player(t_data *data)
 	data->player.pos.y > 97.5 ? data->player.pos.y = 97.5 : 0;
 	data->player.rotx = cos((data->player.rot / 180) * M_PI);
 	data->player.roty = sin((data->player.rot / 180) * M_PI);
-	while (++i < data->win_w)
-	{
-		send_ray(data, i);
-		draw_wall(data, data->player.r[i], i);
-	}
+	create_threads(data);
 	loop_gun(data);
 }
 

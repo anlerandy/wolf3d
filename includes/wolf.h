@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 16:15:05 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:51:58 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ void				send_ray(t_data *data, int i);
 void				loop_fps(t_data *data);
 int					get_actual_time(void);
 void				*pth_rays(void *param);
+void				create_threads(t_data *data);
 
 void				draw_gun_mod(t_data *data, int frame);
 
