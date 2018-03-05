@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:36:59 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 11:00:35 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ static void	ingame(t_data *data)
 	}
 	if (data->game_state == PAUSE)
 	{
-		data->frame.img = ft_intset(data->frame.img, 0x00000000, data->win_w *
-				data->win_h);
 		draw_pause(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
@@ -125,8 +123,9 @@ int			fade_to(void *param)
 			draw_menu(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 	}
-	if (data->game_state == GAME || data->game_state == PAUSE)
-		ingame(data);
+	if (data->game_state == INPUT)
+		draw_input(data);
+	ingame(data);
 	if (data->loading == 3)
 		loading2(data);
 	else if (data->loading == 1 || data->load_ani > 0)

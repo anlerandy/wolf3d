@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 00:13:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/02/27 15:16:49 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 13:52:12 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	usage(int c)
 	c == 5 ? ft_putendl("Map invalide. Aucune entitee PLAYER_START.") : c;
 	c == 6 ? ft_putendl("Map introuvable.") : c;
 	c == 7 ? ft_putendl("Erreur durant le Raycasting.") : c;
-	c == 42 ? ft_putendl("WolfEngine a correctement fermé.") : c;
-	c != 42 ? ft_putstr("WolfEngine a fermé. ERREUR") : c;
+	c == 8 ? ft_putendl("Map invalide. Étape(s) manquante ou mal déclaré.") : c;
+	c == 42 ? ft_putendl("WolfEngine s'est correctement fermé.") : c;
+	c != 42 ? ft_putstr("WolfEngine s'est fermé. ERREUR") : c;
 	c != 42 ? ft_putendl(ft_itoa(c)) : c;
 	exit(0);
 }

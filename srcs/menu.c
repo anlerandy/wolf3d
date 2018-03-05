@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/01 07:35:45 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 06:59:46 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ void			draw_menu(t_data *data)
 	ft_type(data, "MAP3", 600 + (25 * (data->menu.selection == 2)), 400);
 	ft_type(data, "MAP4", 600 + (25 * (data->menu.selection == 3)), 450);
 	ft_type(data, "MAP5", 600 + (25 * (data->menu.selection == 4)), 500);
-	ft_type(data, "QUITTER", 600 + (25 * (data->menu.selection == 5)), 550);
+	ft_type(data, "MAP6", 600 + (25 * (data->menu.selection == 5)), 550);
+	ft_type(data, "QUITTER", 600 + (25 * (data->menu.selection == 6)), 600);
 	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 }
 
 void			execute_menu(t_data *data)
 {
-	if (data->menu.selection == 5)
+	if (data->menu.selection == 6)
 		usage(42);
 	else
 	{

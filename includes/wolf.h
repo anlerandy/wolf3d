@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:54:45 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:15:05 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define WOLF_H
 
 # include "key_codes_macos.h"
-# include "get_next_line.h"
+# include "../libft/includes/get_next_line.h"
 # include <pthread.h>
 # include "mlx.h"
 # include "map.h"
@@ -22,7 +22,7 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN "WolfEngine 0.05"
+# define WIN "WolfEngine 0.06"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff
@@ -79,6 +79,7 @@ typedef enum		e_game_state
 {
 	MENU,
 	GAME,
+	INPUT,
 	PAUSE
 }					t_game_state;
 
@@ -110,6 +111,12 @@ typedef struct		s_data
 	t_player		player;
 }					t_data;
 
+typedef struct		s_pth_inf
+{
+	t_data			*data;
+	int				i;
+}					t_pth_inf;
+
 void				debug(int debug, char *str);
 void				usage(int err);
 int					wolf_exit(void);
@@ -124,7 +131,7 @@ int					help();
 
 t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h);
 void				xpm_draw(t_data *data, t_xpm xpm);
-void				tmp_draw_f(t_data *data);
+void				xpm_draw_to_tmp(t_data *data, t_xpm xpm);
 void				xpm_draw_img(t_frame *tmp, t_xpm xpm, int x, int y);
 void				loading(t_data *data);
 void				loading2(t_data *data);
@@ -144,6 +151,7 @@ void				step_two(t_data *data, char *line, int i);
 void				step_three(t_data *data, char *line, int i);
 
 void				draw_pause(t_data *data);
+void				draw_input(t_data *data);
 void				map_clear(t_data *data);
 
 void				init_player(t_data *data);
@@ -160,6 +168,7 @@ void				draw_wall(t_data *data, t_ray ray, int slice);
 void				send_ray(t_data *data, int i);
 void				loop_fps(t_data *data);
 int					get_actual_time(void);
+void				*pth_rays(void *param);
 
 void				draw_gun_mod(t_data *data, int frame);
 

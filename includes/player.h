@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:03:04 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 18:54:39 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:01:02 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct			s_ray
 	double				y;
 	double				depth;
 	t_dir				dir;
+	double				maph;
 	t_texture			tx;
 }						t_ray;
 

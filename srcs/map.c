@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:51:35 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 07:13:40 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void			map(t_data *data, int map)
 	data->map.name = ft_strjoin("maps/map", mapid);
 	free(mapid);
 	if (verify_file(data, data->map.name, &w, &h) == 0)
-		usage(4);
+		usage(8);
 	data->map.w = w;
 	data->map.h = h;
 	data->map.tiles = ft_memalloc(sizeof(t_tile*) * h);

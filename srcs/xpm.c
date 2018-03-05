@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 02:14:11 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 20:44:21 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 10:07:16 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,27 @@ t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h)
 		usage(3);
 	debug(data->debug, "Réussi.");
 	return (xpm);
+}
+
+void				xpm_draw_to_tmp(t_data *data, t_xpm xpm)
+{
+	int i;
+	int j;
+
+	j = 0;
+	while (j < xpm.height && j < data->win_h)
+	{
+		i = 0;
+		while (i < xpm.width && i < data->win_w)
+		{
+			if (i + ((j * data->win_w) < \
+					data->win_w * data->win_h) && i < xpm.width)
+				((int*)(data->tmp.img))[i + (j \
+					* data->win_w)] = xpm.img[i + (j * data->win_w)];
+			i++;
+		}
+		j++;
+	}
 }
 
 void				xpm_draw(t_data *data, t_xpm xpm)
@@ -70,13 +91,4 @@ void				xpm_draw_img(t_frame *tmp, t_xpm xpm, int x, int y)
 		}
 		j++;
 	}
-}
-
-void				tmp_draw_f(t_data *data)
-{
-	int i;
-
-	i = -1;
-	while (++i < data->win_h * data->win_w)
-		data->tmp.img[i] = data->fade.img[i];
 }

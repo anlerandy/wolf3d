@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:41:47 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:53:05 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 11:05:52 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void	draw_type(t_data *data, char c, int x, int y)
 		while (++i < 55)
 		{
 			b = (((c - 31) % 10) * 55 + i) + ((((c - 31) / 10) * 55) + j) * 550;
-			if ((unsigned int)font.img[b] != 0xff00ffff)
+			if ((unsigned int)font.img[b] != 0xff00ffff && \
+					(unsigned int)font.img[b] != 0xFF000000)
 				((int*)(data->tmp.img))[x + i + ((y + j) * data->win_w)] =
 					font.img[b];
 		}
@@ -44,7 +45,7 @@ void		ft_type(t_data *data, char *str, int x, int y)
 	i = 0;
 	while (str[i])
 	{
-		str[i] < 32 || str[i] > 125 ? (str[i] = (char)131) : str[i];
+		str[i] < 32 || str[i] > 126 ? (str[i] = '}') : str[i];
 		draw_type(data, str[i], x + (i * 40), y);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/04 18:56:19 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:10:32 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@
 # define DPI_FAC 30
 # define MINI_OPAC 0x4F000000
 
+typedef struct		s_wall
+{
+	double			wheight;
+	double			mxheight;
+	int				color;
+	int				currpix;
+	int				texpix;
+	int				walpix;
+}					t_wall;
+
 typedef enum		e_texture
 {
-	COLORS,
 	BRICK,
 	WOOD,
 	STONE,
-	METAL
+	METAL,
+	COLORS,
+	MULTI
 }					t_texture;
 
 typedef enum		e_entity

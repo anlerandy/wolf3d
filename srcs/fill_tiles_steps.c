@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 03:50:21 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 07:09:22 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ void		step_one(t_data *data, char *line, int i)
 			tex = METAL;
 		else if (line[j] == 'S')
 			tex = STONE;
-		else
+		else if (line[j] == 'W')
 			tex = WOOD;
+		else if (line[j] == 'R')
+			tex = MULTI;
+		else
+			tex = COLORS;
 		data->map.tiles[i][j].texture = tex;
 		j++;
 	}

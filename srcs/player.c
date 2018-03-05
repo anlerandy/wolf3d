@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/02 17:37:49 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:26:58 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	loop_gun(t_data *data)
 
 void		loop_player(t_data *data)
 {
-	int		i;
+	int			i;
 
 	i = -1;
 	data->player.pos.x < 0 ? data->player.pos.x = 0 : 0;

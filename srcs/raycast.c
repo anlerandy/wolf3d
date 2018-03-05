@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 03:58:12 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:02:25 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void		set_ray(t_data *data, t_ray *r, t_ray *r2, t_ray *info)
 {
 	t_ray	dir;
 
-	info->x = ((data->player.rot - 30) + (info->depth * 60.0 / 1400.0));
+	info->x = ((data->player.rot - 30) + (info->depth * 60 / 1400.0));
 	info->x < 0 ? info->x += 360.0 : 0;
 	info->y = tan(info->x / 180.0 * M_PI);
 	dir.x = cos(info->x / 180.0 * M_PI);
@@ -123,7 +123,6 @@ void			send_ray(t_data *data, int i)
 {
 	t_ray	r;
 	t_ray	r2;
-	double	rot;
 	t_ray	info;
 
 	info.depth = i;
@@ -134,9 +133,11 @@ void			send_ray(t_data *data, int i)
 	data->player.r[i].y = r.depth == -42 ? r2.y : r.y;
 	data->player.r[i].dir = r.depth == -42 ? r2.dir : r.dir;
 	info.x = info.x - data->player.rot;
-	info.x < 0 ? info.x += 360.0 : 0;
 	data->player.r[i].depth = r.depth == -42 ? r2.depth * \
 							cos(info.x / 180 * M_PI) : r.depth * \
 							cos(info.x / 180 * M_PI);
 	data->player.r[i].tx = r.depth == -42 ? r2.tx : r.tx;
+	data->player.r[i].maph = r.depth == -42 ? \
+		data->map.tiles[(int)r2.y][(int)r2.x].z : \
+		data->map.tiles[(int)r.y][(int)r.x].z;
 }
