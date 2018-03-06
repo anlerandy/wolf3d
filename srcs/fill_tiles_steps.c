@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 16:45:16 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:04:34 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,12 @@ void		step_three(t_data *data, char *line)
 	tab = ft_strsplit(line, '|');
 	while (tab[i])
 		i++;
-	if (i == 3 || i == 4)
+	if (i == 2 || i == 3 || i == 4)
 	{
 		if (tab[0][0] == 'J')
 			player_start(data, i, tab);
+		if (tab[0][0] == 'T')
+			data->map.t = ft_atoi(tab[1]) == 0 ? DAY : NIGHT;
 	}
 	while (i >= 0)
 	{
