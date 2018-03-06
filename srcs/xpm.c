@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 02:14:11 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 10:07:16 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:48:41 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h)
 	t_xpm xpm;
 
 	debug(data->debug, "Creation de la texture : ");
-	debug(data->debug, xpmname + 6);
+	data->debug ? ft_putstr(xpmname + 6) : 0;
 	xpm.pimg = NULL;
 	xpm.img = NULL;
 	xpm.width = w;
@@ -27,7 +27,7 @@ t_xpm				xpm_create(t_data *data, char *xpmname, int w, int h)
 	xpm.img = (int*)mlx_get_data_addr(xpm.pimg, &xpm.bpp, &xpm.s_l, &xpm.ndia);
 	if (!xpm.img)
 		usage(3);
-	debug(data->debug, "Réussi.");
+	debug(data->debug, " : Réussi.");
 	return (xpm);
 }
 
