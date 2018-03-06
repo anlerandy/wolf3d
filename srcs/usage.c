@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 00:13:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 15:19:30 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 19:41:04 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	usage(int c)
 	c == 9 ? ft_putendl("#define THREADS n'est pas un multiple de 1400.") : c;
 	c == 9 ? ft_putstr("THREADS doit être un multiple de 1400 pour éviter") : c;
 	c == 9 ? ft_putendl(" tout risque de fuite process.") : c;
+	c == 10 ? ft_putendl("Map invalide. La map n'a aucune taille.") : c;
+	c == 11 ? ft_putendl("Map invalide. La map ne peux dépasser 75x75.") : c;
 	c == 42 ? ft_putendl("WolfEngine s'est correctement fermé.") : c;
 	c != 42 ? ft_putstr("WolfEngine s'est fermé. ERREUR") : c;
 	c != 42 ? ft_putendl(ft_itoa(c)) : c;

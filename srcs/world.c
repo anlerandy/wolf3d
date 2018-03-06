@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 17:32:02 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 19:56:52 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int	shading(t_data *data, t_ray r, int color)
 	else
 	{
 		i = r.depth < 3 ? 3 : r.depth;
-		c = (((int)((color & 0xFF0000) * 2 / i)) & 0xFF0000);
-		c += (((int)((color & 0x00FF00) * 2 / i)) & 0x00FF00);
-		c += (((int)((color & 0x0000FF) * 2 / i)) & 0x0000FF);
+		c = (((int)((color & 0xFF0000) * 1 / i)) & 0xFF0000);
+		c += (((int)((color & 0x00FF00) * 1 / i)) & 0x00FF00);
+		c += (((int)((color & 0x0000FF) * 1 / i)) & 0x0000FF);
 	}
 	return (c);
 }
@@ -70,7 +70,7 @@ void		draw_wall(t_data *data, t_ray r, int slice)
 
 	!s ? load_texture(data, texture) : 0;
 	s = 1;
-	util.mxheight = r.depth;
+	util.mxheight = r.depth < 0.1 ? 0.1 : r.depth;
 	determine_colors(r, &(util.color));
 	set_calcul(&util, &r);
 	limit = ((800 - util.mxheight) / 2);

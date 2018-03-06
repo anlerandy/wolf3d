@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 17:24:40 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:53:47 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void			send_ray(t_data *data, int i)
 	info.depth = i;
 	set_ray(data, &r, &r2, &info);
 	if (r2.depth == -42 && r.depth == -42)
-		usage(7);
+		data->player.r[i].depth = -1;
 	data->player.r[i].x = r.depth == -42 ? r2.x : r.x;
 	data->player.r[i].y = r.depth == -42 ? r2.y : r.y;
 	data->player.r[i].dir = r.depth == -42 ? r2.dir : r.dir;
@@ -139,7 +139,8 @@ void			send_ray(t_data *data, int i)
 							cos(info.x / 180 * M_PI) : r.depth * \
 							cos(info.x / 180 * M_PI);
 	data->player.r[i].tx = r.depth == -42 ? r2.tx : r.tx;
-	data->player.r[i].maph = r.depth == -42 ? \
-		data->map.tiles[(int)r2.y][(int)r2.x].z : \
-		data->map.tiles[(int)r.y][(int)r.x].z;
+	if (r2.depth != -42 || r.depth != -42)
+		data->player.r[i].maph = r.depth == -42 ? \
+			data->map.tiles[(int)r2.y][(int)r2.x].z : \
+			data->map.tiles[(int)r.y][(int)r.x].z;
 }

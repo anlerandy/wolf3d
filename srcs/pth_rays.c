@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:27:14 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 17:23:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 19:05:49 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		*pth_rays(void *param)
 	{
 		k = j * THREADS + info->i;
 		send_ray(info->data, k);
-		draw_wall(info->data, info->data->player.r[k], k);
+		if (info->data->player.r[k].depth >= 0)
+			draw_wall(info->data, info->data->player.r[k], k);
 	}
 	return (NULL);
 }
@@ -38,8 +39,10 @@ void		create_threads(t_data *data)
 	int			redo;
 
 	i = -1;
-	data->debug ? bug = 1 : 0;
-	data->debug ? redo = 1 : 0;
+	redo = 0;
+	bug = 0;
+	data->debug ? bug = data->debug : 0;
+	data->debug ? redo = data->debug : 0;
 	data->debug2 = data->debug;
 	while (++i < THREADS)
 	{

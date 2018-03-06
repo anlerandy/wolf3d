@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 15:02:15 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 19:43:04 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,6 @@ void		loop_player(t_data *data)
 	int			i;
 
 	i = -1;
-	data->player.pos.x < 0 ? data->player.pos.x = 0 : 0;
-	data->player.pos.y < 0 ? data->player.pos.y = 0 : 0;
-	data->player.pos.x > 97.5 ? data->player.pos.x = 97.5 : 0;
-	data->player.pos.y > 97.5 ? data->player.pos.y = 97.5 : 0;
 	data->player.rotx = cos((data->player.rot / 180) * M_PI);
 	data->player.roty = sin((data->player.rot / 180) * M_PI);
 	create_threads(data);
@@ -103,17 +99,20 @@ int			move_player(t_data *data, int d)
 	x = floor(data->player.pos.x + (data->player.rotx * 10) * speed * d);
 	y = floor(data->player.pos.y + (data->player.roty * 10) * speed * d);
 	data->player.is_moving = 0;
-	if (data->map.tiles[y][(int)(data->player.pos.x)].z != 9)
+	if (y < data->map.h && y >= 0 && x < data->map.w && x >= 0)
 	{
-		data->player.pos.y += data->player.roty * PLAYER_SPEED * d;
-		data->player.is_moving = 1;
-		res = 1;
-	}
-	if (data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
-	{
-		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
-		data->player.is_moving = 1;
-		res = 1;
+		if (data->map.tiles[y][(int)(data->player.pos.x)].z != 9)
+		{
+			data->player.pos.y += data->player.roty * PLAYER_SPEED * d;
+			data->player.is_moving = 1;
+			res = 1;
+		}
+		if (data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
+		{
+			data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
+			data->player.is_moving = 1;
+			res = 1;
+		}
 	}
 	return (res);
 }
