@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 16:59:08 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 22:58:39 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,12 @@ typedef struct		s_map
 	int				h;
 	t_skybox		t;
 }					t_map;
+
+typedef struct		s_col
+{
+	int				r;
+	int				g;
+	int				b;
+}					t_col;
 
 #endif

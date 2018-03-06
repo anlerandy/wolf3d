@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 20:01:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 00:49:25 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,74 @@ static void		draw_skybox(t_data *data)
 	s = 1;
 }
 
+static int		gradient(int c, int c2, double t)
+{
+	t_col		r1;
+	t_col		r2;
+	int			c3;
+
+	r1.r = ((int)(c / 256) / 256);
+	r1.g = ((int)(c / 256)) & 0x0000FF;
+	r1.b = c & 0x0000FF;
+	r2.r = ((int)(c2 / 256) / 256);
+	r2.g = ((int)(c2 / 256)) & 0x0000FF;
+	r2.b = c2 & 0x0000FF;
+	r1.r = r1.r * t + r2.r * (1 - t);
+	r1.g = r1.g * t + r2.g * (1 - t);
+	r1.b = r1.b * t + r2.b * (1 - t);
+	c3 = (r1.r * 256) * 256;
+	c3 += r1.g * 256;
+	c3 += r1.b;
+	return(c3);
+}
+
+static void		draw_ground2(t_data *data)
+{
+	int		x;
+	int		y;
+	double	t;
+
+	y = 400;
+	x = 0;
+	while (y < 800)
+	{
+		x = 0;
+		t = (y - 399) / 400.;
+		while (x++ < 1400)
+			((int*)(data->frame.img))[x + y * 1400] = gradient(0x333333, 0, t);
+		y++;
+	}
+}
+
+static void		draw_ground(t_data *data)
+{
+	int		x;
+	int		y;
+	double	t;
+
+	y = 400;
+	x = 0;
+	while (y < 800)
+	{
+		x = 0;
+		t = (y - 399) / 400.;
+		while (x++ < 1400)
+			((int*)(data->frame.img))[x + y * 1400] = gradient(0x999999, \
+			0x454545, t);
+		y++;
+	}
+}
+
 void			draw_map(t_data *data)
 {
 	int i;
 
 	i = 0;
-	data->loading ? debug(data->debug, "Dessin de la map.") : 0;
 	if (data->map.t == 0)
-		data->frame.img = ft_intset(data->frame.img, 0x00999999, data->win_w * \
-			data->win_h);
+		draw_ground(data);
 	else
-		data->frame.img = ft_intset(data->frame.img, 0x00333333, data->win_w * \
-			data->win_h);
+		draw_ground2(data);
+	data->loading ? debug(data->debug, "Dessin de la map.") : 0;
 	data->loading ? debug(data->debug, "Reset to 0") : 0;
 	draw_skybox(data);
 	draw_minimap(data);
