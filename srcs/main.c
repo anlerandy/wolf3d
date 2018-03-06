@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 19:56:25 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:20:35 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	set_data(t_data *data)
 	data->game_state = MENU;
 	data->actual_time = get_actual_time();
 	data->last_time = get_actual_time();
+	if (1400 % THREADS != 0)
+		usage(9);
 }
 
 void	set_img(t_data *data)

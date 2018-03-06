@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 07:09:22 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:01:47 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void		step_one(t_data *data, char *line, int i)
 	}
 }
 
+/*
+** La gestion des tailles de mur à été désactivé dans la fonction ci dessous.
+** Pour réactiver, remplacer ligne 19 par hgt = line[j] - 48;
+*/
+
 void		step_two(t_data *data, char *line, int i)
 {
 	int j;
@@ -56,12 +61,32 @@ void		step_two(t_data *data, char *line, int i)
 	}
 	while (line[j])
 	{
-		if (ft_isdigit(line[j]))
-			hgt = line[j] - 48;
+		if (ft_isdigit(line[j]) && line[j] != '0')
+			hgt = '9' - 48;
 		else
 			hgt = 0;
 		data->map.tiles[i][j].z = hgt;
 		j++;
+	}
+}
+
+static void	player_start(t_data *data, int j, int i, t_entity *ent)
+{
+	if (data->map.tiles[i][j].z == 0)
+	{
+		*ent = PLAYER_START;
+		data->player.pos.x = j + 0.5;
+		data->player.pos.y = i + 0.5;
+		data->player.pos.z = 0;
+	}
+	else
+	{
+		debug(data->debug, "Le joueur est dans un mur.");
+		debug(data->debug, "Ligne : ");
+		debug(data->debug, ft_itoa(i));
+		debug(data->debug, "Colonne : ");
+		debug(data->debug, ft_itoa(j));
+		usage(5);
 	}
 }
 
@@ -81,12 +106,7 @@ void		step_three(t_data *data, char *line, int i)
 	while (line[j])
 	{
 		if (line[j] == 'J')
-		{
-			ent = PLAYER_START;
-			data->player.pos.x = j + 0.5;
-			data->player.pos.y = i + 0.5;
-			data->player.pos.z = 0;
-		}
+			player_start(data, j, i, &ent);
 		else
 			ent = NONE;
 		data->map.tiles[i][j].entity = ent;

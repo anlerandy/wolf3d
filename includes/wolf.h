@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 19:51:58 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:20:23 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define WHITE 0x00ffffff
 # define YELLOW 0x00ffff00
 # define RED 0x00ff0000
-# define THREADS 32
+# define THREADS 14
 # define FADE 1
 # define DOORSPEED 30
 

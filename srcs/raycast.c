@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 14:02:25 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 14:50:58 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int		check_z(t_data *data, t_ray *ray, int dir, int i)
 		i == 2 && dir == 1 ? ray->dir = SOUTH : 0;
 		i == 1 && dir == 0 ? ray->dir = EAST : 0;
 		i == 1 && dir == 1 ? ray->dir = WEST : 0;
+		ray->y = r.y;
+		ray->x = r.x;
 		ray->tx = data->map.tiles[(int)(r.y)][(int)(r.x)].texture;
 		return (1);
 	}
