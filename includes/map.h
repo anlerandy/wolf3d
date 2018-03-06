@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 15:22:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:59:08 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,19 @@ typedef struct		s_tile
 	t_entity		entity;
 }					t_tile;
 
+typedef enum		e_skybox
+{
+	DAY,
+	NIGHT
+}					t_skybox;
+
 typedef struct		s_map
 {
 	char			*name;
 	t_tile			**tiles;
 	int				w;
 	int				h;
+	t_skybox		t;
 }					t_map;
 
 #endif

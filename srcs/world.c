@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 15:50:42 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:17:05 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,25 @@ static void	determine_colors(t_ray r, int *color)
 	*color += 0x0000000 & 0xFF000000;
 }
 
-static int	shading(t_ray r, int color)
+static int	shading(t_data *data, t_ray r, int color)
 {
 	int c;
 	int	i;
 
-	i = r.depth < 3 ? 3 : r.depth;
-	c = (((int)((color & 0xFF0000) * 3 / i)) & 0xFF0000);
-	c += (((int)((color & 0x00FF00) * 3 / i)) & 0x00FF00);
-	c += (((int)((color & 0x0000FF) * 3 / i)) & 0x0000FF);
+	if (data->map.t == DAY)
+	{
+		i = r.depth < 10 ? 10 : r.depth;
+		c = (((int)((color & 0xFF0000) * 10 / i)) & 0xFF0000);
+		c += (((int)((color & 0x00FF00) * 10 / i)) & 0x00FF00);
+		c += (((int)((color & 0x0000FF) * 10 / i)) & 0x0000FF);
+	}
+	else
+	{
+		i = r.depth < 3 ? 3 : r.depth;
+		c = (((int)((color & 0xFF0000) * 2 / i)) & 0xFF0000);
+		c += (((int)((color & 0x00FF00) * 2 / i)) & 0x00FF00);
+		c += (((int)((color & 0x0000FF) * 2 / i)) & 0x0000FF);
+	}
 	return (c);
 }
 
@@ -76,6 +86,6 @@ void		draw_wall(t_data *data, t_ray r, int slice)
 			util.color = texture[r.tx].img[util.texpix];
 		if (r.tx == MULTI)
 			util.color = texture[r.dir % 4].img[util.texpix];
-		((int*)data->frame.img)[util.walpix] = shading(r, util.color);
+		((int*)data->frame.img)[util.walpix] = shading(data, r, util.color);
 	}
 }
