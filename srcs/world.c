@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 17:17:05 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:32:02 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static int	shading(t_data *data, t_ray r, int color)
 
 	if (data->map.t == DAY)
 	{
-		i = r.depth < 10 ? 10 : r.depth;
-		c = (((int)((color & 0xFF0000) * 10 / i)) & 0xFF0000);
-		c += (((int)((color & 0x00FF00) * 10 / i)) & 0x00FF00);
-		c += (((int)((color & 0x0000FF) * 10 / i)) & 0x0000FF);
+		i = r.depth < 5 ? 5 : r.depth;
+		c = (((int)((color & 0xFF0000) * 5 / i)) & 0xFF0000);
+		c += (((int)((color & 0x00FF00) * 5 / i)) & 0x00FF00);
+		c += (((int)((color & 0x0000FF) * 5 / i)) & 0x0000FF);
 	}
 	else
 	{
