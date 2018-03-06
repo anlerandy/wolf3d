@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 16:59:08 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 23:22:00 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ typedef struct		s_wall
 
 typedef enum		e_texture
 {
-	BRICK,
-	WOOD,
-	STONE,
-	METAL,
-	COLORS,
-	MULTI
+	BRICK = 0,
+	WOOD = 1,
+	STONE = 2,
+	METAL = 3,
+	BREAK = 4,
+	COLORS = 5,
+	MULTI = 6
 }					t_texture;
 
 typedef enum		e_entity

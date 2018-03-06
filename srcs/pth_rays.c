@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:27:14 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 21:56:58 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 23:12:08 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		*pth_rays(void *param)
 	{
 		k = j * THREADS + info->i;
 		send_ray(info->data, k);
-		if (info->data->player.r[k].tx == WOOD && info->data->player.fired == \
+		if (info->data->player.r[k].tx == BREAK && info->data->player.fired == \
 			1 && k == 700 && info->data->player.r[k].depth < 2)
 			info->data->map.tiles[(int)(info->data->player.r[k].y)][\
 				(int)(info->data->player.r[k].x)].z = 0;

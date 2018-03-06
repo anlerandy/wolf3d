@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/03/06 19:04:00 by alerandy         ###   ########.fr        #
+#    Updated: 2018/03/06 23:09:21 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   player_input.c world.c time.c gun_anim.c pth_rays.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-CC = gcc $(FLAG)
-##CC = gcc -g
+##CC = gcc $(FLAG)
+CC = gcc -g
 FLAG = -Wall -Werror -Wextra
 FRAME = -framework OpenGL -framework AppKit
 LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft
