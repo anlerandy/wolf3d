@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 14:56:18 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:20:00 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			map(t_data *data, int map)
 	while (++i < h)
 		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);
 	fill_tiles(data, data->map.name);
-	init_player(data);
-	draw_map(data);
+	data->loading != 3 ? init_player(data) : 0;
+	data->loading != 3 ? draw_map(data) : 0;
 	data->loading = 0;
 }

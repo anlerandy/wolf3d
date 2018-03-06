@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 15:54:42 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:23:27 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct		s_data
 	int				flag2;
 	int				flag3;
 	int				debug;
+	int				debug2;
 	int				loading;
 	int				load_ani;
 	t_frame			frame;

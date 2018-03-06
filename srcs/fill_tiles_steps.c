@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 16:45:16 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:27:19 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ static void	player_start(t_data *data, int i, char **tab)
 		debug(data->debug, tab[1]);
 		debug(data->debug, "Colonne : ");
 		debug(data->debug, tab[2]);
-		usage(5);
+		data->game_state = MENU;
+		data->loading = 3;
 	}
 }
 

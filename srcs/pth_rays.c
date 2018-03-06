@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:27:14 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 16:55:43 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:23:57 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ void		create_threads(t_data *data)
 	i = -1;
 	data->debug ? bug = 1 : 0;
 	data->debug ? redo = 1 : 0;
+	data->debug2 = data->debug;
 	while (++i < THREADS)
 	{
 		thr[i].data = data;
 		thr[i].i = i;
-		thr[i].data->debug = bug;
+		data->debug = 0;
+		i == THREADS ? thr[i].data->debug = bug : 0;
 		pthread_create(&t[i], NULL, pth_rays, (void*)&thr[i]);
-		bug = 0;
+		i == THREADS ? bug = 0 : 0;
 	}
 	i = -1;
 	while (++i < THREADS)

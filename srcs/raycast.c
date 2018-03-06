@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:44:58 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 14:50:58 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:24:40 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		loop_rax(t_data *data, t_ray *r, t_ray info)
 	b = data->player.pos.y - a * data->player.pos.x;
 	while ((c = check_z(data, r, dir >= 0, 1)) == 0)
 	{
-		if (data->debug && (int)((r->x * 4)) + ((int)((r->y * 4)) * 300) < \
+		if (data->debug2 && (int)((r->x * 4)) + ((int)((r->y * 4)) * 300) < \
 				300 * 300 && (int)((r->x * 4)) + ((int)((r->y * 4)) * 300) > 0)
 			((int*)data->minimap.img)[(int)((r->x * 4)) \
 				+ ((int)((r->y * 4)) * 300)] = 0x0FFF0000;
@@ -78,7 +78,7 @@ static void		loop_ray(t_data *data, t_ray *r, t_ray info)
 	b = data->player.pos.y - a * data->player.pos.x;
 	while ((c = check_z(data, r, dir >= 0, 2)) == 0)
 	{
-		if (data->debug && (int)(((r->x * 4)) + ((r->y * 4) * 300)) < \
+		if (data->debug2 && (int)(((r->x * 4)) + ((r->y * 4) * 300)) < \
 				300 * 300 && (int)((r->x * 4) + ((r->y * 4) * 300)) > 0)
 			((int*)data->minimap.img)[(int)((r->x * 4) \
 				+ ((r->y * 4) * 300))] = 0x0F00FF00;
