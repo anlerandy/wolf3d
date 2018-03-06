@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 15:07:09 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:29:51 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,8 @@ void		step_three(t_data *data, char *line)
 				data->player.rot = ft_atoi(tab[3]);
 		}
 	}
+	i = -1;
+	while (tab[++i])
+		ft_strdel(&(tab[i]));
+	free(tab);
 }

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 14:08:23 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 16:10:32 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:22:21 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef enum		e_texture
 typedef enum		e_entity
 {
 	NONE,
-	PLAYER_START
+	START
 }					t_entity;
 
 typedef struct		s_tile
