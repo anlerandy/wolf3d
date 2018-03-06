@@ -6,10 +6,11 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 07:09:22 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:07:09 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "wolf.h"
 
 void		step_one(t_data *data, char *line, int i)
@@ -65,31 +66,23 @@ void		step_two(t_data *data, char *line, int i)
 	}
 }
 
-void		step_three(t_data *data, char *line, int i)
+void		step_three(t_data *data, char *line)
 {
-	int			j;
-	t_entity	ent;
+	char		**tab;
+	int			i;
 
-	j = 0;
-	if (i >= data->map.h || data->map.w < (int)ft_strlen(line))
+	i = 0;
+	tab = ft_strsplit(line, '|');
+	while (tab[i])
+		i++;
+	if (i == 3 || i == 4)
 	{
-		i >= data->map.h ? debug(data->debug, "Hauteur incorrecte de OBJ") :
-		debug(data->debug, "Largeur incorrecte dans OBJ, ligne : ");
-		data->map.w < (int)ft_strlen(line) ? debug(data->debug, ft_itoa(i)) : i;
-		usage(4);
-	}
-	while (line[j])
-	{
-		if (line[j] == 'J')
+		if (tab[0][0] == 'J')
 		{
-			ent = PLAYER_START;
-			data->player.pos.x = j + 0.5;
-			data->player.pos.y = i + 0.5;
-			data->player.pos.z = 0;
+			data->player.pos.x = ft_atoi(tab[1]);
+			data->player.pos.y = ft_atoi(tab[2]);
+			if (i == 4)
+				data->player.rot = ft_atoi(tab[3]);
 		}
-		else
-			ent = NONE;
-		data->map.tiles[i][j].entity = ent;
-		j++;
 	}
 }

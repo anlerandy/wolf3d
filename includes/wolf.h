@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 19:51:58 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 14:49:08 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void				ft_type(t_data *data, char *str, int x, int y);
 void				map(t_data *data, int map);
 void				step_one(t_data *data, char *line, int i);
 void				step_two(t_data *data, char *line, int i);
-void				step_three(t_data *data, char *line, int i);
+void				step_three(t_data *data, char *line);
 
 void				draw_pause(t_data *data);
 void				draw_input(t_data *data);

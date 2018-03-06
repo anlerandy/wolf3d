@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 14:36:46 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:02:15 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void		init_player(t_data *data)
 
 	i = -1;
 	debug(data->debug, "Initialisation de PLAYER.");
-	if (data->player.pos.z == -42)
-		usage(5);
 	data->player.hp = 100;
 	data->player.end = 100;
 	data->player.amo = 60;
@@ -28,7 +26,6 @@ void		init_player(t_data *data)
 	data->player.reloading = 0;
 	data->player.is_moving = 0;
 	data->player.gun_frame = 0;
-	data->player.rot = 0;
 	data->player.rotx = 0.0;
 	data->player.roty = 0.0;
 	while (++i < data->win_w)

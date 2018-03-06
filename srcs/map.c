@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 07:13:40 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 14:56:18 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static	void	fill_tiles(t_data *data, char *filename)
 				else if (step == 2)
 					step_two(data, line, i);
 				else if (step == 3)
-					step_three(data, line, i);
+					step_three(data, line);
 				i++;
 			}
 			ft_strdel(&line);
