@@ -6,10 +6,11 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 15:01:47 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:00:44 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "wolf.h"
 
 void		step_one(t_data *data, char *line, int i)
@@ -40,6 +41,7 @@ void		step_one(t_data *data, char *line, int i)
 /*
 ** La gestion des tailles de mur à été désactivé dans la fonction ci dessous.
 ** Pour réactiver, remplacer ligne 19 par hgt = line[j] - 48;
+** Et retirer && line[j] == '9'.
 */
 
 void		step_two(t_data *data, char *line, int i)
@@ -61,7 +63,7 @@ void		step_two(t_data *data, char *line, int i)
 	}
 	while (line[j])
 	{
-		if (ft_isdigit(line[j]) && line[j] != '0')
+		if (ft_isdigit(line[j]) && line[j] == '9')
 			hgt = '9' - 48;
 		else
 			hgt = 0;
@@ -70,46 +72,48 @@ void		step_two(t_data *data, char *line, int i)
 	}
 }
 
-static void	player_start(t_data *data, int j, int i, t_entity *ent)
+static void	player_start(t_data *data, int i, char **tab)
 {
-	if (data->map.tiles[i][j].z == 0)
+	int		x;
+	int		y;
+
+	x = ft_atoi(tab[1]);
+	y = ft_atoi(tab[2]);
+	if (data->map.tiles[y][x].z == 0)
 	{
-		*ent = PLAYER_START;
-		data->player.pos.x = j + 0.5;
-		data->player.pos.y = i + 0.5;
-		data->player.pos.z = 0;
+		data->player.pos.x = x + 0.5;
+		data->player.pos.y = y + 0.5;
+		if (i == 4)
+			data->player.rot = ft_atoi(tab[3]);
 	}
 	else
 	{
 		debug(data->debug, "Le joueur est dans un mur.");
 		debug(data->debug, "Ligne : ");
-		debug(data->debug, ft_itoa(i));
+		debug(data->debug, tab[1]);
 		debug(data->debug, "Colonne : ");
-		debug(data->debug, ft_itoa(j));
+		debug(data->debug, tab[2]);
 		usage(5);
 	}
 }
 
-void		step_three(t_data *data, char *line, int i)
+void		step_three(t_data *data, char *line)
 {
-	int			j;
-	t_entity	ent;
+	char		**tab;
+	int			i;
 
-	j = 0;
-	if (i >= data->map.h || data->map.w < (int)ft_strlen(line))
+	i = 0;
+	tab = ft_strsplit(line, '|');
+	while (tab[i])
+		i++;
+	if (i == 3 || i == 4)
 	{
-		i >= data->map.h ? debug(data->debug, "Hauteur incorrecte de OBJ") :
-		debug(data->debug, "Largeur incorrecte dans OBJ, ligne : ");
-		data->map.w < (int)ft_strlen(line) ? debug(data->debug, ft_itoa(i)) : i;
-		usage(4);
+		if (tab[0][0] == 'J')
+			player_start(data, i, tab);
 	}
-	while (line[j])
+	while (i >= 0)
 	{
-		if (line[j] == 'J')
-			player_start(data, j, i, &ent);
-		else
-			ent = NONE;
-		data->map.tiles[i][j].entity = ent;
-		j++;
+		free(tab[i--]);
 	}
+	free(tab);
 }

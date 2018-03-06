@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 20:01:53 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:02:15 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void		init_player(t_data *data)
 
 	i = -1;
 	debug(data->debug, "Initialisation de PLAYER.");
-	if (data->player.pos.z == -42)
-		usage(5);
 	data->player.hp = 100;
 	data->player.end = 100;
 	data->player.amo = 60;
@@ -28,7 +26,6 @@ void		init_player(t_data *data)
 	data->player.reloading = 0;
 	data->player.is_moving = 0;
 	data->player.gun_frame = 0;
-	data->player.rot = 0;
 	data->player.rotx = 0.0;
 	data->player.roty = 0.0;
 	while (++i < data->win_w)
@@ -98,20 +95,25 @@ int			move_player(t_data *data, int d)
 {
 	int		x;
 	int		y;
+	int		res;
 	double	speed;
 
 	speed = PLAYER_SPEED;
+	res = 0;
 	x = floor(data->player.pos.x + (data->player.rotx * 10) * speed * d);
 	y = floor(data->player.pos.y + (data->player.roty * 10) * speed * d);
-	if (data->map.tiles[y][x].z != 9
-			&& data->map.tiles[y][(int)(data->player.pos.x)].z != 9 \
-			&& data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
+	data->player.is_moving = 0;
+	if (data->map.tiles[y][(int)(data->player.pos.x)].z != 9)
 	{
-		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
 		data->player.pos.y += data->player.roty * PLAYER_SPEED * d;
 		data->player.is_moving = 1;
-		return (1);
+		res = 1;
 	}
-	data->player.is_moving = 0;
-	return (0);
+	if (data->map.tiles[(int)(data->player.pos.y)][x].z != 9)
+	{
+		data->player.pos.x += data->player.rotx * PLAYER_SPEED * d;
+		data->player.is_moving = 1;
+		res = 1;
+	}
+	return (res);
 }

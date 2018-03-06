@@ -6,15 +6,14 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 15:03:53 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:50:42 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void	load_texture(t_data *data, t_xpm texture[4], int *s)
+static void	load_texture(t_data *data, t_xpm texture[4])
 {
-	*s = 1;
 	texture[BRICK] = xpm_create(data, "./xpm/brick2.xpm", 1400, 800);
 	texture[WOOD] = xpm_create(data, "./xpm/wood2.xpm", 1400, 800);
 	texture[STONE] = xpm_create(data, "./xpm/stone2.xpm", 1400, 800);
@@ -43,20 +42,29 @@ static int	shading(t_ray r, int color)
 	return (c);
 }
 
+static void	set_calcul(t_wall *util, t_ray *r)
+{
+	util->mxheight = (((800 / 9) * r->maph) / util->mxheight);
+	util->wheight = (int)(util->mxheight + ((800 - util->mxheight) / 2));
+	util->wheight > 800 ? util->wheight = 800 : 0;
+	r->x = r->dir == NORTH || r->dir == SOUTH ? r->x - (int)r->x : \
+			r->y - (int)r->y;
+}
+
 void		draw_wall(t_data *data, t_ray r, int slice)
 {
 	t_wall			util;
+	int				limit;
 	static int		s = 0;
 	static t_xpm	texture[4];
 
-	!s ? load_texture(data, texture, &s) : 0;
+	!s ? load_texture(data, texture) : 0;
+	s = 1;
 	util.mxheight = r.depth;
 	determine_colors(r, &(util.color));
-	util.mxheight = (((800 / 9) * r.maph) / util.mxheight);
-	util.wheight = (int)(util.mxheight + ((800 - util.mxheight) / 2));
-	util.wheight > 800 ? util.wheight = 800 : 0;
-	r.x = r.dir == NORTH || r.dir == SOUTH ? r.x - (int)r.x : r.y - (int)r.y;
-	while (--util.wheight > ((800 - util.mxheight) / 2))
+	set_calcul(&util, &r);
+	limit = ((800 - util.mxheight) / 2);
+	while (--util.wheight > limit)
 	{
 		if (util.wheight < 0)
 			return ;

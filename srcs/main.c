@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 15:20:35 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:31:42 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	set_data(t_data *data)
 	data->win_w = 1400;
 	data->win_h = 800;
 	data->debug = 0;
-	data->player.pos.z = -42;
 	data->game_state = MENU;
 	data->actual_time = get_actual_time();
 	data->last_time = get_actual_time();

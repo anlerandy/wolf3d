@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 15:20:23 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:54:42 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN "WolfEngine 0.06"
+# define WIN "WolfEngine 0.07"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff
@@ -148,7 +148,7 @@ void				ft_type(t_data *data, char *str, int x, int y);
 void				map(t_data *data, int map);
 void				step_one(t_data *data, char *line, int i);
 void				step_two(t_data *data, char *line, int i);
-void				step_three(t_data *data, char *line, int i);
+void				step_three(t_data *data, char *line);
 
 void				draw_pause(t_data *data);
 void				draw_input(t_data *data);
