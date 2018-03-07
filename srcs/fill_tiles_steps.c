@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 21:44:53 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 00:50:30 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		step_one(t_data *data, char *line, int i)
 			tex = STONE;
 		else if (line[j] == 'W')
 			tex = WOOD;
+		else if (line[j] == '-')
+			tex = BREAK;
 		else if (line[j] == 'R')
 			tex = MULTI;
 		else

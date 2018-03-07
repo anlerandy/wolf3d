@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 19:42:55 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 01:48:25 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_verifyfile
 	int				fd;
 	char			*line;
 	int				step;
+	int				maxstep;
 }					t_verifyfile;
 
 typedef struct		s_frame

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 21:30:08 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 01:51:49 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static void		get_size(t_data *data, char *line, int *w, int *h)
 
 static int		verify_file(t_data *data, char *filename, int *w, int *h)
 {
-	t_verifyfile v;
+	t_verifyfile	v;
 
 	v.step = 0;
-	debug(data->debug, "Vérification de la map.");
+	!(v.maxstep = 0) ? debug(data->debug, "Vérification de la map.") : 0;
 	if ((v.fd = open(filename, O_RDONLY)) > 0)
 	{
-		while (get_next_line(v.fd, &v.line) == 1)
+		while (++v.maxstep && get_next_line(v.fd, &v.line) == 1)
 		{
 			if (ft_strcmp(v.line, "TEXTURE:") == 0 && v.step == 0)
 				v.step = 1;
@@ -46,6 +46,7 @@ static int		verify_file(t_data *data, char *filename, int *w, int *h)
 			else if (v.step == 1)
 				get_size(data, v.line, w, h);
 			ft_strdel(&v.line);
+			v.maxstep > 10000 ? usage(12) : 0;
 		}
 		ft_strdel(&v.line);
 		close(v.fd);

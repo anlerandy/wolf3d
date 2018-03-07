@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 00:49:25 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 01:46:06 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		gradient(int c, int c2, double t)
 	c3 = (r1.r * 256) * 256;
 	c3 += r1.g * 256;
 	c3 += r1.b;
-	return(c3);
+	return (c3);
 }
 
 static void		draw_ground2(t_data *data)
