@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:13:37 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/07 00:50:30 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 04:03:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,15 @@ static void	player_start(t_data *data, int i, char **tab)
 
 	x = ft_atoi(tab[1]);
 	y = ft_atoi(tab[2]);
+	if (x > data->map.w || x < 0 || y > data->map.h || y < 0)
+		usage(14);
 	if (data->map.tiles[y][x].z == 0)
 	{
 		data->player.pos.x = x + 0.50001;
 		data->player.pos.y = y + 0.50001;
 		if (i == 4)
-			data->player.rot = ft_atoi(tab[3]);
+			if (ft_atoi(tab[3]) >= 0 && ft_atoi(tab[3]) < 360)
+				data->player.rot = ft_atoi(tab[3]);
 	}
 	else
 	{

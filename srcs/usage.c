@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 00:13:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 02:08:56 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/07 03:56:29 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	usage(int c)
 	c == 11 ? ft_putendl("Map invalide. La map ne peux dépasser 75x75.") : c;
 	c == 12 ? ft_putendl("Map invalide. N'exagère pas...") : c;
 	c == 13 ? ft_putendl("Erreur Memalloc.") : c;
+	c == 14 ? ft_putendl("Map invalide. Le joueur est hors de la map.") : c;
 	c == 42 ? ft_putendl("WolfEngine s'est correctement fermé.") : c;
 	c != 42 ? ft_putstr("WolfEngine s'est fermé. ERREUR") : c;
 	c != 42 ? ft_putendl(ft_itoa(c)) : c;
