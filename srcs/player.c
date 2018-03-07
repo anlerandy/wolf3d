@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 04:09:29 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 04:17:19 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void		init_player(t_data *data)
 	data->player.gun_frame = 0;
 	data->player.rotx = 0.0;
 	data->player.roty = 0.0;
+	if (!data->player.pos.y && !data->player.pos.x)
+		usage(5);
 	while (++i < data->win_w)
 	{
 		data->player.r[i].x = 0;
