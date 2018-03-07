@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 15:05:12 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 11:03:40 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 02:57:15 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			draw_input(t_data *data)
 	y = 50;
 	space = 70;
 	draw_map(data);
-	data->tmp.img = ft_intset(data->tmp.img, 0x40FF0000,
+	data->tmp.img = ft_intset(data->tmp.img, 0x70550000,
 			data->win_h * data->win_w);
 	ft_type(data, "Marcher      W ou S", x + 25, y);
 	ft_type(data, "Tourner      A ou D", x + 25, y + space);

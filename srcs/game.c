@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 01:46:06 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 03:04:47 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void		draw_ground(t_data *data)
 		t = (y - 399) / 400.;
 		while (x++ < 1400)
 			((int*)(data->frame.img))[x + y * 1400] = gradient(0x999999, \
-			0x454545, t);
+			0x7e5e47, t);
 		y++;
 	}
 }
