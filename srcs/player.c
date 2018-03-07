@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:25:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 00:48:57 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 04:09:29 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		init_player(t_data *data)
 	debug(data->debug, "Initialisation de PLAYER.");
 	data->player.hp = 100;
 	data->player.end = 100;
-	data->player.amo = 60;
+	data->player.amo = 10;
 	data->player.amo_chamber = 1;
 	data->player.fired = 0;
 	data->player.reloading = 0;
