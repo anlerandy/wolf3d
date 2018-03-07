@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 01:51:49 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 02:07:13 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,10 @@ static	void	fill_tiles(t_data *data, char *filename)
 
 void			map(t_data *data, int map)
 {
-	int		i;
 	int		h;
 	int		w;
 	char	*mapid;
 
-	i = -1;
 	h = 0;
 	w = 0;
 	mapid = ft_itoa(map + 1);
@@ -130,9 +128,7 @@ void			map(t_data *data, int map)
 		usage(8);
 	(data->map.w = w) == 0 ? usage(10) : 0;
 	(data->map.h = h) == 0 ? usage(10) : 0;
-	data->map.tiles = ft_memalloc(sizeof(t_tile*) * h);
-	while (++i < h)
-		data->map.tiles[i] = ft_memalloc(sizeof(t_tile) * w);
+	malloc_tiles(data, h, w);
 	fill_tiles(data, data->map.name);
 	data->loading != 3 ? init_player(data) : 0;
 	data->loading != 3 ? draw_map(data) : 0;

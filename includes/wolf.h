@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 01:48:25 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/07 02:07:02 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,6 @@ void				*pth_rays(void *param);
 void				create_threads(t_data *data);
 
 void				draw_gun_mod(t_data *data, int frame);
+void				malloc_tiles(t_data *data, int h, int w);
 
 #endif
