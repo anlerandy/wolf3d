@@ -19,7 +19,7 @@ SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   player_input.c world.c time.c gun_anim.c pth_rays.c malloc_tiles.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-CC = gcc $(FLAG)
+CC = gcc $(FLAG) -O2
 FLAG = -Wall -Werror -Wextra
 FRAME = -framework OpenGL -framework AppKit
 LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft

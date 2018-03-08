@@ -98,8 +98,7 @@ static void	player_start(t_data *data, int i, char **tab)
 		debug(data->debug, tab[1]);
 		debug(data->debug, "Colonne : ");
 		debug(data->debug, tab[2]);
-		data->game_state = MENU;
-		data->loading = 3;
+		usage(5);
 	}
 }
 

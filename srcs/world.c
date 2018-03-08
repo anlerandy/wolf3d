@@ -34,7 +34,7 @@ static void	determine_colors(t_ray r, int *color)
 static int	shading(t_data *data, t_ray r, int color)
 {
 	int c;
-	int	i;
+	double	i;
 
 	if (data->map.t == DAY)
 	{
