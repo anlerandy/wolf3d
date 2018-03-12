@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:38 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/06 23:29:43 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:19:43 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	determine_colors(t_ray r, int *color)
 
 static int	shading(t_data *data, t_ray r, int color)
 {
-	int c;
+	int		c;
 	double	i;
 
 	if (data->map.t == DAY)

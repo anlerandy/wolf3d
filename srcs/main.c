@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 09:13:24 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:19:27 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	set_img(t_data *data)
 	if (!data->frame.img || !data->frame.pimg)
 		usage(2);
 }
-
-#include <stdio.h>
 
 int		main(int ac, char **argv, char **env)
 {
