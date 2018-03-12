@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 09:19:27 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 10:18:48 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,12 @@ int		main(int ac, char **argv, char **env)
 	if (!(data = ft_memalloc(sizeof(t_data))))
 		usage(1);
 	set_data(data);
-	standalone(env[20] + 2, data);
-	debug(data->debug, "Environnement chargé.\nInitialisation de MLX.");
+	while (env[i][1] != '=')
+		i++;
+	standalone(env[i] + 2, data);
+	debug(data->debug, "Environnement chargé : ");
+	debug(data->debug, data->env);
+	debug(data->debug, "Inisialisation de MLX.");
 	if (!(data->mlx = mlx_init()))
 		usage(2);
 	set_img(data);
