@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 16:20:48 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 17:23:04 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 08:56:24 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		set_load(t_data *data, t_frame *right, t_frame *left)
 	left->img = mlx_get_data_addr(left->pimg, &(left->bpp), &(left->s_l),
 			&(left->ndia));
 	if (!x)
-		load = xpm_create(data, "./xpm/door.xpm", 1400, 800);
+		load = xpm_create(data, "xpm/door.xpm", 1400, 800);
 	x = 1;
 	xpm_draw_img(right, load, 700, 0);
 	xpm_draw_img(left, load, 0, 0);

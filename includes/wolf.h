@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 02:07:02 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:12:53 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN "WolfEngine 0.09"
+# define WIN "WolfEngine 0.010 | Standalone Edition"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff
@@ -90,6 +90,7 @@ typedef struct		s_data
 	void			*win;
 	int				win_h;
 	int				win_w;
+	char			*env;
 	int				flag;
 	int				flag2;
 	int				flag3;
@@ -175,5 +176,7 @@ void				create_threads(t_data *data);
 
 void				draw_gun_mod(t_data *data, int frame);
 void				malloc_tiles(t_data *data, int h, int w);
+
+void				standalone(char *env, t_data *data);
 
 #endif

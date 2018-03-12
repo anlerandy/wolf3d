@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 03:31:25 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/05 06:59:46 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 08:55:53 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			rebuild_menu(t_data *data)
 	data->game_state = MENU;
 	data->menu.selection = 0;
 	if (!x)
-		menu = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
+		menu = xpm_create(data, "xpm/menu.xpm", 1400, 800);
 	x = 1;
 	xpm_draw(data, menu);
 }
@@ -63,7 +63,7 @@ void			skip_to_menu(t_data *data)
 {
 	t_xpm intr;
 
-	intr = xpm_create(data, "./xpm/menu.xpm", 1400, 800);
+	intr = xpm_create(data, "xpm/menu.xpm", 1400, 800);
 	xpm_draw(data, intr);
 	data->intro.launched = 2;
 	data->intro.qd = 1;

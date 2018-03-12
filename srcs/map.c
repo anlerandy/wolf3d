@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 21:04:20 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 02:07:13 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:07:38 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,10 @@ void			map(t_data *data, int map)
 	debug(data->debug, mapid);
 	data->game_state = GAME;
 	data->map.name = ft_strjoin("maps/map", mapid);
+	free(mapid);
+	mapid = ft_strjoin(data->env, data->map.name);
+	ft_strdel(&(data->map.name));
+	data->map.name = ft_strdup(mapid);
 	free(mapid);
 	if (verify_file(data, data->map.name, &w, &h) == 0)
 		usage(8);

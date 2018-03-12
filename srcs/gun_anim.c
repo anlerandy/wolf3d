@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/02 17:44:01 by acourtin         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:07:22 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		draw_gun(t_data *data, int framex, int framey, int i)
 		* (data->player.k_val.run == 1 && data->player.end > 0 \
 		&& data->player.k_val.walk == 1)) * (data->player.is_moving == 1));
 	if (!s)
-		gun = xpm_create(data, "./xpm/doublebarrel.xpm", 2500, 1500);
+		gun = xpm_create(data, "xpm/doublebarrel.xpm", 2500, 1500);
 	s = 1;
 	while (++i < 500 * 500)
 	{

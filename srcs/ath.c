@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/01 07:38:06 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 08:56:07 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		ath_xpm(t_data *data)
 	int				i;
 
 	if (!s)
-		ath = xpm_create(data, "./xpm/ath.xpm", 1225, 75);
+		ath = xpm_create(data, "xpm/ath.xpm", 1225, 75);
 	s = 1;
 	i = -1;
 	while (++i < 1225 * 75)
@@ -83,7 +83,7 @@ static void	draw_reload(t_data *data)
 	int				i;
 
 	if (!s)
-		rld = xpm_create(data, "./xpm/reload.xpm", 120, 25);
+		rld = xpm_create(data, "xpm/reload.xpm", 120, 25);
 	s = 1;
 	i = -1;
 	while (++i < 120 * 25)

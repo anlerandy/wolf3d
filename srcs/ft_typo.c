@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:41:47 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/05 11:05:52 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 08:56:29 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	draw_type(t_data *data, char c, int x, int y)
 
 	j = -1;
 	if (!s)
-		font = xpm_create(data, "./xpm/typo01.xpm", 550, 550);
+		font = xpm_create(data, "xpm/typo01.xpm", 550, 550);
 	s = 1;
 	while (++j < 55)
 	{

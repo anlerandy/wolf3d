@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:59:21 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 19:04:26 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 09:13:24 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mlx_launcher(t_data *data)
 {
 	t_xpm menu;
 
-	menu = xpm_create(data, "./xpm/42.xpm", 1400, 800);
+	menu = xpm_create(data, "xpm/42.xpm", 1400, 800);
 	xpm_draw(data, menu);
 	debug(data->debug, "Lancement MLX.");
 	mlx_loop_hook(data->mlx, fade_to, (void*)data);
@@ -32,6 +32,7 @@ void	set_data(t_data *data)
 	data->win_h = 800;
 	data->debug = 0;
 	data->debug2 = 0;
+	data->loading = 0;
 	data->game_state = MENU;
 	data->actual_time = get_actual_time();
 	data->last_time = get_actual_time();
@@ -67,16 +68,21 @@ void	set_img(t_data *data)
 		usage(2);
 }
 
-int		main(void)
+#include <stdio.h>
+
+int		main(int ac, char **argv, char **env)
 {
 	t_data		*data;
 	int			i;
 
 	i = 0;
+	(void)ac;
+	(void)argv;
 	data = NULL;
 	if (!(data = ft_memalloc(sizeof(t_data))))
 		usage(1);
 	set_data(data);
+	standalone(env[20] + 2, data);
 	debug(data->debug, "Environnement chargé.\nInitialisation de MLX.");
 	if (!(data->mlx = mlx_init()))
 		usage(2);

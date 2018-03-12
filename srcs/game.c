@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/07 03:04:47 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/12 08:56:35 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void		draw_skybox(t_data *data)
 
 	if (!s)
 	{
-		sky = xpm_create(data, "./xpm/skybox.xpm", 1400, 400);
-		sky2 = xpm_create(data, "./xpm/skybox2.xpm", 1400, 400);
+		sky = xpm_create(data, "xpm/skybox.xpm", 1400, 400);
+		sky2 = xpm_create(data, "xpm/skybox2.xpm", 1400, 400);
 	}
 	i = -1;
 	while (++i < 1400 * 400)
@@ -113,6 +113,6 @@ void			draw_map(t_data *data)
 	data->loading ? debug(data->debug, "Dessin de la minimap.") : 0;
 	loop_player(data);
 	data->loading ? debug(data->debug, "Premier affichage vue.") : 0;
-	loop_fps(data);
+	data->debug ? loop_fps(data) : 0;
 	data->loading ? debug(data->debug, "Initialisation de l'ATH.") : 0;
 }
