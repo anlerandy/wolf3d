@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/03/12 09:12:18 by alerandy         ###   ########.fr        #
+#    Updated: 2018/03/13 21:56:10 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,13 @@ $(NAME) : libft minilibx $(OBJ)
 	@echo "\033[32m/------------------------------------\ \\033[0m"
 	@echo "\033[32m|----------- $(NAME) crée ------------| \\033[0m"
 	@echo "\033[32m\------------------------------------/ \\033[0m"
+
+icon : standalone
+	sips -i xpm/ico.png
+	Derez -only icns xpm/ico.png > tmpico.rsrc
+	Rez -append tmpico.rsrc -o wolf3d
+	SetFile -a C wolf3d
+	rm tmpico.rsrc
 
 libft :
 	@$(MAKE) -j -C libft/
