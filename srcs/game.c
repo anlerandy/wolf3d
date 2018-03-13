@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 08:56:35 by alerandy         ###   ########.fr       */
+/*   Updated: 2018/03/13 19:12:01 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ void			draw_map(t_data *data)
 	data->loading ? debug(data->debug, "Dessin de la minimap.") : 0;
 	loop_player(data);
 	data->loading ? debug(data->debug, "Premier affichage vue.") : 0;
-	data->debug ? loop_fps(data) : 0;
+	loop_fps(data);
 	data->loading ? debug(data->debug, "Initialisation de l'ATH.") : 0;
 }
