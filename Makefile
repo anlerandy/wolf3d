@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/03/13 21:56:10 by alerandy         ###   ########.fr        #
+#    Updated: 2018/03/14 18:03:04 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,6 @@ $(NAME) : libft minilibx $(OBJ)
 	@echo "\033[32m|----------- $(NAME) crée ------------| \\033[0m"
 	@echo "\033[32m\------------------------------------/ \\033[0m"
 
-icon : standalone
-	sips -i xpm/ico.png
-	Derez -only icns xpm/ico.png > tmpico.rsrc
-	Rez -append tmpico.rsrc -o wolf3d
-	SetFile -a C wolf3d
-	rm tmpico.rsrc
 
 libft :
 	@$(MAKE) -j -C libft/
@@ -65,6 +59,7 @@ fclean :
 	@printf "\033[2A\r\033[K""\033[1;30mLib mlx détruite.\033[0m\n"
 	@$(MAKE) -C libft/ fclean
 	@rm -f minilibx_macos/libmlx.a
+	@rm -f City42.dmg
 
 re : fclean $(NAME)
 	@printf "\033[\r\033[K""\033[32mLibrairie mlx compilé avec succès.\033[0m\n"
@@ -82,7 +77,35 @@ normall :
 	@norminette srcs/ includes/
 	@norminette libft/srcs/ libft/includes/
 
-standalone : re clean
-	@rm -rf libft/libft.a
+#	La rêgle ci-dessous compile un binaire qui sera mis dans un BOOTABLE DMG.
+standalone : re
+	@#Supprime city42.dmg si existant.
+	@rm -f City42.dmg
+	@#Nettoie les fichiers désormais inutil.
+	@rm -rf $(OBJ_PATH)
+	@$(MAKE) -C minilibx_macos/ clean
+	@$(MAKE) -C libft/ fclean
+	@rm -f minilibx_macos/libmlx.a
+	@#Attribut a ico.png le statut de SELF_icone
+	@sips -i xpm/ico.png
+	@#Génère une bibliothèque ressource contenant l'icône.
+	@Derez -only icns xpm/ico.png > tmpico.rsrc
+	@Rez -append tmpico.rsrc -o wolf3d
+	@#Attribut au binaire son icône depuis la bibliothèque.
+	@SetFile -a C wolf3d
+	@#Mis en place des nécessaire pour le DMG.
+	@mkdir -p city42
+	@cp -r xpm city42/
+	@cp -r maps city42/
+	@cp wolf3d city42/city42
+	@#Création du DMG.
+	@hdiutil create -format UDZO -srcfolder city42 City42.dmg
+	@#Application de l'icône sur le DMG.
+	@Rez -append tmpico.rsrc -o City42.dmg
+	@SetFile -a C City42.dmg
+	@#Nettoieyage des fichiers désormais inutils.
+	@rm tmpico.rsrc
+	@rm -rf city42/
+	@rm -f wolf3d
 
-.PHONY : fclean clean re norm success minilibx libft norml norm normall all standalone
+.PHONY : fclean clean re norm minilibx libft norml norm normall all standalone
