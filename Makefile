@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/03/14 18:03:04 by alerandy         ###   ########.fr        #
+#    Updated: 2018/03/21 15:45:52 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ fclean :
 	@printf "\033[2A\r\033[K""\033[1;30mLib mlx détruite.\033[0m\n"
 	@$(MAKE) -C libft/ fclean
 	@rm -f minilibx_macos/libmlx.a
-	@rm -f City42.dmg
+	@rm -f City42
 
 re : fclean $(NAME)
 	@printf "\033[\r\033[K""\033[32mLibrairie mlx compilé avec succès.\033[0m\n"
@@ -80,7 +80,7 @@ normall :
 #	La rêgle ci-dessous compile un binaire qui sera mis dans un BOOTABLE DMG.
 standalone : re
 	@#Supprime city42.dmg si existant.
-	@rm -f City42.dmg
+	@rm -f City42
 	@#Nettoie les fichiers désormais inutil.
 	@rm -rf $(OBJ_PATH)
 	@$(MAKE) -C minilibx_macos/ clean
@@ -107,5 +107,6 @@ standalone : re
 	@rm tmpico.rsrc
 	@rm -rf city42/
 	@rm -f wolf3d
+	@mv -f City42.dmg City42
 
 .PHONY : fclean clean re norm minilibx libft norml norm normall all standalone
