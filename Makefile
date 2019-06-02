@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2018/03/21 15:45:52 by alerandy         ###   ########.fr        #
+#    Updated: 2019/05/31 13:16:13 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 		   standalone.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-CC = gcc $(FLAG) -O2 -O3 -Ofast
+CC = gcc $(FLAG)
 FLAG = -Wall -Werror -Wextra
 FRAME = -framework OpenGL -framework AppKit
 LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft
@@ -59,7 +59,7 @@ fclean :
 	@printf "\033[2A\r\033[K""\033[1;30mLib mlx détruite.\033[0m\n"
 	@$(MAKE) -C libft/ fclean
 	@rm -f minilibx_macos/libmlx.a
-	@rm -f City42
+	@rm -rf City42
 
 re : fclean $(NAME)
 	@printf "\033[\r\033[K""\033[32mLibrairie mlx compilé avec succès.\033[0m\n"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerandy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:52:08 by alerandy          #+#    #+#             */
-/*   Updated: 2017/11/27 12:26:12 by alerandy         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:19:42 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+
+# define OP_SIZE sizeof(long)
 
 typedef struct		s_list
 {
@@ -27,6 +29,7 @@ typedef struct		s_list
 void				ft_putcharerr(char c);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+void				ft_putnstr(char const *s, int len);
 void				ft_putstrerr(char *str);
 size_t				ft_strlen(const char *s);
 int					ft_isdigit(int c);
@@ -74,10 +77,13 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 void				ft_putendl(char const *s);
+void				ft_putnendl(char const *s, int len);
 void				ft_putnbr(int n);
 void				ft_putstr_fd(char const *s, int fd);
+void				ft_putnstr_fd(char const *s, int len, int fd);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char const *s, int fd);
+void				ft_putnendl_fd(char const *s, int len, int fd);
 void				ft_putnbr_fd(int n, int fd);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
@@ -90,5 +96,7 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 int					ft_isupper(int c);
 char				*ft_strcapitalize(char *s);
 char				*ft_strndup(const char *s1, size_t n);
+
+unsigned			ft_swap_integer(unsigned nbr);
 
 #endif
