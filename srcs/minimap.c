@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 10:51:51 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/02 17:27:43 by acourtin         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:38:23 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			draw_minimap(t_data *data)
 	int i;
 
 	i = -1;
-	data->minimap.img = ft_intset(data->minimap.img, 0xFF000000, 300 * 300);
+	data->minimap.img = ft_intset(data->minimap.img, 0, 300 * 300);
 	while (++i < data->map.h * data->map.w)
 		draw_cube(data, i % data->map.w, i / data->map.w);
 	if (data->debug == 1)

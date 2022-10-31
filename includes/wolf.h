@@ -6,15 +6,17 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:57:54 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 09:12:53 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:24:47 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF_H
 # define WOLF_H
 
-# include "key_codes_macos.h"
-# include "../libft/includes/get_next_line.h"
+// # include "key_codes_macos.h"
+// # include "key_codes_linux.h"
+# include <X11/Xlib.h>
+# include "get_next_line.h"
 # include <pthread.h>
 # include "mlx.h"
 # include "map.h"
@@ -22,14 +24,14 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN "WolfEngine 0.010 | Standalone Edition"
+# define WIN "WolfEngine 0.1.0 | Standalone Edition"
 # define BLUR 0xF0000000
 # define BLACK 0x00000000
 # define BLUE 0x000000ff
 # define WHITE 0x00ffffff
 # define YELLOW 0x00ffff00
 # define RED 0x00ff0000
-# define THREADS 14
+# define THREADS 1
 # define FADE 1
 # define DOORSPEED 30
 

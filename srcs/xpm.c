@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 02:14:11 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/12 09:55:48 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:56:32 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void				xpm_draw_to_tmp(t_data *data, t_xpm xpm)
 		while (i < xpm.width && i < data->win_w)
 		{
 			if (i + ((j * data->win_w) < \
-					data->win_w * data->win_h) && i < xpm.width)
-				((int*)(data->tmp.img))[i + (j \
-					* data->win_w)] = xpm.img[i + (j * data->win_w)];
+					data->win_w * data->win_h) && i < xpm.width \
+					&& (unsigned)(xpm.img[i + (j * data->win_w)]) != 0xFF000000)
+					((int*)(data->frame.img))[i + (j \
+						* data->win_w)] = xpm.img[i + (j * data->win_w)];
 			i++;
 		}
 		j++;

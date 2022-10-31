@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gun_anim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:22:20 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/12 09:07:22 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:32:19 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		draw_gun(t_data *data, int framex, int framey, int i)
 		if (gun.img[(i % 500) + (framex * 500) + (((i / 500) + (framey * 500)) \
 			* 2500)] != 0x0000FFFF && (i / 500) + 300 - sin(movy) * 10 \
 			+ 10 < 800)
-			((int*)(data->tmp.img))[(int)((i % 500) + cos(movx) * 10 + 600) \
+			((int*)(data->frame.img))[(int)((i % 500) + cos(movx) * 10 + 600) \
 				+ ((int)((i / 500) + 300 - sin(movy) * 10 + 10) \
 				* data->win_w)] = gun.img[(i % 500) + (framex * 500) \
 				+ (((i / 500) + (framey * 500)) * 2500)];

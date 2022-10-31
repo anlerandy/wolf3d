@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 16:20:48 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 08:56:24 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:05:51 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	put_all(t_data *data, int i, t_frame right, t_frame left)
 	if (data->loading != 3 && data->game_state == GAME)
 		mlx_put_image_to_window(data->mlx, data->win, data->minimap.pimg, \
 				10, 10);
-	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+	// mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, right.pimg, 1400 - i, 0);
 	mlx_put_image_to_window(data->mlx, data->win, left.pimg, -700 + i, 0);
 }

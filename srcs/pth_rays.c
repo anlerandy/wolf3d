@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:27:14 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/06 23:12:08 by acourtin         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:51:31 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		create_threads(t_data *data)
 	data->debug ? bug = data->debug : 0;
 	data->debug ? redo = data->debug : 0;
 	data->debug2 = data->debug;
+    XInitThreads();
 	while (++i < THREADS)
 	{
 		thr[i].data = data;

@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "wolf.h": "c",
+    "key_codes_macos.h": "c",
+    "player.h": "c",
+    "get_next_line.h": "c",
+    "mlx.h": "c",
+    "mlx_int.h": "c"
+  }
+}

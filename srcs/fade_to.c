@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 04:04:24 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 08:55:17 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:06:12 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	ingame(t_data *data)
 		draw_map(data);
 		draw_ath(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+		// mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->minimap.pimg, \
 				10, 10);
 	}
@@ -81,7 +81,7 @@ static void	ingame(t_data *data)
 	{
 		draw_pause(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+		// mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 	}
 }
 
@@ -95,7 +95,7 @@ static void	fade_to2(t_data *data)
 		data->fade_c += 0x01000000 * FADE;
 		i = -1;
 		while (++i < data->win_w * data->win_h)
-			data->fade.img[i] = data->frame.img[i];
+			data->fade.img[i] = data->fade.img[i];
 		data->fade.img = ft_intadd(data->fade.img, data->fade_c,
 				data->win_w * data->win_h);
 		data->flag++;
@@ -121,11 +121,12 @@ int			fade_to(void *param)
 					0, 0);
 		if (data->intro.fin == 1)
 			draw_menu(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+		mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
 	}
 	if (data->game_state == INPUT)
 		draw_input(data);
-	ingame(data);
+	if (data->loading != 1 && data->load_ani <= 0 && data->loading != 3)
+		ingame(data);
 	if (data->loading == 3)
 		loading2(data);
 	else if (data->loading == 1 || data->load_ani > 0)

@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:40:30 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/13 19:12:01 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:22:29 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,6 @@ static void		draw_ground(t_data *data)
 
 void			draw_map(t_data *data)
 {
-	int i;
-
-	i = 0;
 	if (data->map.t == 0)
 		draw_ground(data);
 	else

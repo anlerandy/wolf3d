@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pause.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 15:05:12 by acourtin          #+#    #+#             */
-/*   Updated: 2018/03/07 02:57:15 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:54:11 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		draw_select(t_data *data, int x)
 		i = 0;
 		while (i < 462)
 		{
-			((int*)(data->tmp.img))[(i + 468) + ((y + 345) * data->win_w) +
+			((int*)(data->frame.img))[(i + 468) + ((y + 345) * data->win_w) +
 				(x * 55) * data->win_w] += 0x002F0005 & 0x00FF00FF;
 			i++;
 		}
@@ -43,6 +43,7 @@ void			draw_pause(t_data *data)
 	if (!x)
 		pause = xpm_create(data, "./xpm/pause.xpm", 1400, 800);
 	x = 1;
+	draw_map(data);
 	xpm_draw_to_tmp(data, pause);
 	draw_select(data, data->menu.selection);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
@@ -58,8 +59,8 @@ void			draw_input(t_data *data)
 	y = 50;
 	space = 70;
 	draw_map(data);
-	data->tmp.img = ft_intset(data->tmp.img, 0x70550000,
-			data->win_h * data->win_w);
+	// data->tmp.img = ft_intset(data->tmp.img, 0x70550000,
+	// 		data->win_h * data->win_w);
 	ft_type(data, "Marcher      W ou S", x + 25, y);
 	ft_type(data, "Tourner      A ou D", x + 25, y + space);
 	ft_type(data, "Courir       shift", x + 25, y + space * 2);
@@ -70,7 +71,7 @@ void			draw_input(t_data *data)
 	ft_type(data, "Retour       P", x + 25, y + space * 8);
 	ft_type(data, "Quitter le jeu > echap", x + 25, y + space * 9);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.pimg, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
+	// mlx_put_image_to_window(data->mlx, data->win, data->tmp.pimg, 0, 0);
 }
 
 void			execute_pause(t_data *data)

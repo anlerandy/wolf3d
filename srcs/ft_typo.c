@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:41:47 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 08:56:29 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:41:46 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	draw_type(t_data *data, char c, int x, int y)
 			b = (((c - 31) % 10) * 55 + i) + ((((c - 31) / 10) * 55) + j) * 550;
 			if ((unsigned int)font.img[b] != 0xff00ffff && \
 					(unsigned int)font.img[b] != 0xFF000000)
-				((int*)(data->tmp.img))[x + i + ((y + j) * data->win_w)] =
+				((int*)(data->frame.img))[x + i + ((y + j) * data->win_w)] =
 					font.img[b];
 		}
 	}

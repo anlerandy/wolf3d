@@ -6,7 +6,7 @@
 #    By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 14:52:44 by alerandy          #+#    #+#              #
-#    Updated: 2019/05/31 13:16:13 by alerandy         ###   ########.fr        #
+#    Updated: 2021/11/17 14:41:04 by alerandy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,43 +22,43 @@ SRC_NAME = main.c usage.c debug.c ft_intset.c input.c xpm.c fade_to.c menu.c \
 OBJ_NAME = $(SRC_NAME:.c=.o)
 CC = gcc $(FLAG)
 FLAG = -Wall -Werror -Wextra
-FRAME = -framework OpenGL -framework AppKit
-LIB = -Lminilibx_macos/ -lmlx -Llibft/ -lft
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+LIBSRC = minilibx-linux
+LIB = -L$(LIBSRC) -lm -lmlx_Linux -lX11 -lXext -lbsd -Llibft -lft -lpthread
+INCLUDES = -Iincludes -Ilibft/includes -I${LIBSRC}
 
 all : $(NAME)
 
 $(NAME) : libft minilibx $(OBJ)
-	@$(CC) $(LIB) $(FRAME) $(OBJ) -o $(NAME)
+	@$(CC) $(OBJ) $(LIB) -o $(NAME)
 	@echo "\033[32m/------------------------------------\ \\033[0m"
 	@echo "\033[32m|----------- $(NAME) crée ------------| \\033[0m"
 	@echo "\033[32m\------------------------------------/ \\033[0m"
 
-
 libft :
-	@$(MAKE) -j -C libft/
+	@$(MAKE) -j -C libft
 
 minilibx :
-	@$(MAKE) -j -C minilibx_macos/
+	$(MAKE) -s -C $(LIBSRC)
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	@$(CC) -Iminilibx_macos -Iincludes -Ilibft/includes -o $@ -c $<
+	@$(CC) $(INCLUDES) -o $@ -c $<
 
 clean :
 	@rm -rf $(OBJ_PATH)
-	@$(MAKE) -C minilibx_macos/ clean
+	@$(MAKE) -C ${LIBSRC}/ clean
 	@printf "\033[2A\r\033[K""\033[1;30mLib mlx détruite.\033[0m\n"
 	@$(MAKE) -C libft/ clean
 
 fclean :
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_PATH)
-	@$(MAKE) -C minilibx_macos/ clean
+	@$(MAKE) -C ${LIBSRC}/ clean
 	@printf "\033[2A\r\033[K""\033[1;30mLib mlx détruite.\033[0m\n"
 	@$(MAKE) -C libft/ fclean
-	@rm -f minilibx_macos/libmlx.a
+	@rm -f ${LIBSRC}/libmlx.a
 	@rm -rf City42
 
 re : fclean $(NAME)
@@ -83,9 +83,9 @@ standalone : re
 	@rm -f City42
 	@#Nettoie les fichiers désormais inutil.
 	@rm -rf $(OBJ_PATH)
-	@$(MAKE) -C minilibx_macos/ clean
+	@$(MAKE) -C ${LIBSRC}/ clean
 	@$(MAKE) -C libft/ fclean
-	@rm -f minilibx_macos/libmlx.a
+	@rm -f ${LIBSRC}/libmlx.a
 	@#Attribut a ico.png le statut de SELF_icone
 	@sips -i xpm/ico.png
 	@#Génère une bibliothèque ressource contenant l'icône.

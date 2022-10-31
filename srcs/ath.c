@@ -6,7 +6,7 @@
 /*   By: alerandy <alerandy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 02:34:01 by alerandy          #+#    #+#             */
-/*   Updated: 2018/03/12 08:56:07 by alerandy         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:44:09 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		draw_pv(t_data *data)
 	{
 		x = -1 + floor(y * 0.4);
 		while (++x < pv_scale - floor(y * 1.6))
-			((int*)(data->tmp.img))[(111 + x) + ((695 + y) * data->win_w)] = c;
+			((int*)(data->frame.img))[(111 + x) + ((695 + y) * data->win_w)] = c;
 	}
 }
 
@@ -57,7 +57,7 @@ void		draw_end(t_data *data)
 	{
 		x = -1 + floor(y * 0.4);
 		while (++x < end_scale - floor(y * 1.6))
-			((int*)(data->tmp.img))[(123 + x) + ((725 + y) * data->win_w)] = c;
+			((int*)(data->frame.img))[(123 + x) + ((725 + y) * data->win_w)] = c;
 	}
 }
 
@@ -72,7 +72,8 @@ void		ath_xpm(t_data *data)
 	s = 1;
 	i = -1;
 	while (++i < 1225 * 75)
-		((int*)(data->tmp.img))[(i % 1225) + 43 + (((i / 1225) + 685) \
+		if ((unsigned)(ath.img[(i % 1225) + ((i / 1225) * 1225)]) != 0xff00ffff) 
+		((int*)(data->frame.img))[(i % 1225) + 43 + (((i / 1225) + 685) \
 			* data->win_w)] = ath.img[(i % 1225) + ((i / 1225) * 1225)];
 }
 
@@ -88,7 +89,7 @@ static void	draw_reload(t_data *data)
 	i = -1;
 	while (++i < 120 * 25)
 		if (rld.img[(i % 120) + ((i / 120) * 120)] != 0x00FEFFFF)
-			((int*)(data->tmp.img))[(i % 120) + 1200 + (((i / 120) + 665) \
+			((int*)(data->frame.img))[(i % 120) + 1200 + (((i / 120) + 665) \
 			* data->win_w)] = rld.img[(i % 120) + ((i / 120) * 120)] \
 			* 0x00999999;
 }
